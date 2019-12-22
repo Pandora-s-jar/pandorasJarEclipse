@@ -1,0 +1,13 @@
+.bg-infoFooter{
+    background-color: midnightblue !important;
+    border: 1px inset white;
+}
+
+
+.nav-linkFooter:hover{
+    color: orange !important;
+}
+.nav-itemFooter{
+	font-size: 120%;
+	color: orange !important;
+}

@@ -1,0 +1,32 @@
+
+#wrapper{
+	width: 100%;
+	margin: 0 auto;	
+	text-align: left;
+	height: auto;
+}
+
+#content{
+	width: 80%;
+	height: 400px;
+	float: right;
+}
+
+#mainNav{
+	height:400px;
+	width: 20%;
+	float: left;
+	background-color: midnightblue !important;
+}
+
+header{
+	clear: both;
+}
+footer{
+	clear: both;
+}
+
+#profileDetails{
+	
+}
+

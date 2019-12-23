@@ -1,0 +1,49 @@
+h2 {
+    font-weight: 900;
+    color: orange;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+body {
+    line-height: 1.8;
+    font-weight: 400;
+    background-image: linear-gradient(white, midnightblue 80%);
+    padding: 5%;
+}
+
+.register-content {
+    background: white;
+    border-radius: 5%;
+    padding: 10% 10%;
+}
+
+.container {
+    width: 50%;
+}
+
+.form-input {
+    width: 100%;
+    margin-top: 5%;
+    border: 1px solid #ebebeb;
+    border-radius: 5%;
+    padding: 4% 5%;
+    color: black;
+}
+
+.form-submit {
+    width: 100%;
+    border-radius: 5%;
+    margin-top: 5%;
+    padding: 4% 5%;
+    font-weight: 700;
+    color: white;
+    border: none;
+    background-color: orange;
+}
+
+.label-agree-term {
+    margin-top: 5%;
+    font-size: 80%;
+    font-weight: 600;
+}

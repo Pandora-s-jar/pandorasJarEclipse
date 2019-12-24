@@ -5,11 +5,11 @@
     margin-bottom: 5%;
 }
 
-body {
+.register-body {
     line-height: 1.8;
     font-weight: 400;
-    background-image: linear-gradient(white, midnightblue 80%);
-    padding: 5%;
+    background-color: lightskyblue;
+    padding: 10%;
 }
 
 .register-content {

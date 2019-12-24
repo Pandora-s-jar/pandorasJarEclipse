@@ -12,7 +12,7 @@ public class GeneralProfile extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher rd = req.getRequestDispatcher("header.html");
+		RequestDispatcher rd = req.getRequestDispatcher("header.jsp");
 		rd.include(req, resp);
 		rd = req.getRequestDispatcher("profile.html");
 		rd.include(req, resp);

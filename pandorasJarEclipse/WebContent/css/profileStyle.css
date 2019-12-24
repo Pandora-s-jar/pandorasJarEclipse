@@ -1,22 +1,59 @@
 
-#wrapper{
-	width: 100%;
-	margin: 0 auto;	
-	text-align: left;
+#row:after{
+	content: "";
+	display: table;
+	clear: both;
 	height: auto;
 }
 
-#content{
-	width: 80%;
-	height: 400px;
-	float: right;
-}
-
-#mainNav{
-	height:400px;
-	width: 20%;
+#first_column{
+	width: 25%;
 	float: left;
 	background-color: midnightblue !important;
+}
+
+#second_column{
+	width:75%;
+	float: left;
+}
+#second_column:after{
+	content: "";
+	display: table;
+	clear: both;
+	height: auto;
+}
+
+#profilePhoto{
+	width: 40%;
+	float: left;
+	
+}
+
+#profileDetails{
+	width: 60%;
+	float: left;
+}
+
+.words{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: blue;
+}
+
+.words-friends{
+	font-size:120%;
+}
+
+#tableWords{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: blue;
+}
+
+#friendsList{
+	position:relative;
+	margin-top:300px;
+	margin-left:50px;
+	clear: both;
+	line-height:50px;
 }
 
 header{
@@ -25,8 +62,3 @@ header{
 footer{
 	clear: both;
 }
-
-#profileDetails{
-	
-}
-

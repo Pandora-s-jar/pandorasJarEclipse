@@ -12,10 +12,9 @@
 	 	
 	 </head>
 	<body>
-		<div id="wrapper">
-			
-			<div id="mainNav">
-				<nav class="navbar navbar-dark" >
+		<div id="row">
+			<div id="first_column">
+				<nav class="navbar navbar-dark" id="navMenu">
 					<ul class="navbar-nav nav-fill w-100">
 						<li class="navbar-brand">
 							<a class="nav-link" href="#">General</a>
@@ -29,24 +28,47 @@
 					</ul>
 				</nav>
 			</div>
-			<div id="content">
-				<table id="profileDetails" class="table table-hover">
-					<tr>
-						<td>Username:</td>
-						<td>_inserire username_</td>
-						<td><button type="button" class="btn btn-primary btn-sm fas fa-edit" id="btnChangeUsername"></button></td>
-					</tr>
-					<tr>
-						<td>Email:</td>
-						<td>_inserire email_</td>
-						<td><button type="button" class="btn btn-primary btn-sm fas fa-edit" id="btnChangeEmail"></button></td>
-					</tr>
-					<tr>
-						<td>Password:</td>
-						<td>_inserire password_</td>
-						<td><button type="button" class="btn btn-primary btn-sm fas fa-edit" id="btnChangePassword"></button></td>
-					</tr>
-				</table>
+			<div id="second_column">
+				<div class="text-center words" id="profilePhoto">
+			        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+			        <h6>Upload a different photo...</h6>
+			        <input type="file" class="text-center center-block file-upload">
+		      	</div>
+		      	
+		      	<div id="profileDetails" class="">
+					<table class="table table-hover jumbotron jumbotron-fluid" id="tableWords" >
+						<tr>
+							<td>Username:</td>
+							<td>_inserire username_</td>
+							<td><button type="button" class="btn btn-primary btn-sm fas fa-edit" id="btnChangeUsername"></button></td>
+						</tr>
+						<tr>
+							<td>Email:</td>
+							<td>_inserire email_</td>
+							<td><button type="button" class="btn btn-primary btn-sm fas fa-edit" id="btnChangeEmail"></button></td>
+						</tr>
+						<tr>
+							<td>Password:</td>
+							<td>_inserire password_</td>
+							<td><button type="button" class="btn btn-primary btn-sm fas fa-edit" id="btnChangePassword"></button></td>
+						</tr>
+						<tr>
+							<td>Description:</td>
+							<td>_inserire descrizione_</td>
+							<td><button type="button" class="btn btn-primary btn-sm fas fa-edit" id="btnChangeDescription"></button></td>
+						</tr>
+					</table>
+					
+				</div>
+				<div id="friendsList" class="jumbotron jumbotron-fluid">
+					<div class="words words-friends">
+						<h3>Friends:</h3>
+						<div>
+							<a href="profile/insert_friend">insert_friend, </a>
+						</div>
+					</div>
+					<input type="button" value="Add friend"/>
+				</div>
 			</div>
 			
 		</div>		

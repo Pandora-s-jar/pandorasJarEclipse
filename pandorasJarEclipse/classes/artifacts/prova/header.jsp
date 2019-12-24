@@ -38,13 +38,22 @@
                         <button type="submit" class="btn btn-primary btn-sm fa fa-search"></button>
                     </div>
                 </li>
-                <li>
-                    <span class="navbar hidable">
-                            <a class="nav-link" href="#Login" data-toggle="modal">ACCEDI</a>
-                            <a style="font-size: 180%; color: #5a6268">|</a>
-                            <a class="nav-link" href="register">REGISTRATI</a>
-                    </span>
-                </li>
+                <% if(request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged")){%>
+                    <li>
+                        <span class="navbar hidable">
+                                <a class="nav-link" href="#Login" data-toggle="modal">ACCEDI</a>
+                                <a style="font-size: 180%; color: #5a6268">|</a>
+                                <a class="nav-link" href="register">REGISTRATI</a>
+                        </span>
+                    </li>
+                <%}else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+                    <li>
+                        <form method="post" action="${pageContext.request.contextPath}/logout">
+                            <input type="submit" value="LogOut"/> <% //TODO: E' il cenone di natale, lo sposto dopo
+                            %>
+                        </form>
+                    </li>
+                <%}%>
             </ul>
         </nav>
     </header>
@@ -56,7 +65,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
                 </div>
                 <div class="modal-body">
-                    <form class="form" method="post">
+                    <form class="form" method="post" action="${pageContext.request.contextPath}/login">
                         <div class="form-group">
                             <input type="email" class="form-control" name="email" placeholder="Inserisci la tua email" required/>
                             <input type="password" class="form-control" name="password" placeholder="Inserisci la tua password" required/>

@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" 
+prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -39,7 +44,10 @@
 					<table class="table table-hover jumbotron jumbotron-fluid" id="tableWords" >
 						<tr>
 							<td>Username:</td>
-							<td>_inserire username_</td>
+							<c:if test="${user == null}">
+							nullo
+							</c:if>
+							<td>${user.username}</td>
 							<td><button type="button" class="btn btn-primary btn-sm fas fa-edit" id="btnChangeUsername"></button></td>
 						</tr>
 						<tr>

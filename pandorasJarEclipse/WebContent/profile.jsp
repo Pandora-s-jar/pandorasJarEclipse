@@ -14,6 +14,7 @@ prefix="c" %>
 	    <script src="css/bootstrap-4.4.1-dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	    <link rel="stylesheet" href="css/profileStyle.css"><link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
 		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	 	<script src="js/profileScript.js"></script>
 	 	
 	 </head>
 	<body>
@@ -37,32 +38,33 @@ prefix="c" %>
 				<div class="text-center words" id="profilePhoto">
 			        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
 			        <h6>Upload a different photo...</h6>
-			        <input type="file" class="text-center center-block file-upload">
+			        <input type="file" class="text-center center-block file-upload btn btn-primary">
 		      	</div>
 		      	
 		      	<div id="profileDetails" class="">
 					<table class="table table-hover jumbotron jumbotron-fluid" id="tableWords" >
 						<tr>
 							<td>Username:</td>
-							<td>${user.username}</td>
+							<td><input type="text" id="inputUsername" disabled="disabled" value="${user.username}"/></td>
 							<td><button type="button" class="btn btn-primary btn-sm fas fa-edit" id="btnChangeUsername"></button></td>
 						</tr>
 						<tr>
 							<td>Email:</td>
-							<td>${user.email}</td>
+							<td><input type="text" id="inputEmail" disabled="disabled" value="${user.email}"/></td>
 							<td><button type="button" class="btn btn-primary btn-sm fas fa-edit" id="btnChangeEmail"></button></td>
 						</tr>
 						<tr>
 							<td>Password:</td>
-							<td>${user.password}</td>
+							<td><input type="text" id="inputPassword" disabled="disabled" value="${user.password}"/></td>
 							<td><button type="button" class="btn btn-primary btn-sm fas fa-edit" id="btnChangePassword"></button></td>
 						</tr>
 						<tr>
 							<td>Description:</td>
-							<td>${user.description}</td>
+							<td><input type="text" id="inputDescription" disabled="disabled" value="${user.description}"/></td>
 							<td><button type="button" class="btn btn-primary btn-sm fas fa-edit" id="btnChangeDescription"></button></td>
 						</tr>
 					</table>
+					<input type="submit" method="POST" value="Save" id="saveBtn" class="btn btn-primary"/>
 					
 				</div>
 				<div id="friendsList" class="jumbotron jumbotron-fluid">
@@ -74,7 +76,7 @@ prefix="c" %>
 							</c:forEach>
 						</div>
 					</div>
-					<input type="button" value="Add friend"/>
+					<input type="button" value="Add friend" class="btn btn-primary"/>
 				</div>
 			</div>
 			

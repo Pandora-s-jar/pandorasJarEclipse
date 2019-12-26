@@ -62,3 +62,9 @@ header{
 footer{
 	clear: both;
 }
+
+#saveBtn{
+	position: relative;
+	margin-left: 40%;
+}
+

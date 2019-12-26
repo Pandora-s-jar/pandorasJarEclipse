@@ -44,25 +44,22 @@ prefix="c" %>
 					<table class="table table-hover jumbotron jumbotron-fluid" id="tableWords" >
 						<tr>
 							<td>Username:</td>
-							<c:if test="${user == null}">
-							nullo
-							</c:if>
 							<td>${user.username}</td>
 							<td><button type="button" class="btn btn-primary btn-sm fas fa-edit" id="btnChangeUsername"></button></td>
 						</tr>
 						<tr>
 							<td>Email:</td>
-							<td>_inserire email_</td>
+							<td>${user.email}</td>
 							<td><button type="button" class="btn btn-primary btn-sm fas fa-edit" id="btnChangeEmail"></button></td>
 						</tr>
 						<tr>
 							<td>Password:</td>
-							<td>_inserire password_</td>
+							<td>${user.password}</td>
 							<td><button type="button" class="btn btn-primary btn-sm fas fa-edit" id="btnChangePassword"></button></td>
 						</tr>
 						<tr>
 							<td>Description:</td>
-							<td>_inserire descrizione_</td>
+							<td>${user.description}</td>
 							<td><button type="button" class="btn btn-primary btn-sm fas fa-edit" id="btnChangeDescription"></button></td>
 						</tr>
 					</table>
@@ -72,7 +69,9 @@ prefix="c" %>
 					<div class="words words-friends">
 						<h3>Friends:</h3>
 						<div>
-							<a href="profile/insert_friend">insert_friend, </a>
+							<c:forEach items="${user.friends}" var="friend">
+								<a href="profile/${friend.username}">${friend.username} </a>
+							</c:forEach>
 						</div>
 					</div>
 					<input type="button" value="Add friend"/>

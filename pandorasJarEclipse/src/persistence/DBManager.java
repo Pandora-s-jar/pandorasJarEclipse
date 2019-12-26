@@ -12,8 +12,8 @@ public class DBManager {
 	{
 		users = new ArrayList<User>();
 		ArrayList<User> amici = new ArrayList<User>();
-		amici.add(new User("Luigi", "4562", "Sono Luigi montaleone e vengo da Gabella", null));
-		User us = new User("Simone", "1234", "Sono SImone mungari e vengo da Crotone", amici);
+		amici.add(new User("Luigi", "4562", "Sono Luigi montaleone e vengo da Gabella", null, "luigi@luigi"));
+		User us = new User("Simone", "1234", "Sono SImone mungari e vengo da Crotone", amici, "simone@simone");
 		addUser(us);	
 	}
 	

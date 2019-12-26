@@ -10,13 +10,15 @@ public class User {
 	private String description;
 	private ArrayList<User> friends;
 	private String image;
+	private String email;
 	
-	public User(String username, String password, String description, ArrayList<User> friends) {
+	public User(String username, String password, String description, ArrayList<User> friends, String email) {
 		id = contId++;
 		this.username = username;
 		this.password = password;
 		this.description = description;
 		this.friends = friends;
+		this.email = email;
 		image = null;
 	}
 
@@ -44,6 +46,22 @@ public class User {
 		return friends;
 	}
 
+	public String getImage() {
+		return image;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public static void setContId(int contId) {
 		User.contId = contId;
 	}
@@ -67,8 +85,4 @@ public class User {
 	public void setFriends(ArrayList<User> friends) {
 		this.friends = friends;
 	}
-	
-	
-	
-
 }

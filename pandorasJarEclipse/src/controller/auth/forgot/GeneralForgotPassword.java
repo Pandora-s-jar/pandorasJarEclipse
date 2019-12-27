@@ -1,4 +1,4 @@
-package controller;
+package controller.auth.forgot;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,14 +14,9 @@ public class GeneralForgotPassword extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("header.jsp");
         requestDispatcher.include(req, resp);
-        requestDispatcher = req.getRequestDispatcher("forgotPassword.html");
+        requestDispatcher = req.getRequestDispatcher("forgotPassword.jsp");
         requestDispatcher.include(req, resp);
         requestDispatcher = req.getRequestDispatcher("footer.html");
         requestDispatcher.include(req, resp);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
     }
 }

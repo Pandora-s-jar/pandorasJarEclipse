@@ -4,10 +4,10 @@
 }
 
 
-.nav-linkFooter:hover{
+footer .nav-link:hover{
     color: orange !important;
 }
-.nav-itemFooter{
+footer .nav-item{
 	font-size: 120%;
 	color: orange !important;
 }

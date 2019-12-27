@@ -40,18 +40,18 @@
                 </li>
                 <% if(request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged")){%>
                     <li>
-                        <span class="navbar hidable">
+                        <nav class="navbar hidable">
                                 <a class="nav-link" href="#Login" data-toggle="modal">ACCEDI</a>
                                 <a style="font-size: 180%; color: #5a6268">|</a>
                                 <a class="nav-link" href="register">REGISTRATI</a>
-                        </span>
+                        </nav>
                     </li>
-                <%}else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
+                <%}
+                else if (request.getSession().getAttribute("logged") != null && (boolean)request.getSession().getAttribute("logged")){%>
                     <li>
-                        <form method="post" action="${pageContext.request.contextPath}/logout">
-                            <input type="submit" value="LogOut"/> <% //TODO: E' il cenone di natale, lo sposto il 26
-                            %>
-                        </form>
+                        <nav class="navbar hidable">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/logout">LOGOUT</a>
+                        </nav>
                     </li>
                 <%}%>
             </ul>
@@ -61,7 +61,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2>ACCEDI</h2>
+                    <h2 class="h2-login">ACCEDI</h2>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
                 </div>
                 <div class="modal-body">
@@ -69,8 +69,8 @@
                         <div class="form-group">
                             <input type="email" class="form-control" name="email" placeholder="Inserisci la tua email" required/>
                             <input type="password" class="form-control" name="password" placeholder="Inserisci la tua password" required/>
-                            Hai dimenticato la password? <a href="forgot.html">Clicca Qui!</a><br>
-                            Non hai un account? <a href="register.html">Registrati!</a><br>
+                            <div class="link-dialog">Hai dimenticato la password? <a class="link-link" href="forgotPassword">Clicca Qui!</a></div>
+                            <div class="link-dialog">Non hai un account? <a class="link-link" href="register">Registrati!</a><br></div>
                             <button type="submit" id="btnLogin">LOGIN!</button>
                         </div>
                     </form>

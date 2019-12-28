@@ -1,8 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" 
-prefix="c" %>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -18,69 +15,116 @@ prefix="c" %>
 	 	
 	 </head>
 	<body>
-		<div id="row">
-			<div id="first_column">
-				<nav class="navbar navbar-dark" id="navMenu">
-					<ul class="navbar-nav nav-fill w-100">
-						<li class="navbar-brand">
-							<a class="nav-link" href="#">General</a>
-						</li>
-						<li class="navbar-brand">
-							<a class="nav-link" href="#">Game Statistics</a>
-						</li>
-						<li class="navbar-brand">
-							<a class="nav-link" href="#">Developer Statistics</a>
-						</li>						
-					</ul>
-				</nav>
-			</div>
-			<div id="second_column">
-				<div class="text-center words" id="profilePhoto">
-			        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-			        <h6>Upload a different photo...</h6>
-			        <input type="file" class="text-center center-block file-upload btn btn-primary">
-		      	</div>
-		      	
-		      	<div id="profileDetails" class="">
-					<table class="table table-hover jumbotron jumbotron-fluid" id="tableWords" >
-						<tr>
-							<td>Username:</td>
-							<td><input type="text" id="inputUsername" disabled="disabled" value="${user.username}"/></td>
-							<td><button type="button" class="btn btn-primary btn-sm fas fa-edit" id="btnChangeUsername"></button></td>
-						</tr>
-						<tr>
-							<td>Email:</td>
-							<td><input type="text" id="inputEmail" disabled="disabled" value="${user.email}"/></td>
-							<td><button type="button" class="btn btn-primary btn-sm fas fa-edit" id="btnChangeEmail"></button></td>
-						</tr>
-						<tr>
-							<td>Password:</td>
-							<td><input type="text" id="inputPassword" disabled="disabled" value="${user.password}"/></td>
-							<td><button type="button" class="btn btn-primary btn-sm fas fa-edit" id="btnChangePassword"></button></td>
-						</tr>
-						<tr>
-							<td>Description:</td>
-							<td><input type="text" id="inputDescription" disabled="disabled" value="${user.description}"/></td>
-							<td><button type="button" class="btn btn-primary btn-sm fas fa-edit" id="btnChangeDescription"></button></td>
-						</tr>
-					</table>
-					<input type="submit" method="POST" value="Save" id="saveBtn" class="btn btn-primary"/>
-					
-				</div>
-				<div id="friendsList" class="jumbotron jumbotron-fluid">
-					<div class="words words-friends">
-						<h3>Friends:</h3>
-						<div>
-							<c:forEach items="${user.friends}" var="friend">
-								<a href="profile/${friend.username}">${friend.username} </a>
-							</c:forEach>
+		<c:if test="${not logged}">
+			<div class="modal" id="myModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">Error</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+
+						<div class="modal-body">
+							You're not logged
+						</div>
+
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 						</div>
 					</div>
-					<input type="button" value="Add friend" class="btn btn-primary"/>
 				</div>
 			</div>
-			
-		</div>		
-		
+		</c:if>
+		<c:if test="${logged}">
+			<jsp:include page="header.jsp" />
+			<div id="row">
+				<div id="first_column">
+					<nav class="navbar navbar-dark" id="navMenu">
+						<ul class="navbar-nav nav-fill w-100">
+							<li class="navbar-brand">
+								<a class="nav-link" href="#">General</a>
+							</li>
+							<li class="navbar-brand">
+								<a class="nav-link" href="#">Game Statistics</a>
+							</li>
+							<li class="navbar-brand">
+								<a class="nav-link" href="#">Developer Statistics</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+
+				<form id="profileDetails" method="post" action="changeProfileDetails">
+					<div id="second_column">
+						<div class="text-center words" id="profilePhoto">
+							<c:if test="${empty user.image}">
+								<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+							</c:if>
+							<c:if test="${not empty user.image}">
+								<img src="${user.image}">
+							</c:if>
+							<c:if test="${not friend}">
+								<h6>Upload a different photo...</h6>
+								<input type="file" id="inputFile" class="text-center center-block file-upload btn btn-primary">
+							</c:if>
+						</div>
+						<div id="details">
+							<table class="table table-hover" id="tableWords" >
+								<tr>
+									<td>Username:</td>
+									<td><input type="text" name="inputUsername" id="inputUsername" readonly value="${user.username}"/></td>
+									<c:if test="${not friend}">
+										<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangeUsername"></button></td>
+									</c:if>
+								</tr>
+								<tr>
+									<td>Email:</td>
+									<td><input type="text" name="inputEmail" id="inputEmail" readonly value="${user.email}"/></td>
+									<c:if test="${not friend}">
+										<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangeEmail"></button></td>
+									</c:if>
+								</tr>
+								<tr>
+									<td>Password:</td>
+									<td><input type="text" name="inputPassword" id="inputPassword" readonly value="${user.password}"/></td>
+									<c:if test="${not friend}">
+										<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangePassword"></button></td>
+									</c:if>
+								</tr>
+								<tr>
+									<td>Description:</td>
+									<td><input type="text" name="inputDescription" id="inputDescription" readonly value="${user.description}"/></td>
+									<c:if test="${not friend}">
+										<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangeDescription"></button></td>
+									</c:if>
+								</tr>
+							</table>
+						</div>
+						<c:if test="${not friend}">
+							<input type="submit" value="Save" id="saveBtn" class="btn btn-primary background-color"/>
+						</c:if>
+						<div id="friendsList" class="jumbotron jumbotron-fluid" style="text-align:center;">
+							<div class="words words-friends">
+								<h3 style="margin-top:-50px;" >Friends:</h3>
+								<c:forEach items="${user.friends}" var="friend">
+									<a href="profile?id=${friend.id}">${friend.username}</a>,
+								</c:forEach>
+							</div>
+							<div id="divAddFriend">
+								<c:if test="${not friend}">
+									<input type="button" id="addFriend" value="Add friend" class="btn btn-primary btn-center background-color"/>
+									<form id="formAddFriend" method="post" action="changeProfileDetails">
+										<div id="insideForm">
+										</div>
+									</form>
+								</c:if>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<jsp:include page="footer.html" />
+		</c:if>
 	</body>
 </html>
+

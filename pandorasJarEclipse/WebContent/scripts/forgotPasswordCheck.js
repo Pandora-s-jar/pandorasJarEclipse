@@ -1,27 +1,27 @@
 $(document).ready(() => {
-        $("#confirmCode").hide().submit((e)=>{
-            $.ajax({
-                type: "GET",
-                url: "/confirmCode",
-                data: {
-                    email: $("#address").val(),
-                    secretCode: $("#code").val()
-                },
-                success: ()=>{
-                    //TODO: facciamo la grafica
-                        alert("Email inviata");
-                    },
-                error: () =>{
-                    //TODO: facciamo la grafica
-                        alert("Il codice per questa email è errato");
-                        window.location.replace(window.location); // simulate an HTTP GET req
-                    }
-                }
-            );
-        })
+        $("#confirmCode").hide();
     }
 );
 
+function secondStep() {
+    $.ajax({
+            type: "GET",
+            url: "/confirmCode",
+            data: {
+                email: $("#address").val(),
+                secretCode: $("#code").val()
+            },
+            success: ()=>{
+                alert("Email inviata");
+                window.location.replace("/resetPsw")
+            },
+            error: () =>{
+                alert("Errore");
+                window.location.replace(window.location);
+            }
+        },
+    );
+}
 function firstStep() {
     console.log("prova");
     $.ajax({

@@ -29,7 +29,7 @@
 	
 }
 
-#profileDetails{
+#details{
 	width: 60%;
 	float: left;
 }
@@ -37,6 +37,7 @@
 .words{
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: blue;
+
 }
 
 .words-friends{
@@ -50,10 +51,11 @@
 
 #friendsList{
 	position:relative;
-	margin-top:300px;
+	margin-top:100px;
 	margin-left:50px;
 	clear: both;
 	line-height:50px;
+	height: 70%;
 }
 
 header{
@@ -65,6 +67,12 @@ footer{
 
 #saveBtn{
 	position: relative;
-	margin-left: 40%;
+	width: 20%;
+	margin-left:-10%;
+	margin-top:3%;
+}
+
+.background-color{
+	background-color:orange !important;
 }
 

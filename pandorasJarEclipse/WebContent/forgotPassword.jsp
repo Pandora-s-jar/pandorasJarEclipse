@@ -14,12 +14,12 @@
             <input type="email" class="form-input" name="email" id="address" placeholder="Inserisci la tua email" required/>
             <button id="email" onclick="firstStep(event)" class="btn-primary">RICHIEDI CODICE</button>
         </div>
-        <form style="display: none" id="confirmCode" method="get" action="${pageContext.request.contextPath}/resetPsw">
+        <div style="display: none" id="confirmCode">
             <div class="form-group">
                 <input type="text" class="form-input" name="code" id="code" placeholder="Inserisci il codice" required/>
-                <input type="submit" class="form-submit" value="INVIA">
+                <input type="button" class="form-submit" value="INVIA" onclick="secondStep()">
             </div>
-        </form>
+        </div>
     </div>
 </body>
 </html>

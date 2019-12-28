@@ -16,7 +16,6 @@ public class GeneralProfile extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//fatto nel login
-		req.getSession().setAttribute("logged", true);
 		req.getSession().setAttribute("userId", 5);
 		//
 		int idUser = (int) req.getSession().getAttribute("userId");

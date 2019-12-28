@@ -36,7 +36,7 @@
 			</div>
 		</c:if>
 		<c:if test="${logged}">
-			<jsp:include page="header.html" />
+			<jsp:include page="header.jsp" />
 			<div id="row">
 				<div id="first_column">
 					<nav class="navbar navbar-dark" id="navMenu">

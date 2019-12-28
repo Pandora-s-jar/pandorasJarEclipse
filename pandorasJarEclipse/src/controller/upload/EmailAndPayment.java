@@ -18,7 +18,7 @@ public class EmailAndPayment extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if((req.getSession().getAttribute("secretCode").equals(req.getParameter("code")))){
             req.getSession().setAttribute("paymentCoordinates", req.getParameter("paymentCoordinates"));
-            resp.setStatus(201);
+            resp.setStatus(200);
         }
         else{
             resp.setStatus(401);

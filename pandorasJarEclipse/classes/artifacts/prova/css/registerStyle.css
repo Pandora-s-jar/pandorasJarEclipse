@@ -24,7 +24,8 @@
 
 .registerForm .form-input {
     width: 100%;
-    margin-top: 5%;
+    margin-top: 2% !important;
+    margin-bottom: 2%;
     border: 1px solid #ebebeb;
     border-radius: 5%;
     padding: 4% 5%;

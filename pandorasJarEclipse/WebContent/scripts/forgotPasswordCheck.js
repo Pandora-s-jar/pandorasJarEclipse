@@ -31,7 +31,7 @@ function firstStep() {
             email: $("#address").val()
         },
         success: ()=>{
-            $("#confirmCode").show();
+            $("#confirmCode").css("display", "block ");
         }
     })
 }

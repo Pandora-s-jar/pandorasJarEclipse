@@ -12,9 +12,9 @@
     <div class="container forgotPassword">
         <div class="form-group">
             <input type="email" class="form-input" name="email" id="address" placeholder="Inserisci la tua email" required/>
-            <button id="email" onclick="firstStep()" class="btn-primary">RICHIEDI CODICE</button>
+            <button id="email" onclick="firstStep(event)" class="btn-primary">RICHIEDI CODICE</button>
         </div>
-        <form class="visible" id="confirmCode" method="get" action="${pageContext.request.contextPath}/resetPsw">
+        <form style="display: none" id="confirmCode" method="get" action="${pageContext.request.contextPath}/resetPsw">
             <div class="form-group">
                 <input type="text" class="form-input" name="code" id="code" placeholder="Inserisci il codice" required/>
                 <input type="submit" class="form-submit" value="INVIA">

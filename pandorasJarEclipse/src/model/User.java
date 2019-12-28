@@ -11,7 +11,6 @@ public class User {
 	private ArrayList<User> friends;
 	private String image;
 	private String email;
-	
 	public User(String username, String password, String description, ArrayList<User> friends, String email) {
 		id = contId++;
 		this.username = username;
@@ -21,68 +20,65 @@ public class User {
 		this.email = email;
 		image = null;
 	}
-
 	public static int getContId() {
 		return contId;
 	}
-
+	public static void setContId(int contId) {
+		User.contId = contId;
+	}
 	public int getId() {
 		return id;
 	}
-
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getUsername() {
 		return username;
 	}
-
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public String getPassword() {
 		return password;
 	}
-
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public String getDescription() {
 		return description;
 	}
-
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	public ArrayList<User> getFriends() {
 		return friends;
 	}
-
+	public void setFriends(ArrayList<User> friends) {
+		this.friends = friends;
+	}
 	public String getImage() {
 		return image;
 	}
-	
-	public String getEmail() {
-		return email;
-	}
-
 	public void setImage(String image) {
 		this.image = image;
 	}
-
+	public String getEmail() {
+		return email;
+	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public static void setContId(int contId) {
-		User.contId = contId;
+	public void addFriend(User u)
+	{
+		for(User user: friends)
+		{
+			if(user.getId() == u.getId())
+				return;
+		}
+		this.friends.add(u);
 	}
+	
+	
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public void setFriends(ArrayList<User> friends) {
-		this.friends = friends;
-	}
 }

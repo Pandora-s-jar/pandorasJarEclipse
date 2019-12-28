@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="css/bootstrap-4.4.1-dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/headerStyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+    <script src="scripts/header.js"></script>
 </head>
 <body>
     <header> 
@@ -21,13 +23,13 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a href="#" class="nav-link ">PROFILO</a>
+                    <a href="${pageContext.request.contextPath}/profile"  id="profileLink" class="nav-link ">PROFILO</a>
                 </li>
                 <li class="nav-item ">
-                    <a href="#" class="nav-link">LIBRERIA</a>
+                    <a href="#" class="nav-link" id="libraryLink">LIBRERIA</a>
                 </li>
                 <li class="nav-item ">
-                    <a href="upload" class="nav-link">AGGIUNGI UN GIOCO</a>
+                    <a href="upload" id="addGameLink" class="nav-link">AGGIUNGI UN GIOCO</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">ASSISTENZA</a>

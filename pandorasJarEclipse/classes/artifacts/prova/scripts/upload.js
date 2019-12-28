@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#confirmCode").hide()
+    $("#confirmCode").hide();
 });
 
 function secondStep(){
@@ -10,6 +10,9 @@ function secondStep(){
             code : $("#code").val(),
             paymentCoordinates : $("#paymentCoordinates").val()
         },
+        success: function(){
+            window.location.replace("/gameDetails");
+        },
         error : function () {
             alert("CODICE ERRATO");
         }
@@ -19,7 +22,6 @@ function secondStep(){
 //TODO: Refactorl pls
 
 function firstStep() {
-    console.log("prova");
     $.ajax({
         type: "GET",
         url: "/sendCode",
@@ -27,7 +29,7 @@ function firstStep() {
             email: $("#email").val()
         },
         success: ()=>{
-            $("#confirmCode").css("display", "block ");
+            $("#confirmCode").css("display", "block");
         }
     })
 }

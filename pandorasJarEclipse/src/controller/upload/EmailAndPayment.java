@@ -16,15 +16,12 @@ public class EmailAndPayment extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //this.log((String) req.getSession().getAttribute("secretCode"));
-        //this.log(req.getParameter("code"));
-        req.getRequestDispatcher("/profile").forward(req, resp);
-        /*if((req.getSession().getAttribute("secretCode").equals(req.getParameter("code")))){
+        if((req.getSession().getAttribute("secretCode").equals(req.getParameter("code")))){
             req.getSession().setAttribute("paymentCoordinates", req.getParameter("paymentCoordinates"));
-            req.getRequestDispatcher("gameDetails").forward(req, resp);
+            resp.setStatus(201);
         }
         else{
             resp.setStatus(401);
-        }*/
+        }
     }
 }

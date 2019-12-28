@@ -27,7 +27,7 @@
                     <a href="#" class="nav-link">LIBRERIA</a>
                 </li>
                 <li class="nav-item ">
-                    <a href="#" class="nav-link">AGGIUNGI UN GIOCO</a>
+                    <a href="upload" class="nav-link">AGGIUNGI UN GIOCO</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">ASSISTENZA</a>

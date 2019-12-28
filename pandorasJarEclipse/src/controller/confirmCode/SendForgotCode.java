@@ -1,4 +1,4 @@
-package controller.auth.forgot;
+package controller.confirmCode;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.concurrent.ThreadLocalRandom;
 
-@WebServlet(value = "/sendForget")
+@WebServlet(value = "/sendCode")
 public class SendForgotCode extends HttpServlet {
     private String generateCode(){
         int leftLimit = 97; // 'a'

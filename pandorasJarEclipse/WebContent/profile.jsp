@@ -39,19 +39,7 @@
 			<jsp:include page="header.jsp" />
 			<div id="row">
 				<div id="first_column">
-					<nav class="navbar navbar-dark" id="navMenu">
-						<ul class="navbar-nav nav-fill w-100">
-							<li class="navbar-brand">
-								<a class="nav-link" href="#">General</a>
-							</li>
-							<li class="navbar-brand">
-								<a class="nav-link" href="#">Game Statistics</a>
-							</li>
-							<li class="navbar-brand">
-								<a class="nav-link" href="#">Developer Statistics</a>
-							</li>
-						</ul>
-					</nav>
+					<jsp:include page="profileMenu.html"></jsp:include>
 				</div>
 
 				<form id="profileDetails" method="post" action="changeProfileDetails">

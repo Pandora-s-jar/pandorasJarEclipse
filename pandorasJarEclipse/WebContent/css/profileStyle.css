@@ -32,6 +32,7 @@
 #details{
 	width: 60%;
 	float: left;
+	height: 300px;
 }
 
 .words{
@@ -64,11 +65,14 @@ header{
 footer{
 	clear: both;
 }
+#tbody-details{
+	height: 273px;
+}
 
 #saveBtn{
 	position: relative;
 	width: 20%;
-	margin-left:-10%;
+	margin-left: 30%;
 	margin-top:3%;
 }
 

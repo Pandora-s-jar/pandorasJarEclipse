@@ -15,7 +15,8 @@ import java.nio.file.Paths;
 public class ChangeProfileDetails  extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User u = (User) req.getSession().getAttribute("user");
+        int userId = (int) req.getSession().getAttribute("userId");
+        User u = DBManager.getInstance().getUser(userId);
         String username = req.getParameter("inputUsername");
         String email = req.getParameter("inputEmail");
         String description = req.getParameter("inputDescription");

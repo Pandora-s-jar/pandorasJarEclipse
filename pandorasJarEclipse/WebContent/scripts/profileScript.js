@@ -2,8 +2,15 @@ jQuery.noConflict();
 
 jQuery(document).ready(function(){
 
-	if(!sessionStorage.getItem("logged"))
+	if(!sessionStorage.getItem("logged")) {
 		jQuery('#myModal').modal('show');
+
+		jQuery(".modalCloseBtn").click(function(){
+			//TODO replace "/" with home url
+			window.location.replace("/");
+		});
+	}
+
 
 	jQuery("#btnChangeUsername").click(function(){
 	  jQuery("#inputUsername").attr("readonly", false);

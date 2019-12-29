@@ -26,7 +26,7 @@ function firstStep() {
     console.log("prova");
     $.ajax({
         type: "GET",
-        url: "/sendForget",
+        url: "/sendCode",
         data: {
             email: $("#address").val()
         },

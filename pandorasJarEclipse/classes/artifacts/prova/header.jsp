@@ -32,7 +32,7 @@
                     <a href="upload" id="addGameLink" class="nav-link">AGGIUNGI UN GIOCO</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">ASSISTENZA</a>
+                    <a href="help" class="nav-link">ASSISTENZA</a>
                 </li>
                 <li class="nav-item">
                     <div class="search">

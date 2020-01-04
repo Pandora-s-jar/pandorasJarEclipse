@@ -11,7 +11,7 @@
 	    <script src="css/bootstrap-4.4.1-dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	    <link rel="stylesheet" href="css/profileStyle.css"><link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
 		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-	 	<script src="js/profileScript.js"></script>
+	 	<script src="scripts/profileScript.js"></script>
 	 	
 	 </head>
 	<body>
@@ -21,7 +21,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<h4 class="modal-title">Error</h4>
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<button type="button" class="close modalCloseBtn" data-dismiss="modal">&times;</button>
 						</div>
 
 						<div class="modal-body">
@@ -29,29 +29,17 @@
 						</div>
 
 						<div class="modal-footer">
-							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-danger modalCloseBtn" data-dismiss="modal">Close</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</c:if>
 		<c:if test="${logged}">
-			<jsp:include page="header.html" />
+			<jsp:include page="header.jsp" />
 			<div id="row">
 				<div id="first_column">
-					<nav class="navbar navbar-dark" id="navMenu">
-						<ul class="navbar-nav nav-fill w-100">
-							<li class="navbar-brand">
-								<a class="nav-link" href="#">General</a>
-							</li>
-							<li class="navbar-brand">
-								<a class="nav-link" href="#">Game Statistics</a>
-							</li>
-							<li class="navbar-brand">
-								<a class="nav-link" href="#">Developer Statistics</a>
-							</li>
-						</ul>
-					</nav>
+					<jsp:include page="profileMenu.html"></jsp:include>
 				</div>
 
 				<form id="profileDetails" method="post" action="changeProfileDetails">
@@ -69,35 +57,37 @@
 							</c:if>
 						</div>
 						<div id="details">
-							<table class="table table-hover" id="tableWords" >
-								<tr>
-									<td>Username:</td>
-									<td><input type="text" name="inputUsername" id="inputUsername" readonly value="${user.username}"/></td>
-									<c:if test="${not friend}">
-										<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangeUsername"></button></td>
-									</c:if>
-								</tr>
-								<tr>
-									<td>Email:</td>
-									<td><input type="text" name="inputEmail" id="inputEmail" readonly value="${user.email}"/></td>
-									<c:if test="${not friend}">
-										<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangeEmail"></button></td>
-									</c:if>
-								</tr>
-								<tr>
-									<td>Password:</td>
-									<td><input type="text" name="inputPassword" id="inputPassword" readonly value="${user.password}"/></td>
-									<c:if test="${not friend}">
-										<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangePassword"></button></td>
-									</c:if>
-								</tr>
-								<tr>
-									<td>Description:</td>
-									<td><input type="text" name="inputDescription" id="inputDescription" readonly value="${user.description}"/></td>
-									<c:if test="${not friend}">
-										<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangeDescription"></button></td>
-									</c:if>
-								</tr>
+							<table class="table table-hover jumbotron" id="tableWords" >
+								<tbody id="tbody-details">
+									<tr>
+										<td>Username:</td>
+										<td><input type="text" name="inputUsername" id="inputUsername" readonly value="${user.username}"/></td>
+										<c:if test="${not friend}">
+											<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangeUsername"></button></td>
+										</c:if>
+									</tr>
+									<tr>
+										<td>Email:</td>
+										<td><input type="text" name="inputEmail" id="inputEmail" readonly value="${user.email}"/></td>
+										<c:if test="${not friend}">
+											<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangeEmail"></button></td>
+										</c:if>
+									</tr>
+									<tr>
+										<td>Password:</td>
+										<td><input type="text" name="inputPassword" id="inputPassword" readonly value="${user.password}"/></td>
+										<c:if test="${not friend}">
+											<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangePassword"></button></td>
+										</c:if>
+									</tr>
+									<tr>
+										<td>Description:</td>
+										<td><input type="text" name="inputDescription" id="inputDescription" readonly value="${user.description}"/></td>
+										<c:if test="${not friend}">
+											<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangeDescription"></button></td>
+										</c:if>
+									</tr>
+								</tbody>
 							</table>
 						</div>
 						<c:if test="${not friend}">

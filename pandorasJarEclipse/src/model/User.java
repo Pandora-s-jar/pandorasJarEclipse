@@ -9,9 +9,11 @@ public class User {
 	private String password;
 	private String description;
 	private ArrayList<User> friends;
+	private ArrayList<Game> library;
 	private String image;
 	private String email;
-	public User(String username, String password, String description, ArrayList<User> friends, String email) {
+
+	public User(String username, String password, String description, ArrayList<User> friends, String email, ArrayList<Game> library) {
 		id = contId++;
 		this.username = username;
 		this.password = password;
@@ -19,6 +21,7 @@ public class User {
 		this.friends = friends;
 		this.email = email;
 		image = null;
+		this.library = library;
 	}
 	public static int getContId() {
 		return contId;
@@ -67,6 +70,14 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public ArrayList<Game> getLibrary() {
+		return library;
+	}
+
+	public void setLibrary(ArrayList<Game> library) {
+		this.library = library;
 	}
 
 	public void addFriend(User u)

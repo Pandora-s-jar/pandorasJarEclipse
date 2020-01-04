@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap-4.4.1-dist/css/bootstrap.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="css/bootstrap-4.4.1-dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/registerStyle.css">
+    <script src="scripts/checkReg.js"></script>
+</head>
+<body>
+    <div class="register-body">
+        <div class="container registerForm">
+            <div class="register-content">
+                <form method="post" id="regForm">
+                    <h2>CREA UN ACCOUNT</h2>
+                    <div class="form-group">
+                        <input type="email" class="form-input" name="email" placeholder="Inserisci la tua email" required/>
+                        <input type="text" class="form-input" name="username" placeholder="Inserisci username" required/>
+                        <input type="password" id="password" class="form-input" name="password" placeholder="Inserisci password" required/>
+                        <input type="password" id="confirm" class="form-input" name="confermaPassword" placeholder="Conferma password" required/>
+                        <input type="checkbox" class="agree-term" required/>
+                        <label class="label-agree-term">I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                        <input type="submit" id="btnReg" class="form-submit" value="REGISTRATI">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

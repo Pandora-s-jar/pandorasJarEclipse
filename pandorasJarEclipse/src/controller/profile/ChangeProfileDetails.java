@@ -1,4 +1,4 @@
-package controller;
+package controller.profile;
 
 import model.User;
 import persistence.DBManager;

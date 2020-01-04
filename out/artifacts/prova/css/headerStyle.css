@@ -84,3 +84,40 @@ header .btn {
     top: 5px;
     border-radius:50%   ;
 }
+
+.h2-login{
+    color: orange;
+}
+
+.modal-get-offer .modal-content {
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background-color: midnightblue;
+    color:#FFF;
+}
+.modal-content .form-control{
+    margin-bottom: 5%;
+}
+.modal-get-offer .modal-content .modal-header {
+    text-align:center;
+    border: none;
+}
+
+.link-dialog{
+    margin-bottom: 5%;
+}
+
+.link-link{
+    color: orange;
+}
+
+.link-link:hover{
+    color: darkorange;
+}
+
+#btnLogin{
+    border-radius: 5%;
+    color: white;
+    background-color: orange;
+}

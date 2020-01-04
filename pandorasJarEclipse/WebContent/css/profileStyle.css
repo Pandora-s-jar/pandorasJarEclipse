@@ -7,7 +7,7 @@
 }
 
 #first_column{
-	width: 25%;
+	width: 20%;
 	float: left;
 	height:718px;
 	background-color: midnightblue !important;
@@ -15,7 +15,8 @@
 
 #second_column{
 	width:75%;
-	float: left;
+	float: right;
+	padding-right:20px;
 }
 #second_column:after{
 	content: "";

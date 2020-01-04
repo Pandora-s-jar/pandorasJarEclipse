@@ -1,0 +1,45 @@
+header{
+    clear: both;
+}
+
+footer{
+    clear: both;
+}
+
+#row:after{
+    content: "";
+    display: table;
+    clear: both;
+    min-height: 100px;
+    height:auto;
+}
+
+#first_column{
+    width: 20%;
+    height: 898px;
+    float: left;
+    background-color: midnightblue !important;
+}
+
+#second_column{
+    width:75%;
+    float: right;
+    padding-right: 20px;
+}
+
+.canvas-size{
+    width: 200px;
+    height: 200px;
+}
+
+.container-stat{
+    text-align:center;
+}
+
+.container-stat h2{
+    color:blue;
+}
+
+.container-stat h3{
+    color:orange;
+}

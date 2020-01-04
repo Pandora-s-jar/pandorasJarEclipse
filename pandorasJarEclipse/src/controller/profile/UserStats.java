@@ -3,7 +3,6 @@ package controller.profile;
 import model.Game;
 import model.User;
 import persistence.DBManager;
-import org.json.JSONObject;
 import utility.Pair;
 
 import javax.servlet.RequestDispatcher;

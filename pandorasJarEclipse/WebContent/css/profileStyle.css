@@ -1,8 +1,4 @@
 
-#row{
-	height:150vh;
-}
-
 #row:after{
 	content: "";
 	display: table;
@@ -12,7 +8,6 @@
 #first_column{
 	width: 20%;
 	float: left;
-	height:100%;
 	background-color: midnightblue !important;
 }
 

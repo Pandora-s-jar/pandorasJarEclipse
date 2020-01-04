@@ -6,20 +6,14 @@ footer{
     clear: both;
 }
 
-#row{
-    height:150vh;
-}
-
 #row:after{
     content: "";
     display: table;
     clear: both;
-    min-height: 100px;
 }
 
 #first_column{
     width: 20%;
-    height:100%;
     float: left;
     background-color: midnightblue !important;
 }

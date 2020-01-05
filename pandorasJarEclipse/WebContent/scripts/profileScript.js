@@ -2,10 +2,8 @@ jQuery.noConflict();
 
 jQuery(document).ready(function(){
 
-	$(document).ready(function(){
-		$('#row').height($('#second_column').height());
-		$('#first_column').height($('#second_column').height());
-	});
+	jQuery('#row').height(jQuery('#second_column').height());
+	jQuery('#first_column').height(jQuery('#second_column').height());
 
 	if(!sessionStorage.getItem("logged")) {
 		jQuery('#myModal').modal('show');

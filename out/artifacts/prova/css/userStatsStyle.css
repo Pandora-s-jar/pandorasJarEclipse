@@ -10,13 +10,10 @@ footer{
     content: "";
     display: table;
     clear: both;
-    min-height: 100px;
-    height:auto;
 }
 
 #first_column{
     width: 20%;
-    height: 898px;
     float: left;
     background-color: midnightblue !important;
 }

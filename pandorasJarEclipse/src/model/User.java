@@ -38,8 +38,8 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public ArrayList<Game> getUsername() {
-		return this.getLibrary();
+	public String getUsername() {
+		return this.username;
 	}
 	public void setUsername(String username) {
 		this.username = username;

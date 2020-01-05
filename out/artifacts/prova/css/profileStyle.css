@@ -3,13 +3,11 @@
 	content: "";
 	display: table;
 	clear: both;
-	height: auto;
 }
 
 #first_column{
 	width: 20%;
 	float: left;
-	height:718px;
 	background-color: midnightblue !important;
 }
 

@@ -2,6 +2,9 @@ jQuery.noConflict();
 
 jQuery(document).ready(function(){
 
+	jQuery('#row').height(jQuery('#second_column').height());
+	jQuery('#first_column').height(jQuery('#second_column').height());
+
 	if(!sessionStorage.getItem("logged")) {
 		jQuery('#myModal').modal('show');
 

@@ -23,6 +23,9 @@ public class User {
 		image = null;
 		this.library = library;
 	}
+	public ArrayList<Game> getLibrary() {
+		return library;
+	}
 	public static int getContId() {
 		return contId;
 	}
@@ -35,8 +38,8 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getUsername() {
-		return username;
+	public ArrayList<Game> getUsername() {
+		return this.getLibrary();
 	}
 	public void setUsername(String username) {
 		this.username = username;
@@ -71,11 +74,6 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public ArrayList<Game> getLibrary() {
-		return library;
-	}
-
 	public void setLibrary(ArrayList<Game> library) {
 		this.library = library;
 	}

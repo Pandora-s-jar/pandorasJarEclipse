@@ -24,7 +24,7 @@ public class GeneralHelp extends HttpServlet
 		if(req.getSession().getAttribute("userId") != null)
 		{
 			loggedUser = DBManager.getInstance().getUser(idUser);
-			String name = loggedUser.getUsername();
+			String name = "Simone";
 			String email = loggedUser.getEmail();
 			req.setAttribute("name", name);
 			req.setAttribute("email", email);

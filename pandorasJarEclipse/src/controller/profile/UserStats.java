@@ -20,7 +20,6 @@ public class UserStats extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //User user = DBManager.getInstance().getUser((int) req.getSession().getAttribute("userId"));
         User user = DBManager.getInstance().getUser(5);
-
         HashSet<String> gamesPlayed = new HashSet<String>();
         float totalHours = 0f;
         ArrayList<Game> game = user.getLibrary();

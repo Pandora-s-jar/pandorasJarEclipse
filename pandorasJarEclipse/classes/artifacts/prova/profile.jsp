@@ -4,14 +4,15 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-	    <link rel="stylesheet" href="css/bootstrap-4.4.1-dist/css/bootstrap.css">
-	    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-	    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<link rel="stylesheet" href="css/bootstrap-4.4.1-dist/css/bootstrap.css">
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	    <script src="css/bootstrap-4.4.1-dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-	    <link rel="stylesheet" href="css/profileStyle.css"><link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+	    <script src="css/bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="css/profileStyle.css">
+		<link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
 		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-	 	<script src="js/profileScript.js"></script>
+	 	<script src="scripts/profileScript.js"></script>
 	 	
 	 </head>
 	<body>
@@ -21,7 +22,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<h4 class="modal-title">Error</h4>
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<button type="button" class="close modalCloseBtn" data-dismiss="modal">&times;</button>
 						</div>
 
 						<div class="modal-body">
@@ -29,7 +30,7 @@
 						</div>
 
 						<div class="modal-footer">
-							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-danger modalCloseBtn" data-dismiss="modal">Close</button>
 						</div>
 					</div>
 				</div>
@@ -39,19 +40,7 @@
 			<jsp:include page="header.jsp" />
 			<div id="row">
 				<div id="first_column">
-					<nav class="navbar navbar-dark" id="navMenu">
-						<ul class="navbar-nav nav-fill w-100">
-							<li class="navbar-brand">
-								<a class="nav-link" href="#">General</a>
-							</li>
-							<li class="navbar-brand">
-								<a class="nav-link" href="#">Game Statistics</a>
-							</li>
-							<li class="navbar-brand">
-								<a class="nav-link" href="#">Developer Statistics</a>
-							</li>
-						</ul>
-					</nav>
+					<jsp:include page="profileMenu.html"></jsp:include>
 				</div>
 
 				<form id="profileDetails" method="post" action="changeProfileDetails">
@@ -69,35 +58,37 @@
 							</c:if>
 						</div>
 						<div id="details">
-							<table class="table table-hover" id="tableWords" >
-								<tr>
-									<td>Username:</td>
-									<td><input type="text" name="inputUsername" id="inputUsername" readonly value="${user.username}"/></td>
-									<c:if test="${not friend}">
-										<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangeUsername"></button></td>
-									</c:if>
-								</tr>
-								<tr>
-									<td>Email:</td>
-									<td><input type="text" name="inputEmail" id="inputEmail" readonly value="${user.email}"/></td>
-									<c:if test="${not friend}">
-										<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangeEmail"></button></td>
-									</c:if>
-								</tr>
-								<tr>
-									<td>Password:</td>
-									<td><input type="text" name="inputPassword" id="inputPassword" readonly value="${user.password}"/></td>
-									<c:if test="${not friend}">
-										<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangePassword"></button></td>
-									</c:if>
-								</tr>
-								<tr>
-									<td>Description:</td>
-									<td><input type="text" name="inputDescription" id="inputDescription" readonly value="${user.description}"/></td>
-									<c:if test="${not friend}">
-										<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangeDescription"></button></td>
-									</c:if>
-								</tr>
+							<table class="table table-hover jumbotron" id="tableWords" >
+								<tbody id="tbody-details">
+									<tr>
+										<td>Username:</td>
+										<td><input type="text" name="inputUsername" id="inputUsername" readonly value="${user.username}"/></td>
+										<c:if test="${not friend}">
+											<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangeUsername"></button></td>
+										</c:if>
+									</tr>
+									<tr>
+										<td>Email:</td>
+										<td><input type="text" name="inputEmail" id="inputEmail" readonly value="${user.email}"/></td>
+										<c:if test="${not friend}">
+											<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangeEmail"></button></td>
+										</c:if>
+									</tr>
+									<tr>
+										<td>Password:</td>
+										<td><input type="text" name="inputPassword" id="inputPassword" readonly value="${user.password}"/></td>
+										<c:if test="${not friend}">
+											<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangePassword"></button></td>
+										</c:if>
+									</tr>
+									<tr>
+										<td>Description:</td>
+										<td><input type="text" name="inputDescription" id="inputDescription" readonly value="${user.description}"/></td>
+										<c:if test="${not friend}">
+											<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangeDescription"></button></td>
+										</c:if>
+									</tr>
+								</tbody>
 							</table>
 						</div>
 						<c:if test="${not friend}">

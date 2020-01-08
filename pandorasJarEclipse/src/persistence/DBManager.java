@@ -6,6 +6,7 @@ import java.util.HashMap;
 import model.Data;
 import model.Game;
 import model.User;
+import utility.Acquisto;
 
 public class DBManager {
 	static private DBManager instance;
@@ -37,7 +38,7 @@ public class DBManager {
 		rankingG1.put(u1.getId(), (float)1000.5);
 		rankingG1.put(u2.getId(), (float)1500.5);
 		rankingG1.put(us.getId(), (float)2000.5);
-		Game pinball = new Game("pinball", "dev1", new Data("1998", "10", "25"), new Data("2010", "5", "30"), hoursPlayedG1, rankingG1);
+		Game pinball = new Game("pinball", 5, new Data("1998", "10", "25"), 69.99, hoursPlayedG1, rankingG1);
 
 		HashMap<String, Float> hoursPlayedG2 = new HashMap<String,Float>();
 		hoursPlayedG2.put("2018", (float)11.5);
@@ -47,7 +48,14 @@ public class DBManager {
 		rankingG2.put(u3.getId(), (float)1000.5);
 		rankingG2.put(u1.getId(), (float)1500.5);
 		rankingG2.put(us.getId(), (float)500.5);
-		Game puzzleBubble = new Game("Puzzle Bubble", "dev2", new Data("1999", "05", "01"), new Data("2018", "04", "15"), hoursPlayedG2, rankingG2);
+		Game puzzleBubble = new Game("Puzzle Bubble", 5, new Data("1999", "05", "01"), 29.99, hoursPlayedG2, rankingG2);
+
+		ArrayList<Acquisto> soldGames = new ArrayList<>();
+		Acquisto a1 = new Acquisto(puzzleBubble, new Data("2019", "04", "25"));
+		Acquisto a2 = new Acquisto(pinball, new Data("2019", "06", "24"));
+		soldGames.add(a1);
+		soldGames.add(a2);
+		us.setSoldGames(soldGames);
 
 		library.add(pinball);
 		library.add(puzzleBubble);

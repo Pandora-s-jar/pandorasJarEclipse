@@ -1,5 +1,7 @@
 package model;
 
+import utility.Acquisto;
+
 import java.util.ArrayList;
 
 public class User {
@@ -12,6 +14,7 @@ public class User {
 	private ArrayList<Game> library;
 	private String image;
 	private String email;
+	private ArrayList<Acquisto> soldGames;
 
 	public User(String username, String password, String description, ArrayList<User> friends, String email, ArrayList<Game> library) {
 		id = contId++;
@@ -23,6 +26,15 @@ public class User {
 		image = null;
 		this.library = library;
 	}
+
+	public ArrayList<Acquisto> getSoldGames() {
+		return soldGames;
+	}
+
+	public void setSoldGames(ArrayList<Acquisto> soldGames) {
+		this.soldGames = soldGames;
+	}
+
 	public ArrayList<Game> getLibrary() {
 		return library;
 	}

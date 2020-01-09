@@ -9,12 +9,13 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.concurrent.ThreadLocalRandom;
 
-@WebServlet(value = "/sendCode")
-public class SendForgotCode extends HttpServlet {
+@WebServlet(value = "/sendCode", name = "sendCode")
+public class SendCode extends HttpServlet {
+
     private String generateCode(){
-        int leftLimit = 97; // 'a'
-        int rightLimit = 122; // 'z'
-        int strLenght = 8; //TODO: troppo lunga?
+        int leftLimit = 65; // 'A'
+        int rightLimit = 90; // 'Z'
+        int strLenght = 8;
         StringBuilder builder = new StringBuilder(strLenght);
         for (int i=0; i<strLenght; i++){
             int random = ThreadLocalRandom.current().nextInt(leftLimit, rightLimit+1);
@@ -22,15 +23,15 @@ public class SendForgotCode extends HttpServlet {
         }
         return builder.toString();
     }
+
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String email = req.getParameter("email");
         String secretCode = this.generateCode();
-        this.log(secretCode);
-        session.setAttribute("userEmail", email);
+        this.log(secretCode); //TODO: delete
         session.setAttribute("secretCode", secretCode);
-        //TODO: send email with session secretCode
-        resp.setStatus(200);
+        //new Thread(new CodeSender(secretCode, email)).start();
+        resp.sendRedirect("/controlCode");
     }
 }

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(value = "/resetPsw")
+@WebServlet(value = "/resetPassword", name = "resetPassword")
 public class ResetPassword extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,8 +24,7 @@ public class ResetPassword extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("header.jsp");
         requestDispatcher.include(req, resp);
-        //TODO: index
-        requestDispatcher = req.getRequestDispatcher("index.html");
+        requestDispatcher = req.getRequestDispatcher("index.html"); //TODO: index
         requestDispatcher.include(req, resp);
         requestDispatcher = req.getRequestDispatcher("footer.html");
         requestDispatcher.include(req, resp);

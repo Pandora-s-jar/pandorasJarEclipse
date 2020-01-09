@@ -13,7 +13,7 @@ function secondStep() {
             },
             success: ()=>{
                 alert("Email inviata");
-                window.location.replace("/resetPsw")
+                window.location.replace("/resetPassword")
             },
             error: () =>{
                 alert("Errore");
@@ -23,7 +23,6 @@ function secondStep() {
     );
 }
 function firstStep() {
-    console.log("prova");
     $.ajax({
         type: "GET",
         url: "/sendCode",

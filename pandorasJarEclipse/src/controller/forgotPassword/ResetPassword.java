@@ -1,4 +1,4 @@
-package controller.upload;
+package controller.forgotPassword;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,15 +8,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(value = "/gameDetails")
-public class GameDetails extends HttpServlet {
+@WebServlet(value = "/resetPassword", name = "resetPassword")
+public class ResetPassword extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("header.jsp");
         requestDispatcher.include(req, resp);
-        requestDispatcher = req.getRequestDispatcher("gameDetails.html");
+        requestDispatcher = req.getRequestDispatcher("resetPassword.html");
         requestDispatcher.include(req, resp);
         requestDispatcher = req.getRequestDispatcher("footer.html");
         requestDispatcher.include(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //TODO: database update
+        resp.sendRedirect("/");
     }
 }

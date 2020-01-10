@@ -1,5 +1,7 @@
 let cont = 0;
+
 function checkCode(event) {
+    event.preventDefault();
     $.ajax({
        type: "POST",
        url: "/controlCode",
@@ -7,13 +9,13 @@ function checkCode(event) {
            code : $("#code").val()
        },
         success : function(){
-            window.location.replace(sessionStorage.getItem("nextPage"))
+           window.location.replace("/nextPage");
         },
         error : function () {
             alert("CODICE ERRATO");
             cont++;
             if(cont >= 3){
-                window.location.replace("www.google.it");
+                window.location.href = "http://www.google.it";
             }
         }
     });

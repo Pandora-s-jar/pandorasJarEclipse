@@ -13,7 +13,6 @@ public class ControlCode extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.log((String)req.getSession().getAttribute("nextPage"));
         RequestDispatcher rd = req.getRequestDispatcher("header.jsp");
         rd.include(req, resp);
         rd = req.getRequestDispatcher("controlCode.html");

@@ -1,4 +1,4 @@
-package controller.auth;
+package controller.authentication;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +14,7 @@ public class Logout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().setAttribute("logged", false);
+        resp.addCookie(new Cookie("logged", "false"));
         resp.sendRedirect(req.getHeader("referer"));
     }
 

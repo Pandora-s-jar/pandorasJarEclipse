@@ -31,7 +31,7 @@ public class SendCode extends HttpServlet {
         String secretCode = this.generateCode();
         this.log(secretCode); //TODO: delete
         session.setAttribute("secretCode", secretCode);
-        new Thread(new CodeSender(secretCode, email)).start();
+        //new Thread(new CodeSender(secretCode, email)).start();
         resp.sendRedirect("/controlCode");
     }
 }

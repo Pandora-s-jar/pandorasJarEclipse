@@ -20,3 +20,20 @@ function checkCode(event) {
         }
     });
 }
+
+function resendCode(event) {
+    $.ajax({
+        type: "GET",
+        url: "/sendCode",
+        success: function () {
+            alert("CODICE REINVIATO");
+        },
+        error: function () {
+            alert("IMPOSSIBILE REINVIARE IL CODICE. CONTATTARE L'ASSISTENZA");
+        }
+    });
+}
+
+function goBack(event) {
+    window.location.replace("/previousPage");
+}

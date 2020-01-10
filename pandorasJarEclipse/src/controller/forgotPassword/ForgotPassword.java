@@ -24,6 +24,7 @@ public class ForgotPassword extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().setAttribute("nextPage", "/resetPassword");
+        req.getSession().setAttribute("previousPage", "/forgotPassword");
         req.getSession().setAttribute("email", req.getParameter("email"));
         req.getRequestDispatcher("/sendCode").forward(req, resp);
     }

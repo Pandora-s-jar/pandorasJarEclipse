@@ -31,6 +31,7 @@ public class Upload extends HttpServlet {
         String email = req.getParameter("email");
         req.getSession().setAttribute("email", email);
         req.getSession().setAttribute("nextPage", "/formGameUpload");
+        req.getSession().setAttribute("previousPage", "/upload");
         req.getRequestDispatcher("/sendCode").forward(req, resp);
     }
 }

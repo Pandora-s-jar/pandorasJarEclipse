@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="css/bootstrap-4.4.1-dist/css/bootstrap.css">
         <link rel="stylesheet" href="css/userStatsStyle.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-        <script src="scripts/userStatsScript.js"></script>
+        <script src="scripts/changeHeight.js"></script>
 
     </head>
     <body>

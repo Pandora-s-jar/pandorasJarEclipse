@@ -13,8 +13,10 @@
 		<link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
 		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 	 	<script src="scripts/profileScript.js"></script>
-	 	
-	 </head>
+		<script src="scripts/changeHeight.js"></script>
+
+
+	</head>
 	<body>
 		<c:if test="${not logged}">
 			<div class="modal" id="myModal">

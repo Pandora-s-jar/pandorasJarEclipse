@@ -3,6 +3,7 @@ package controller.profile;
 import model.Game;
 import model.User;
 import persistence.DBManager;
+import persistence.UserDAO;
 import utility.Pair;
 
 import javax.servlet.RequestDispatcher;
@@ -19,6 +20,7 @@ public class UserStats extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //User user = DBManager.getInstance().getUser((int) req.getSession().getAttribute("userId"));
+        UserDAO prova = new UserDAO();
         User user = DBManager.getInstance().getUser(5);
         HashSet<String> gamesPlayed = new HashSet<String>();
         float totalHours = 0f;

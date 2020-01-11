@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap-4.4.1-dist/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="css/bootstrap-4.4.1-dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/forgotPasswordStyle.css">
+    <script src="scripts/controlCode.js"></script>
+</head>
+<body>
+    <div id="confirmCode">
+        <div class="form-group">
+            <input type="text" class="form-input" name="code" id="code" placeholder="Inserisci il codice" required/>
+            <input type="button" class="form-submit" value="CONFERMA" onclick="checkCode(event)">
+            <input type="button" class="form-submit" value="REINVIA CODICE" onclick="resendCode(event)">
+            <input type="button" class="form-submit" value="REINSERISCI DATI" onclick="goBack(event)">
+        </div>
+    </div>
+</body>
+</html>

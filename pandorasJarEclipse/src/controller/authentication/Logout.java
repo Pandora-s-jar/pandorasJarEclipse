@@ -1,27 +1,25 @@
-package controller.upload;
+package controller.authentication;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(value = "/saveTemporarilyForUpload")
-public class EmailAndPayment extends HttpServlet {
+
+@WebServlet(value = "/logout", name = "logout")
+public class Logout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        req.getSession().setAttribute("logged", false);
+        resp.addCookie(new Cookie("logged", "false"));
+        resp.sendRedirect(req.getHeader("referer"));
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if((req.getSession().getAttribute("secretCode").equals(req.getParameter("code")))){
-            req.getSession().setAttribute("paymentCoordinates", req.getParameter("paymentCoordinates"));
-            resp.setStatus(200);
-        }
-        else{
-            resp.setStatus(401);
-        }
+        resp.setStatus(401); //Permission denied, only GET here
     }
 }

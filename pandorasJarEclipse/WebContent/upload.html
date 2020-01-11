@@ -13,15 +13,11 @@
     <div class="register-body">
         <div class="container registerForm">
             <div class="register-content">
-                <div class="form-group">
-                    <input type="email" id="email" class="form-input" placeholder="Inserisci l'email di contatto" required/>
-                    <input type="email" id="paymentCoordinates" class="form-input" placeholder="Inserisci l'email paypal" required/>
+                <form class="form-group" method="post">
+                    <input type="email" name="email" class="form-input" placeholder="Inserisci l'email di contatto" required/>
+                    <input type="email" class="form-input" placeholder="Inserisci l'email paypal" required/>
                     <button onclick="firstStep(event)" class="btn-primary">RICHIEDI CODICE</button>
-                <div class="form-group" id="confirmCode">
-                    <input type="text" class="form-input" id="code" placeholder="Inserisci il codice" required/>
-                    <button onclick="secondStep(event)" class="btn-primary">CONFERMA</button>
-                </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

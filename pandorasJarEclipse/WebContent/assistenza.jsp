@@ -17,30 +17,10 @@
 	</head>
 
 	<body>
-		<c:if test="${not logged}">
-			<div class="modal" id="myModal">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title">Non sei loggato</h4>
-							<button type="button" class="close modalCloseBtn" data-dismiss="modal">&times;</button>
-						</div>
-
-						<div class="modal-body">
-							Non sei loggato! Torna indietro ed effettua l'accesso!
-						</div>
-
-						<div class="modal-footer">
-							<button type="button" class="btn btn-danger modalCloseBtn" data-dismiss="modal">Torna indietro</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</c:if>
-		<c:if test="${logged}">
 		<div class="generalDiv">
 		<div class="imageLeft">
 			<h4 class="welcomeTop text-monospace font-italic font-weight-bold">Benvenuto nella pagina dell'assistenza!</h4>
+			<h4 class="text-monospace font-italic font-weight-bold">Questa email sara' indirizzata a ${emailTo}</h4>
 			<img src="Assets/mailLogo.png" alt="IMG">
 		</div>
 		<div class="formCenter">
@@ -49,14 +29,24 @@
 	  					<div class="input-group-prepend">
 	   						<span class=" input-group-text icone fa fa-address-book"></span>
 	   					</div>
- 						<input type="text" class="form-control-lg" id="nome" value="${name}" readonly>
-  					</div>
+						<c:if test="${not logged}">
+							<input type="text" class="form-control-lg" id="nome" placeholder="Nome">
+						</c:if>
+						<c:if test="${logged}">
+ 							<input type="text" class="form-control-lg" id="nome" value="${name}" readonly>
+						</c:if>
+					</div>
  					<div class="input-group mb-3">
 	  					<div class="input-group-prepend">
 	   						<span class="input-group-text icone fa fa-envelope"></span>
 	   					</div>
- 						<input type="text" class="form-control-lg" id="email" value="${email}" readonly>
-  					</div>
+						<c:if test="${not logged}">
+							<input type="text" class="form-control-lg" id="email" placeholder="Email">
+						</c:if>
+						<c:if test="${logged}">
+ 							<input type="text" class="form-control-lg" id="email" value="${email}" readonly>
+						</c:if>
+					</div>
  					<div class="input-group mb-3">
 	  					<div class="input-group-prepend">
 	   						<span class="input-group-text icone fa fa-info-circle"></span>
@@ -83,6 +73,5 @@
 			</form>
 		</div>
 		</div>
-		</c:if>
 	</body>
 </html>

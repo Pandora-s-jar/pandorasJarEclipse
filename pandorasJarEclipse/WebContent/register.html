@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/bootstrap-4.4.1-dist/css/bootstrap.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="css/bootstrap-4.4.1-dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/registerStyle.css">
-    <script src="scripts/checkReg.js"></script>
+    <script src="scripts/checkPasswords.js"></script>
+    <script src="scripts/captcha.js"></script>
 </head>
 <body>
     <div class="register-body">
@@ -21,6 +23,7 @@
                         <input type="password" id="confirm" class="form-input" name="confermaPassword" placeholder="Conferma password" required/>
                         <input type="checkbox" class="agree-term" required/>
                         <label class="label-agree-term">I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                        <div class="g-recaptcha" data-sitekey="6Le4Nc4UAAAAAErXaOiYQEZTOzs5cB-YzT_AVFkk"></div>
                         <input type="submit" id="btnReg" class="form-submit" value="REGISTRATI">
                     </div>
                 </form>

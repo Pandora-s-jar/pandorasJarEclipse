@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.User;
-import persistence.DBManager;
 
 @WebServlet(value = "/help")
 public class GeneralHelp extends HttpServlet
@@ -23,7 +22,7 @@ public class GeneralHelp extends HttpServlet
 		User loggedUser = null;
 		if(req.getSession().getAttribute("userId") != null)
 		{
-			loggedUser = DBManager.getInstance().getUser(idUser);
+			//loggedUser = DBManager.getInstance().getUser(idUser);
 			String name = "Simone";
 			String email = loggedUser.getEmail();
 			req.setAttribute("name", name);

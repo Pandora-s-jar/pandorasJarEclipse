@@ -37,7 +37,7 @@
                         <canvas id="hoursChart" class="canvas-size"></canvas>
                     </div>
                 </div>
-                <div class="row" height="200px">
+                <!--<div class="row" height="200px">
                     <div class="col-sm-4">
                         <div class="jumbotron container-stat">
                             <h2>Games you played</h2>
@@ -60,29 +60,28 @@
                             <h2>Game</h2>
                             <h3>${bestScoreName}</h3>
                         </div>
-                    </div>
+                    </div>-->
 
                 </div>
             </div>
         </div>
-
         <!-- script for charts -->
         <script>
             var ctx = document.getElementById('hoursChart').getContext('2d');
             var chart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ${hoursePlayedKeys},
+                    labels: ${hoursPlayedKeys},
                     datasets: [{
                         label: 'Hours',
                         backgroundColor: 'rgb(173, 216, 240)',
                         borderColor: 'rgb(255, 165, 0)',
-                        data: ${hoursePlayedValues}
+                        data: ${hoursPlayedValues}
                     }]
                 },
                 options: {}
             });
-            var ctx = document.getElementById('gamesChart').getContext('2d');
+            /*var ctx = document.getElementById('gamesChart').getContext('2d');
             var chart = new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -95,7 +94,7 @@
                     }]
                 },
                 options: {}
-            });
+            });*/
         </script>
 
 

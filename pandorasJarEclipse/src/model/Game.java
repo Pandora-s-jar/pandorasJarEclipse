@@ -7,18 +7,9 @@ public class Game {
     private String developer;
     private Data release;
     private Data purchase;
-    private HashMap<String, Float> hoursPlayed; //year->hours
     private HashMap<Integer, Float> ranking;
 
-
-    public Game(String name, String developer, Data release, Data purchase, HashMap<String, Float> hoursPlayed, HashMap<Integer, Float> ranking) {
-        this.name = name;
-        this.developer = developer;
-        this.release = release;
-        this.purchase = purchase;
-        this.hoursPlayed = hoursPlayed;
-        this.ranking = ranking;
-    }
+    public Game() {}
 
     public String getName() {
         return name;
@@ -50,14 +41,6 @@ public class Game {
 
     public void setPurchase(Data purchase) {
         this.purchase = purchase;
-    }
-
-    public HashMap<String, Float> getHoursPlayed() {
-        return hoursPlayed;
-    }
-
-    public void setHoursPlayed(HashMap<String, Float> hoursPlayed) {
-        this.hoursPlayed = hoursPlayed;
     }
 
     public HashMap<Integer, Float> getRanking() {

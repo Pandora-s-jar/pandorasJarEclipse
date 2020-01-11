@@ -1,7 +1,6 @@
 package controller.profile;
 
 import model.User;
-import persistence.DBManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,8 +14,8 @@ import java.nio.file.Paths;
 public class ChangeProfileDetails  extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int userId = (int) req.getSession().getAttribute("userId");
-        User u = DBManager.getInstance().getUser(userId);
+        /*int userId = (int) req.getSession().getAttribute("userId");
+        //User u = DBManager.getInstance().getUser(userId);
         String username = req.getParameter("inputUsername");
         String email = req.getParameter("inputEmail");
         String description = req.getParameter("inputDescription");
@@ -36,7 +35,7 @@ public class ChangeProfileDetails  extends HttpServlet {
 
         if(newFriend != null)
         {
-           User friend = DBManager.getInstance().getUser(newFriend);
+           //User friend = DBManager.getInstance().getUser(newFriend);
            if(friend != null)
            {
                u.addFriend(friend);
@@ -44,6 +43,6 @@ public class ChangeProfileDetails  extends HttpServlet {
         }
 
         resp.sendRedirect("profile");
-
+*/
     }
 }

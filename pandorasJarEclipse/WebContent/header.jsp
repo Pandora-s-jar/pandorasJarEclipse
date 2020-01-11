@@ -26,7 +26,7 @@
                     <a href="${pageContext.request.contextPath}/profile"  id="profileLink" class="nav-link ">PROFILO</a>
                 </li>
                 <li class="nav-item ">
-                    <a href="#" class="nav-link" id="libraryLink">LIBRERIA</a>
+                    <a href="library" class="nav-link" id="libraryLink">LIBRERIA</a>
                 </li>
                 <li class="nav-item ">
                     <a href="upload" id="addGameLink" class="nav-link">AGGIUNGI UN GIOCO</a>

@@ -18,6 +18,11 @@ public class GeneralHelp extends HttpServlet
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
+		String to = (String) req.getSession().getAttribute("emailTo");
+		if(to == null)
+		{
+			to = "pandorasjar2019@gmail.com";
+		}
 		req.getSession().setAttribute("userId", 5);
 		int idUser = (int) req.getSession().getAttribute("userId");
 		User loggedUser = null;
@@ -28,6 +33,7 @@ public class GeneralHelp extends HttpServlet
 			String email = loggedUser.getEmail();
 			req.setAttribute("name", name);
 			req.setAttribute("email", email);
+			req.setAttribute("emailTo", to);
 		}
 		RequestDispatcher rd;
 		rd = req.getRequestDispatcher("header.jsp");

@@ -85,23 +85,3 @@
 </div>
 </body>
 </html>
-
-
-<!--
-<div class="modal-header">
-<h2 class="h2-login">ACCEDI</h2>
-<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
-</div>
-<div class="modal-body">
-<form class="form" method="post" action="${pageContext.request.contextPath}/login">
-<div class="form-group">
-<input type="email" class="form-control" name="email" placeholder="Inserisci la tua email" required/>
-<input type="password" class="form-control" name="password" placeholder="Inserisci la tua password" required/>
-<div class="link-dialog">Hai dimenticato la password? <a class="link-link" href="forgotPassword">Clicca Qui!</a></div>
-<div class="link-dialog">Non hai un account? <a class="link-link" href="register">Registrati!</a><br></div>
-<button type="submit" id="btnLogin">LOGIN!</button>
-</div>
-</form>
-</div>
-
--->

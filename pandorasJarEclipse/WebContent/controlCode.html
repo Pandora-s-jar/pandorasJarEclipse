@@ -1,21 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/bootstrap-4.4.1-dist/css/bootstrap.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="css/bootstrap-4.4.1-dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/forgotPasswordStyle.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>controlCode</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/genericForm.css">
     <script src="scripts/controlCode.js"></script>
 </head>
+
 <body>
-    <div id="confirmCode">
-        <div class="form-group">
-            <input type="text" class="form-input" name="code" id="code" placeholder="Inserisci il codice" required/>
-            <input type="button" class="form-submit" value="CONFERMA" onclick="checkCode(event)">
-            <input type="button" class="form-submit" value="REINVIA CODICE" onclick="resendCode(event)">
-            <input type="button" class="form-submit" value="REINSERISCI DATI" onclick="goBack(event)">
+    <div class="register-photo" style="background-image: url(Assets/backgroundControlCode.jpg);">
+        <div class="form-container">
+            <form method="post">
+                <h2 class="text-center"><strong>Inserisci il codice ricevuto per email</strong></h2>
+                <div class="form-group"><input class="form-control" type="email" name="code" placeholder="codice"></div>
+                <div class="form-group"><button class="btn btn-next btn-primary btn-block" type="submit" onclick="checkCode(event)">Conferma</button></div>
+                <div class="form-group"><label>Hai sbagliato a inserire i dati? Clicca <a onclick="goBack(event)">qui.</a></label></div>
+                <div class="form-group"><label>Il codice non ti è arrivato? Clicca <a onclick="resendCode(event)">qui.</a></label></div>
+            </form>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

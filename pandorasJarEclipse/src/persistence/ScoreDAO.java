@@ -1,44 +1,40 @@
 package persistence;
 
-import model.Game;
-import model.User;
+import utility.Pair;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.TreeMap;
+import java.util.*;
 
-public class HoursPlayedDAO {
-    static private HoursPlayedDAO instance = null;
+public class ScoreDAO {
+    static private ScoreDAO instance = null;
     private PreparedStatement statement;
 
-    private HoursPlayedDAO() {}
+    private ScoreDAO() {}
 
-    static public HoursPlayedDAO getInstance(){
+    static public ScoreDAO getInstance(){
         if(instance == null)
-            instance = new HoursPlayedDAO();
+            instance = new ScoreDAO();
         return instance;
     }
 
-    public TreeMap<Integer, Integer> getHoursPlayedFromIdUser(int id)
+    public ArrayList<Pair<Integer, String>> getScoresFromIdUser(int id)
     {
         Connection connection = DataSource.getInstance().getConnection();
-        String query = "SELECT * FROM public.hours_played WHERE hours_played.user = ?::integer";
+        String query = "SELECT score.value, game.name FROM public.score, public.game WHERE score.game = game.idgame and score.user = ?::integer";
         try {
             statement = connection.prepareStatement(query);
             statement.setString(1,Integer.toString(id));
             ResultSet result = statement.executeQuery();
             if(result.isClosed())
                 return null;
-            TreeMap<Integer, Integer> hours = new TreeMap<Integer,Integer>();
+            ArrayList<Pair<Integer, String>> gamesScore = new ArrayList<Pair<Integer, String>>();
             while(result.next()) {
-                hours.put(result.getInt("year"), result.getInt("hours"));
+                gamesScore.add(new Pair<Integer,String>(result.getInt("value"), result.getString("name")));
             }
-
-            return hours;
+            return gamesScore;
 
         } catch (SQLException e) {
             e.printStackTrace();

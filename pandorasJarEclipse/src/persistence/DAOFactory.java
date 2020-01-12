@@ -1,6 +1,5 @@
 package persistence;
 
-import model.HoursPlayed;
 
 public class DAOFactory {
     static private DAOFactory instance = null;
@@ -28,4 +27,16 @@ public class DAOFactory {
     {
         return HoursPlayedDAO.getInstance();
     }
+
+    public PurchaseDAO makePurchaseDAO()
+    {
+        return PurchaseDAO.getInstance();
+    }
+
+    public ScoreDAO makeScoreDAO()
+    {
+        return ScoreDAO.getInstance();
+    }
+
+
 }

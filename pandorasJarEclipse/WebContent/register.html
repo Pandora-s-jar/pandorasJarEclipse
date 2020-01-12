@@ -1,34 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/bootstrap-4.4.1-dist/css/bootstrap.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script src="css/bootstrap-4.4.1-dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/registerStyle.css">
-    <script src="scripts/checkPasswords.js"></script>
-    <script src="scripts/captcha.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/Registration-Form-with-Photo.css">
 </head>
+
 <body>
-    <div class="register-body">
-        <div class="container registerForm">
-            <div class="register-content">
-                <form method="post" id="regForm">
-                    <h2>CREA UN ACCOUNT</h2>
-                    <div class="form-group">
-                        <input type="email" class="form-input" name="email" placeholder="Inserisci la tua email" required/>
-                        <input type="text" class="form-input" name="username" placeholder="Inserisci username" required/>
-                        <input type="password" id="password" class="form-input" name="password" placeholder="Inserisci password" required/>
-                        <input type="password" id="confirm" class="form-input" name="confermaPassword" placeholder="Conferma password" required/>
-                        <input type="checkbox" class="agree-term" required/>
-                        <label class="label-agree-term">I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
-                        <div class="g-recaptcha" data-sitekey="6Le4Nc4UAAAAAErXaOiYQEZTOzs5cB-YzT_AVFkk"></div>
-                        <input type="submit" id="btnReg" class="form-submit" value="REGISTRATI">
-                    </div>
-                </form>
-            </div>
+    <div class="register-photo">
+        <div class="form-container">
+            <form id="regForm" method="post">
+                <h2 class="text-center"><strong>Crea un account!</strong></h2>
+                <div class="form-group"><input class="form-control" id="email" type="email" name="email" placeholder="Email" required=""></div>
+                <div class="form-group"><input class="form-control" id="username" type="text" name="username" placeholder="Username" required=""></div>
+                <div class="form-group"><input class="form-control" id="password" type="password" name="password" placeholder="Password" required=""></div>
+                <div class="form-group"><input class="form-control" id="confirms" type="password" name="confermaPassword" placeholder="Password (ripeti)" required=""></div>
+                <div class="form-group">
+                    <div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" required="">I agree to the license terms.</label></div>
+                </div>
+                <div class="form-group">
+                    <div class="g-recaptcha" data-sitekey="6Le4Nc4UAAAAAErXaOiYQEZTOzs5cB-YzT_AVFkk"></div>
+                </div>
+                <div class="form-group"><button class="btn btn-primary btn-block" type="submit" style="background-color: rgb(255,128,11);">Registrati!</button></div><a class="already" href="#Login" data-toggle="modal">You already have an account? Login here.</a>
+            </form>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts/checkPasswords.js"></script>
+    <script src="scripts/captcha.js"></script>
 </body>
+
 </html>

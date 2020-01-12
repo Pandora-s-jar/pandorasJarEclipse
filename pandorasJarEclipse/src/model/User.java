@@ -16,6 +16,8 @@ public class User {
 	private String email;
 	private ArrayList<Acquisto> soldGames;
 
+	public User() {}
+
 	public User(String username, String password, String description, ArrayList<User> friends, String email, ArrayList<Game> library) {
 		id = contId++;
 		this.username = username;

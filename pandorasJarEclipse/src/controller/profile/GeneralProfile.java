@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.User;
-import persistence.DBManager;
+import persistence.DAOFactory;
 
 public class GeneralProfile extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//fatto nel login
-		req.getSession().setAttribute("userId", 5);
+		req.getSession().setAttribute("userId", 1);
 		//
 		int idUser = (int) req.getSession().getAttribute("userId");
 		User principale = null;
 		if(req.getSession().getAttribute("userId") != null)
-			principale = DBManager.getInstance().getUser(idUser);
+			principale = DAOFactory.getInstance().makeUserDAO().getUserFromIdUser(idUser);
 		try{
-			User friend = DBManager.getInstance().getUser(Integer.parseInt(req.getParameter("id")));
+			User friend = DAOFactory.getInstance().makeUserDAO().getUserFromIdUser((Integer.parseInt(req.getParameter("id"))));
 			req.setAttribute("user", friend);
 			req.setAttribute("friend", true);
 		}catch(NumberFormatException e)

@@ -4,21 +4,12 @@ import java.util.HashMap;
 
 public class Game {
     private String name;
-    private int developer;
-    private double price;
+    private String developer;
     private Data release;
-    private HashMap<String, Float> hoursPlayed; //year->hours
+    private Data purchase;
     private HashMap<Integer, Float> ranking;
 
-
-    public Game(String name, int developer, Data release, double price, HashMap<String, Float> hoursPlayed, HashMap<Integer, Float> ranking) {
-        this.name = name;
-        this.developer = developer;
-        this.release = release;
-        this.price = price;
-        this.hoursPlayed = hoursPlayed;
-        this.ranking = ranking;
-    }
+    public Game() {}
 
     public String getName() {
         return name;
@@ -28,11 +19,11 @@ public class Game {
         this.name = name;
     }
 
-    public int getDeveloper() {
+    public String getDeveloper() {
         return developer;
     }
 
-    public void setDeveloper(int developer) {
+    public void setDeveloper(String developer) {
         this.developer = developer;
     }
 
@@ -44,20 +35,12 @@ public class Game {
         this.release = release;
     }
 
-    public double getPrice() {
-        return price;
+    public Data getPurchase() {
+        return purchase;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public HashMap<String, Float> getHoursPlayed() {
-        return hoursPlayed;
-    }
-
-    public void setHoursPlayed(HashMap<String, Float> hoursPlayed) {
-        this.hoursPlayed = hoursPlayed;
+    public void setPurchase(Data purchase) {
+        this.purchase = purchase;
     }
 
     public HashMap<Integer, Float> getRanking() {

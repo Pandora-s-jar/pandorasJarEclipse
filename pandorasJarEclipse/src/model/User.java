@@ -13,6 +13,8 @@ public class User {
 	private String image;
 	private String email;
 
+	public User() {}
+
 	public User(String username, String password, String description, ArrayList<User> friends, String email, ArrayList<Game> library) {
 		id = contId++;
 		this.username = username;

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.User;
+import persistence.DAOFactory;
 
 @WebServlet(value = "/help")
 public class GeneralHelp extends HttpServlet
@@ -22,13 +23,13 @@ public class GeneralHelp extends HttpServlet
 		{
 			to = "pandorasjar2019@gmail.com";
 		}
-		req.getSession().setAttribute("userId", 5);
-		int idUser = (int) req.getSession().getAttribute("userId");
+		int idUser = 1;
 		User loggedUser = null;
 		if(req.getSession().getAttribute("userId") != null)
 		{
-			//loggedUser = DBManager.getInstance().getUser(idUser);
-			String name = "Simone";
+			idUser = 1;//(int) req.getSession().getAttribute("userId");
+			loggedUser = DAOFactory.getInstance().makeUserDAO().getUserFromIdUser(idUser);
+			String name = loggedUser.getUsername();
 			String email = loggedUser.getEmail();
 			req.setAttribute("name", name);
 			req.setAttribute("email", email);

@@ -14,7 +14,6 @@ public class User {
 	private ArrayList<Game> library;
 	private String image;
 	private String email;
-	private ArrayList<Acquisto> soldGames;
 
 	public User() {}
 
@@ -27,14 +26,6 @@ public class User {
 		this.email = email;
 		image = null;
 		this.library = library;
-	}
-
-	public ArrayList<Acquisto> getSoldGames() {
-		return soldGames;
-	}
-
-	public void setSoldGames(ArrayList<Acquisto> soldGames) {
-		this.soldGames = soldGames;
 	}
 
 	public ArrayList<Game> getLibrary() {

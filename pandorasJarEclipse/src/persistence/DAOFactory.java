@@ -28,4 +28,6 @@ public class DAOFactory {
     {
         return HoursPlayedDAO.getInstance();
     }
+
+    public SoldGamesDAO makeSoldGamesDAO() { return SoldGamesDAO.getInstance(); }
 }

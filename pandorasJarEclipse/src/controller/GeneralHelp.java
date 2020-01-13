@@ -38,7 +38,7 @@ public class GeneralHelp extends HttpServlet
 		RequestDispatcher rd;
 		rd = req.getRequestDispatcher("header.jsp");
 		rd.include(req, resp);
-		rd = req.getRequestDispatcher("assistenza.jsp");
+		rd = req.getRequestDispatcher("index.html");
 		rd.include(req, resp);
 		rd = req.getRequestDispatcher("footer.html");
 		rd.include(req, resp);

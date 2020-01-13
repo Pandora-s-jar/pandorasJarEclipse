@@ -9,16 +9,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class ScoreDAO {
-    static private ScoreDAO instance = null;
     private PreparedStatement statement;
-
-    private ScoreDAO() {}
-
-    static public ScoreDAO getInstance(){
-        if(instance == null)
-            instance = new ScoreDAO();
-        return instance;
-    }
 
     public ArrayList<Pair<Integer, String>> getScoresFromIdUser(int id)
     {

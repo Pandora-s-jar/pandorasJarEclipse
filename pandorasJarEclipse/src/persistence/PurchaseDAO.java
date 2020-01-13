@@ -9,16 +9,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class PurchaseDAO {
-    static private PurchaseDAO instance = null;
     private PreparedStatement statement;
-
-    private PurchaseDAO() {}
-
-    static public PurchaseDAO getInstance(){
-        if(instance == null)
-            instance = new PurchaseDAO();
-        return instance;
-    }
 
     public TreeMap<Integer,Integer> getGamesYearFromIdUser(int id)
     {

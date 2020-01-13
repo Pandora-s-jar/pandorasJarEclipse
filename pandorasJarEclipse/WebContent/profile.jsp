@@ -45,20 +45,26 @@
 					<jsp:include page="profileMenu.html"></jsp:include>
 				</div>
 
-				<form id="profileDetails" method="post" action="changeProfileDetails">
-					<div id="second_column">
+				<div id="second_column">
+					<form id="profileDetails" method="post" action="UploadImage" enctype="multipart/form-data">
 						<div class="text-center words" id="profilePhoto">
 							<c:if test="${empty user.image}">
 								<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
 							</c:if>
 							<c:if test="${not empty user.image}">
-								<img src="${user.image}">
+								<img src="/PrintImage?id=${user.id}" height="220" width="220">
 							</c:if>
 							<c:if test="${not friend}">
 								<h6>Upload a different photo...</h6>
-								<input type="file" id="inputFile" class="text-center center-block file-upload btn btn-primary">
+								<input type="file" id="inputFile" name="inputFile" class="text-center center-block file-upload btn btn-primary">
+							</c:if>
+							<br>
+							<c:if test="${not friend}">
+								<input type="submit" value="Upload" id="uploadBtn" class="btn btn-primary background-color"/>
 							</c:if>
 						</div>
+					</form>
+					<form id="profileDetails" method="post" action="changeProfileDetails?change=1">
 						<div id="details">
 							<table class="table table-hover jumbotron" id="tableWords" >
 								<tbody id="tbody-details">
@@ -77,9 +83,9 @@
 										</c:if>
 									</tr>
 									<tr>
-										<td>Password:</td>
-										<td><input type="text" name="inputPassword" id="inputPassword" readonly value="${user.password}"/></td>
 										<c:if test="${not friend}">
+											<td>Password:</td>
+											<td><input type="text" name="inputPassword" id="inputPassword" readonly value="${user.password}"/></td>
 											<td><button type="button" class="btn btn-primary btn-sm fas fa-edit background-color" id="btnChangePassword"></button></td>
 										</c:if>
 									</tr>
@@ -96,25 +102,26 @@
 						<c:if test="${not friend}">
 							<input type="submit" value="Save" id="saveBtn" class="btn btn-primary background-color"/>
 						</c:if>
-						<div id="friendsList" class="jumbotron jumbotron-fluid" style="text-align:center;">
-							<div class="words words-friends">
-								<h3 style="margin-top:-50px;" >Friends:</h3>
-								<c:forEach items="${user.friends}" var="friend">
-									<a href="profile?id=${friend.id}">${friend.username}</a>,
-								</c:forEach>
-							</div>
-							<div id="divAddFriend">
-								<c:if test="${not friend}">
-									<input type="button" id="addFriend" value="Add friend" class="btn btn-primary btn-center background-color"/>
-									<form id="formAddFriend" method="post" action="changeProfileDetails">
-										<div id="insideForm">
-										</div>
-									</form>
-								</c:if>
-							</div>
+					</form>
+
+					<div id="friendsList" class="jumbotron jumbotron-fluid" style="text-align:center;">
+						<div class="words words-friends">
+							<h3 style="margin-top:-50px;" >Friends:</h3>
+							<c:forEach items="${user.friends}" var="friend">
+								<a href="profile?id=${friend.id}">${friend.username}</a>,
+							</c:forEach>
+						</div>
+						<div id="divAddFriend">
+							<c:if test="${not friend}">
+								<input type="button" id="addFriend" value="Add friend" class="btn btn-primary btn-center background-color"/>
+								<form id="formAddFriend" method="post" action="changeProfileDetails?change=2">
+									<div id="insideForm">
+									</div>
+								</form>
+							</c:if>
 						</div>
 					</div>
-				</form>
+				</div>
 			</div>
 			<jsp:include page="footer.html" />
 		</c:if>

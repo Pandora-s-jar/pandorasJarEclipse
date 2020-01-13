@@ -20,22 +20,22 @@ public class DAOFactory {
 
     public UserDAO makeUserDAO()
     {
-        return UserDAO.getInstance();
+        return new UserDAO();
     }
 
     public HoursPlayedDAO makeHoursPlayedDAO()
     {
-        return HoursPlayedDAO.getInstance();
+        return new HoursPlayedDAO();
     }
 
     public PurchaseDAO makePurchaseDAO()
     {
-        return PurchaseDAO.getInstance();
+        return new PurchaseDAO();
     }
 
     public ScoreDAO makeScoreDAO()
     {
-        return ScoreDAO.getInstance();
+        return new ScoreDAO();
     }
 
 

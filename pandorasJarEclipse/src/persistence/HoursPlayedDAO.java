@@ -12,16 +12,7 @@ import java.util.HashMap;
 import java.util.TreeMap;
 
 public class HoursPlayedDAO {
-    static private HoursPlayedDAO instance = null;
     private PreparedStatement statement;
-
-    private HoursPlayedDAO() {}
-
-    static public HoursPlayedDAO getInstance(){
-        if(instance == null)
-            instance = new HoursPlayedDAO();
-        return instance;
-    }
 
     public TreeMap<Integer, Integer> getHoursPlayedFromIdUser(int id)
     {

@@ -1,5 +1,6 @@
 package model;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class User {
@@ -10,8 +11,9 @@ public class User {
 	private String description;
 	private ArrayList<User> friends;
 	private ArrayList<Game> library;
-	private String image;
+	private byte[] image;
 	private String email;
+
 
 	public User() {}
 
@@ -64,10 +66,10 @@ public class User {
 	public void setFriends(ArrayList<User> friends) {
 		this.friends = friends;
 	}
-	public String getImage() {
+	public byte[] getImage() {
 		return image;
 	}
-	public void setImage(String image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
 	public String getEmail() {
@@ -80,14 +82,15 @@ public class User {
 		this.library = library;
 	}
 
-	public void addFriend(User u)
+	public boolean addFriend(User u)
 	{
 		for(User user: friends)
 		{
 			if(user.getId() == u.getId())
-				return;
+				return false;
 		}
 		this.friends.add(u);
+		return true;
 	}
 	
 	

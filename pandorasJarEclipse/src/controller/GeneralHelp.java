@@ -33,8 +33,8 @@ public class GeneralHelp extends HttpServlet
 			String email = loggedUser.getEmail();
 			req.setAttribute("name", name);
 			req.setAttribute("email", email);
-			req.setAttribute("emailTo", to);
 		}
+		req.setAttribute("emailTo", to);
 		RequestDispatcher rd;
 		rd = req.getRequestDispatcher("header.jsp");
 		rd.include(req, resp);

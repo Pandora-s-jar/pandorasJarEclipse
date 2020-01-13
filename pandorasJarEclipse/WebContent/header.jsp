@@ -78,7 +78,7 @@
                     <div class="form-group">
                         <button class="btn btn-primary btn-block" type="submit">Log In</button>
                     </div>
-                    <a class="forgot" href="forgotPassword">Forgot your email or password?</a></form>
+                    <a class="forgot" href="forgotPassword">Hai dimenticato la tua password?</a></form>
             </div>
         </div>
     </div>

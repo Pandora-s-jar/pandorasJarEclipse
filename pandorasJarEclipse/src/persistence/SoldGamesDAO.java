@@ -1,15 +1,11 @@
 package persistence;
 
-import model.Game;
 import model.SoldGames;
-import model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.TreeMap;
 
 public class SoldGamesDAO

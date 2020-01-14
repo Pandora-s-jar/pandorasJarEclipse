@@ -3,6 +3,7 @@ package persistence;
 import model.Data;
 import model.User;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
@@ -172,10 +173,10 @@ public class UserDAO {
         String query = "UPDATE public.user SET image = ? WHERE iduser = ?::integer";
         try {
             statement = connection.prepareStatement(query);
-            statement.setBinaryStream(1, fileContent);
+            statement.setBytes(1, fileContent.readAllBytes());
             statement.setString(2,Integer.toString(idUser));
             statement.executeUpdate();
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
         finally{

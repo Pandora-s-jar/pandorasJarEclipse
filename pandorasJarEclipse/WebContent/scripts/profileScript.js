@@ -42,12 +42,12 @@ jQuery(document).ready(function(){
 			buttonOK.setAttribute("type", "submit");
 			buttonOK.setAttribute("value", "Send");
 			buttonOK.setAttribute("class", "btn btn-primary btn-center background-color");
-			jQuery("#insideForm").append("<br id='toCancel'>",inputText, buttonOK);
+			jQuery("#insideForm").append("<br id='toDelete'>",inputText, buttonOK);
 			bool = false;
 		}
 		else
 		{
-			jQuery("#toCancel").remove();
+			jQuery("#toDelete").remove();
 			jQuery("#sendNameFriend").remove();
 			jQuery("#nameFriend").remove();
 			bool = true;

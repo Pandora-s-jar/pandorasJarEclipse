@@ -1,86 +1,112 @@
 
-#row:after{
-	content: "";
-	display: table;
-	clear: both;
+#profile{
+	height: 900px;
 }
 
-#first_column{
-	width: 20%;
-	float: left;
-	background-color: midnightblue !important;
+#firstRow{
+	width: 1440px;
+	height: 900px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
-#second_column{
-	width:75%;
-	float: right;
-	padding-right:20px;
-}
-#second_column:after{
-	content: "";
-	display: table;
-	clear: both;
-	height: auto;
+#divProfileMenu{
+	height: 900px;
+	background-color: rgb(25,25,112);
+	width: 292px;
+	margin-left: 0px;
+	margin-right: 0px;
 }
 
-#profilePhoto{
-	width: 40%;
-	float: left;
-	
+
+#photoProfile{
+	width: 220px;
+	height: 220px;
+	margin: 60px;
+	margin-bottom: 15px;
+	margin-top: 13px;
+	padding: 0px;
+	margin-right: 115px;
+	margin-left: 115px;
 }
 
-#details{
-	width: 60%;
-	float: left;
-	height: 300px;
+h6{
+	color: rgb(0,0,255);
+	font-size: 20px;
 }
 
-.words{
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	color: blue;
-
-}
-
-.words-friends{
-	font-size:120%;
-}
-
-#tableWords{
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	color: blue;
-}
-
-#friendsList{
-	position:relative;
-	margin-top:100px;
-	margin-left:50px;
-	clear: both;
-	line-height:50px;
-	height: 70%;
-}
-
-header{
-	clear: both;
-}
-footer{
-	clear: both;
-}
-#tbody-details{
-	height: 273px;
-}
-
-#saveBtn{
-	position: relative;
-	width: 20%;
-	margin-left: 20%;
-	margin-top:3%;
+#inputFile{
+	background-color: rgb(0,123,255);
+	margin-left: 75px;
+	margin-right: 75px;
+	font-size: 16px;
+	width: 300px;
 }
 
 #uploadBtn{
-	margin-top:3%;
+	font-size: 20px;
+	margin-top: 20px;
+	width: 114px;
+	height: 50px;
 }
 
-.background-color{
-	background-color:orange !important;
+#tableJumbotron{
+	width: 600px;
+	height: 310px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	padding: 0px;
 }
 
+#divTable{
+	margin-top: 0px;
+	height: 310px;
+	padding-top: 21px;
+	width: 600px;
+}
+
+.field-name{
+	width: 124px;
+	color: rgb(0,0,255);
+	font-size: 20px;
+}
+
+.btn-color{
+	background-color: rgb(255,165,0) !important;
+}
+
+#saveBtn{
+	font-size: 20px;
+	margin-top: 22px;
+	width: 114px;
+	height: 50px;
+}
+
+#secondRow{
+	margin-top: 33px;
+	margin-bottom: 0px;
+	height: 250px;
+}
+
+#friendsJumbotron{
+	height: 200px;
+	margin-bottom: 0px;
+	margin-top: 20px;
+}
+
+#h1Fiends{
+	margin-top: -47px;
+	color: rgb(0,0,255);
+}
+
+#friendsList{
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+
+#addFriend{
+	font-size: 20px;
+	margin-top: 22px;
+	width: 126px;
+	height: 50px;
+}

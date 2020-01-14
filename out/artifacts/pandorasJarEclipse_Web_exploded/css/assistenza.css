@@ -1,0 +1,36 @@
+.icone{
+	background-color: orange !important;
+	padding-top: 35% !important;
+}
+.fieldWidth{
+	width: 60%;
+}
+.iconaMessaggio{
+	background-color: orange !important;
+}
+.areaT{
+	resize: none;
+}
+.formCenter{
+	background: rgb(255,255,255);
+	background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(32,74,135,1) 62%, rgba(32,74,135,1) 100%);
+	padding-left: 2%;
+	padding-top: 3%;
+	width: 60%;
+	float: left;
+}
+.imageLeft{
+	text-align: center;
+	width: 40%;
+	float: left;
+	padding-top: 5%;
+}
+.generalDiv{
+	width: 100%;
+}
+header{
+	clear: both;
+}
+footer{
+	clear: both;
+}

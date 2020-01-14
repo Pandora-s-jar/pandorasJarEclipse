@@ -20,45 +20,42 @@ public class UserStats extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = (int) req.getSession().getAttribute("userId");
-        HashSet<String> gamesPlayed = new HashSet<String>();
         float totalHours = 0f;
-        //ArrayList<Game> game = user.getLibrary();
-        TreeMap<Integer, Integer> hoursPlayedYear = DAOFactory.getInstance().makeHoursPlayedDAO().getHoursPlayedFromIdUser(id).getHoursPlayed();
+        TreeMap<Integer, Integer> hoursPlayedYear = DAOFactory.getInstance().makeHoursPlayedDAO().getHoursPlayedFromIdUser(id);
         for(Integer year: hoursPlayedYear.keySet())
         {
             totalHours += hoursPlayedYear.get(year);
         }
-        /*SortedMap<String, Integer> gamesPlayedYear = new TreeMap<String, Integer>();
-        gamesPlayedYear.put("2018", 0);
-        gamesPlayedYear.put("2019", 0);
-        gamesPlayedYear.put("2020", 0);
-
-        Pair<String, Float> bestScore = new Pair<String, Float>("",0f);
-        if(!game.isEmpty())
+        TreeMap<Integer, Integer> gamesPlayedYear = DAOFactory.getInstance().makePurchaseDAO().getGamesYearFromIdUser(id);
+        int totalGames = 0;
+        for(Integer year: gamesPlayedYear.keySet())
         {
-            bestScore.setFirst(game.get(0).getName());
-            bestScore.setSecond(game.get(0).getRanking().get(user.getId()));
-            for(Game g: game)
+            totalGames += gamesPlayedYear.get(year);
+        }
+        ArrayList<Pair<Integer, String>> gameScore = DAOFactory.getInstance().makeScoreDAO().getScoresFromIdUser(id);
+        Pair<Integer, String> bestScore = new Pair<Integer, String>(0,"");
+        bestScore.setFirst(gameScore.get(0).getFirst());
+        bestScore.setSecond(gameScore.get(0).getSecond());
+        for(Pair<Integer,String> p: gameScore)
+        {
+            if(p.getFirst() > bestScore.getFirst())
             {
-                if(g.getRanking().get(user.getId()) > bestScore.getSecond())
-                {
-                    bestScore.setSecond(g.getRanking().get(user.getId()));
-                    bestScore.setFirst(g.getName());
-                }
+                bestScore.setSecond(p.getSecond());
+                bestScore.setFirst(p.getFirst());
             }
-        }*/
+        }
         req.getSession().setAttribute("hoursPlayedKeys", hoursPlayedYear.keySet());
         req.getSession().setAttribute("hoursPlayedValues", hoursPlayedYear.values());
 
         req.getSession().setAttribute("totalHoursPlayed", totalHours);
-        /*
+
         req.getSession().setAttribute("gamesPlayedKeys", gamesPlayedYear.keySet());
         req.getSession().setAttribute("gamesPlayedValues", gamesPlayedYear.values());
 
-        req.getSession().setAttribute("totalGamesPlayed", gamesPlayed.size());
+        req.getSession().setAttribute("totalGamesPlayed", totalGames);
 
-        req.getSession().setAttribute("bestScoreName", bestScore.getFirst());
-        req.getSession().setAttribute("bestScoreValue", bestScore.getSecond());*/
+        req.getSession().setAttribute("bestScoreName", bestScore.getSecond());
+        req.getSession().setAttribute("bestScoreValue", bestScore.getFirst());
 
         RequestDispatcher rd = req.getRequestDispatcher("userStats.jsp");
         rd.forward(req,resp);

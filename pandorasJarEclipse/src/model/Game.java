@@ -6,9 +6,6 @@ public class Game {
     private String name;
     private String developer;
     private Data release;
-    private Data purchase;
-    private HashMap<Integer, Float> ranking;
-
     public Game() {}
 
     public String getName() {
@@ -33,21 +30,5 @@ public class Game {
 
     public void setRelease(Data release) {
         this.release = release;
-    }
-
-    public Data getPurchase() {
-        return purchase;
-    }
-
-    public void setPurchase(Data purchase) {
-        this.purchase = purchase;
-    }
-
-    public HashMap<Integer, Float> getRanking() {
-        return ranking;
-    }
-
-    public void setRanking(HashMap<Integer, Float> ranking) {
-        this.ranking = ranking;
     }
 }

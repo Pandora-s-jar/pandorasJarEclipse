@@ -16,7 +16,12 @@ public class FormGameUpload extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("header.jsp");
         requestDispatcher.include(req, resp);
-        requestDispatcher = req.getRequestDispatcher("formGameUpload.html");
+        if(req.getSession().getAttribute("logged") == null || !(Boolean) req.getSession().getAttribute("logged")){
+            requestDispatcher = req.getRequestDispatcher("errorNotLogged.html");
+        }
+        else{
+            requestDispatcher = req.getRequestDispatcher("formGameUpload.html");
+        }
         requestDispatcher.include(req, resp);
         requestDispatcher = req.getRequestDispatcher("footer.html");
         requestDispatcher.include(req, resp);

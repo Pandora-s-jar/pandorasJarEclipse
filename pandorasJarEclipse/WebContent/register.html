@@ -10,29 +10,42 @@
 </head>
 
 <body>
-    <div class="register-photo" style="background-image: url(Assets/backgroundRegister.jpg);">
-        <div class="form-container">
-            <form id="regForm" method="post">
-                <h2 class="text-center"><strong>Crea un account!</strong></h2>
-                <div class="form-group"><input class="form-control" id="email" type="email" name="email" placeholder="Email" required=""></div>
-                <div class="form-group"><input class="form-control" id="username" type="text" name="username" placeholder="Username" required=""></div>
-                <div class="form-group"><input class="form-control" id="password" type="password" name="password" placeholder="Password" required=""></div>
-                <div class="form-group"><input class="form-control" id="confirm" type="password" name="confermaPassword" placeholder="Password (ripeti)" required=""></div>
-                <div class="form-group">
-                    <div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" required="">Accetto i termini e le condizioni d'uso</label></div>
+<div class="register-photo" style="background-image: url(Assets/backgroundRegister.jpg);">
+    <div class="form-container">
+        <form id="regForm" method="post">
+            <h2 class="text-center"><strong>Crea un account!</strong></h2>
+            <div class="form-group"><input class="form-control" id="email" type="email" name="email" placeholder="Email"
+                                           required="" autofocus></div>
+            <div class="form-group"><input class="form-control" id="username" type="text" name="username"
+                                           placeholder="Username" required=""></div>
+            <div class="form-group"><input class="form-control" id="password" type="password" name="password"
+                                           placeholder="Password" required=""></div>
+            <div class="form-group"><input class="form-control" id="confirm" type="password" name="confermaPassword"
+                                           placeholder="Password (ripeti)" required=""></div>
+            <div class="form-group">
+                <div class="form-check">
+                    <label class="form-check-label"><input class="form-check-input" type="checkbox" required="">
+                        <a target="_blank" href="https://www.privacypolicies.com/terms/view/cb295030ef5568133dec1aae0c6d0c7c">Accetto i termini e le condizioni d'uso</a>
+                    </label>
                 </div>
-                <div class="form-group">
-                    <div class="g-recaptcha" data-sitekey="6Le4Nc4UAAAAAErXaOiYQEZTOzs5cB-YzT_AVFkk"></div>
-                </div>
-                <div class="form-group"><button class="btn btn-next btn-primary btn-block" type="submit">Registrati!</button></div><a class="already" href="#Login" data-toggle="modal">Hai già un account? Accedi qui!</a>
-            </form>
-        </div>
+            </div>
+            <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="6Le4Nc4UAAAAAErXaOiYQEZTOzs5cB-YzT_AVFkk"></div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-next btn-primary btn-block" type="submit">Registrati!</button>
+            </div>
+            <div class="form-group">
+                <a class="already" href="#Login" data-toggle="modal">Hai già un account? Accedi</a>
+            </div>
+        </form>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    <script src="scripts/checkPasswords.js"></script>
-    <script src="scripts/captcha.js"></script>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="scripts/checkPasswords.js"></script>
+<script src="scripts/captcha.js"></script>
 </body>
 
 </html>

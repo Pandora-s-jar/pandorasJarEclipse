@@ -10,18 +10,22 @@
 </head>
 
 <body>
-    <div class="register-photo" style="background-image: url(Assets/backgroundUpload.jpg);">
-        <div class="form-container">
-            <form method="post">
-                <h2 class="text-center"><strong>Inserisci i tuoi dati</strong></h2>
-                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email di contatto"></div>
-                <div class="form-group"><input class="form-control" type="email" placeholder="Email di pagamento" name="paymentEmail"></div>
-                <div class="form-group"><button class="btn btn-next btn-primary btn-block" type="submit">Prosegui</button></div>
-            </form>
-        </div>
+<div class="register-photo" style="background-image: url(Assets/backgroundUpload.jpg);">
+    <div class="form-container">
+        <form method="post">
+            <h2 class="text-center"><strong>Inserisci i tuoi dati</strong></h2>
+            <div class="form-group"><input class="form-control" type="email" name="email"
+                                           placeholder="Email di contatto" required autofocus></div>
+            <div class="form-group"><input class="form-control" type="email" placeholder="Email di pagamento"
+                                           name="paymentEmail" required></div>
+            <div class="form-group">
+                <button class="btn btn-next btn-primary btn-block" type="submit">Prosegui</button>
+            </div>
+        </form>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

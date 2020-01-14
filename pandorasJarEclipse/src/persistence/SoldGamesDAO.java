@@ -22,10 +22,9 @@ public class SoldGamesDAO
     public SoldGames getSoldGamesFromIdUser(int id)
     {
         Connection connection = DataSource.getInstance().getConnection();
-        String query = "SELECT * FROM public.purchase;";
+        String query = "SELECT EXTRACT(YEAR FROM date), game FROM public.purchase;";
         try {
             statement = connection.prepareStatement(query);
-            //statement.setString(1,Integer.toString(id));
             ResultSet result = statement.executeQuery();
             if(result.isClosed())
                 return null;
@@ -38,12 +37,10 @@ public class SoldGamesDAO
             {
                 idGame = result.getInt("game");
                 System.out.println(idGame);
-                //String queryDate = "SELECT EXTRACT(YEAR FROM " + result.getString("date") + ");";
-                //PreparedStatement statementDate = connection.prepareStatement(queryDate);
-                //ResultSet resultDate = statementDate.executeQuery();
-                int currentYear = 2018;//resultDate.getInt(1);
+
+                String currentYear = result.getString(1);
                 System.out.println(currentYear);
-                String queryGame = "SELECT * FROM public.game WHERE idGame = " + idGame + " AND developer = " + id + ";";
+                /*String queryGame = "SELECT * FROM public.game WHERE idGame = " + idGame + " AND developer = " + id + ";";
                 PreparedStatement statementGame = connection.prepareStatement(queryGame);
                 ResultSet resultGame = statementGame.executeQuery();
                 if(resultGame.next())
@@ -51,10 +48,10 @@ public class SoldGamesDAO
                     soldGPerYear.put(currentYear, 1);//soldGPerYear.get(currentYear) + 1);
                     currentPrice += resultGame.getDouble("price");
                     earnedMoneyPerYear.put(currentYear, currentPrice);//earnedMoneyPerYear.get(currentYear) + currentPrice);
-                }
+                }*/
             }
-            soldGames.setSoldGPerYear(soldGPerYear);
-            soldGames.setEarnedMoneyPerYear(earnedMoneyPerYear);
+            //soldGames.setSoldGPerYear(soldGPerYear);
+            //soldGames.setEarnedMoneyPerYear(earnedMoneyPerYear);
             return soldGames;
 
         } catch (SQLException e) {

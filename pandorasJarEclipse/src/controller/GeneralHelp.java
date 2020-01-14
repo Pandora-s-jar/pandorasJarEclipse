@@ -23,11 +23,11 @@ public class GeneralHelp extends HttpServlet
 		{
 			to = "pandorasjar2019@gmail.com";
 		}
-		int idUser = 1;
+		//int idUser = 1;
 		User loggedUser = null;
 		if(req.getSession().getAttribute("userId") != null)
 		{
-			idUser = 1;//(int) req.getSession().getAttribute("userId");
+			int idUser = 1;//(int) req.getSession().getAttribute("userId");
 			loggedUser = DAOFactory.getInstance().makeUserDAO().getUserFromIdUser(idUser);
 			String name = loggedUser.getUsername();
 			String email = loggedUser.getEmail();
@@ -38,7 +38,7 @@ public class GeneralHelp extends HttpServlet
 		RequestDispatcher rd;
 		rd = req.getRequestDispatcher("header.jsp");
 		rd.include(req, resp);
-		rd = req.getRequestDispatcher("index.html");
+		rd = req.getRequestDispatcher("help.jsp");
 		rd.include(req, resp);
 		rd = req.getRequestDispatcher("footer.html");
 		rd.include(req, resp);

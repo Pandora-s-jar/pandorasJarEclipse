@@ -1,7 +1,6 @@
 package persistence;
 
 import model.Game;
-import model.HoursPlayed;
 import model.SoldGames;
 import model.User;
 
@@ -18,13 +17,7 @@ public class SoldGamesDAO
     static private SoldGamesDAO instance = null;
     private PreparedStatement statement;
 
-    private SoldGamesDAO() {}
-
-    static public SoldGamesDAO getInstance(){
-        if(instance == null)
-            instance = new SoldGamesDAO();
-        return instance;
-    }
+    public SoldGamesDAO() {}
 
     public SoldGames getSoldGamesFromIdUser(int id)
     {

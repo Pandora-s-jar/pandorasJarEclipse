@@ -27,6 +27,10 @@ public class DAOFactory {
     {
         return new HoursPlayedDAO();
     }
+    public SoldGamesDAO makeSoldGamesDAO()
+    {
+        return new SoldGamesDAO();
+    }
 
     public PurchaseDAO makePurchaseDAO()
     {

@@ -39,7 +39,7 @@ body {
 }
 .divSinistra {
     width: 50%;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 .divSinistra h3 {
     font-family: Actor, sans-serif;
@@ -56,7 +56,7 @@ body {
 
 .divDestra{
     width: 50%;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 .divDestra section{
     color: rgb(0,0,0);

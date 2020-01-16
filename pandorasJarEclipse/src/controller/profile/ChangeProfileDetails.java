@@ -8,16 +8,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Paths;
 
 public class ChangeProfileDetails  extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int userId = (int) req.getSession().getAttribute("userId");
-        User u = DAOFactory.getInstance().makeUserDAO().getUserFromIdUser(userId);
+        User u = DAOFactory.getInstance().makeUserDAO().getUserByIdUser(userId);
         int change = Integer.parseInt(req.getParameter("change"));
         if(change == 1)
         {
@@ -40,7 +37,7 @@ public class ChangeProfileDetails  extends HttpServlet {
         {
             String newFriend = req.getParameter("nameFriend");
             UserDAO dao = DAOFactory.getInstance().makeUserDAO();
-            User friend = dao.getUserFromUsernameUser(newFriend);
+            User friend = dao.getUserByUsernameUser(newFriend);
             if(friend != null)
             {
                 if(u.addFriend(friend))

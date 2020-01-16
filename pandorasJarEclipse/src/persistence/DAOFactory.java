@@ -23,6 +23,16 @@ public class DAOFactory {
         return new UserDAO();
     }
 
+    public GameDAO makeGameDAO()
+    {
+        return new GameDAO();
+    }
+
+    public ReviewDAO makeReviewDAO()
+    {
+        return new ReviewDAO();
+    }
+
     public HoursPlayedDAO makeHoursPlayedDAO()
     {
         return new HoursPlayedDAO();

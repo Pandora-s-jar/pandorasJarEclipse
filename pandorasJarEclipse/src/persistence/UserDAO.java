@@ -1,6 +1,5 @@
 package persistence;
 
-import model.Data;
 import model.User;
 
 import java.io.IOException;

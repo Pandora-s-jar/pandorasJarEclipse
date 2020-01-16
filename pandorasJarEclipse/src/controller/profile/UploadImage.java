@@ -37,14 +37,6 @@ public class UploadImage extends HttpServlet {
         PrintWriter out = response.getWriter( );
 
         if( !isMultipart ) {
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet upload</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<p>No file uploaded</p>");
-            out.println("</body>");
-            out.println("</html>");
             return;
         }
 

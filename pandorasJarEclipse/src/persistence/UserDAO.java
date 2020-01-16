@@ -1,6 +1,7 @@
 package persistence;
 
 import model.User;
+import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -172,7 +173,7 @@ public class UserDAO {
         String query = "UPDATE public.user SET image = ? WHERE iduser = ?::integer";
         try {
             statement = connection.prepareStatement(query);
-            statement.setBytes(1, fileContent.readAllBytes());
+            statement.setBytes(1, IOUtils.toByteArray(fileContent));
             statement.setString(2,Integer.toString(idUser));
             statement.executeUpdate();
         } catch (SQLException | IOException e) {

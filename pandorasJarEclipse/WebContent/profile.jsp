@@ -21,7 +21,7 @@
 </head>
 
 <body id="profile">
-	<c:if test="${not logged}">
+	<c:if test="${not canSee}">
 		<div class="modal" id="myModal">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -39,7 +39,7 @@
 			</div>
 		</div>
 	</c:if>
-    <c:if test="${logged}">
+    <c:if test="${canSee}">
         <jsp:include page="header.jsp" />
         <div class="row" id="firstRow">
             <div class="col-3" id="divProfileMenu">

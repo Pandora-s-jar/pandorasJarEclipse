@@ -12,7 +12,7 @@
     <script src="scripts/header.js"></script>
 </head>
 <body>
-    <header> 
+    <header>
         <nav class="navbar navbar-expand-sm bg-info navbar-dark">
             <ul class="navbar-nav nav-fill w-100">
                 <li class="navbar-brand">

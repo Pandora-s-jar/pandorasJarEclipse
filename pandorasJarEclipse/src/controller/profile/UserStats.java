@@ -2,7 +2,8 @@ package controller.profile;
 
 import model.Game;
 import model.User;
-import persistence.DBManager;
+import persistence.DAOFactory;
+import persistence.UserDAO;
 import utility.Pair;
 
 import javax.servlet.RequestDispatcher;
@@ -18,59 +19,43 @@ import java.util.*;
 public class UserStats extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //User user = DBManager.getInstance().getUser((int) req.getSession().getAttribute("userId"));
-        User user = DBManager.getInstance().getUser(5);
-        HashSet<String> gamesPlayed = new HashSet<String>();
+        int id = (int) req.getSession().getAttribute("userId");
         float totalHours = 0f;
-        ArrayList<Game> game = user.getLibrary();
-        SortedMap<String, Float> hoursPlayedYear = new TreeMap<String, Float>();
-        hoursPlayedYear.put("2018", 0f);
-        hoursPlayedYear.put("2019", 0f);
-        hoursPlayedYear.put("2020", 0f);
-        SortedMap<String, Integer> gamesPlayedYear = new TreeMap<String, Integer>();
-        gamesPlayedYear.put("2018", 0);
-        gamesPlayedYear.put("2019", 0);
-        gamesPlayedYear.put("2020", 0);
-        for(String year : hoursPlayedYear.keySet())
+        TreeMap<Integer, Integer> hoursPlayedYear = DAOFactory.getInstance().makeHoursPlayedDAO().getHoursPlayedFromIdUser(id);
+        for(Integer year: hoursPlayedYear.keySet())
         {
-            for(Game g: game)
+            totalHours += hoursPlayedYear.get(year);
+        }
+        TreeMap<Integer, Integer> gamesPlayedYear = DAOFactory.getInstance().makePurchaseDAO().getGamesYearFromIdUser(id);
+        int totalGames = 0;
+        for(Integer year: gamesPlayedYear.keySet())
+        {
+            totalGames += gamesPlayedYear.get(year);
+        }
+        ArrayList<Pair<Integer, String>> gameScore = DAOFactory.getInstance().makeScoreDAO().getScoresFromIdUser(id);
+        Pair<Integer, String> bestScore = new Pair<Integer, String>(0,"");
+        bestScore.setFirst(gameScore.get(0).getFirst());
+        bestScore.setSecond(gameScore.get(0).getSecond());
+        for(Pair<Integer,String> p: gameScore)
+        {
+            if(p.getFirst() > bestScore.getFirst())
             {
-                hoursPlayedYear.replace(year, hoursPlayedYear.get(year) + g.getHoursPlayed().get(year));
-                totalHours += g.getHoursPlayed().get(year);
-                if(g.getHoursPlayed().get(year) > 0)
-                {
-                    gamesPlayedYear.replace(year, gamesPlayedYear.get(year) + 1);
-                    gamesPlayed.add(g.getName());
-                }
+                bestScore.setSecond(p.getSecond());
+                bestScore.setFirst(p.getFirst());
             }
         }
-
-        Pair<String, Float> bestScore = new Pair<String, Float>("",0f);
-        if(!game.isEmpty())
-        {
-            bestScore.setFirst(game.get(0).getName());
-            bestScore.setSecond(game.get(0).getRanking().get(user.getId()));
-            for(Game g: game)
-            {
-                if(g.getRanking().get(user.getId()) > bestScore.getSecond())
-                {
-                    bestScore.setSecond(g.getRanking().get(user.getId()));
-                    bestScore.setFirst(g.getName());
-                }
-            }
-        }
-        req.getSession().setAttribute("hoursePlayedKeys", hoursPlayedYear.keySet());
-        req.getSession().setAttribute("hoursePlayedValues", hoursPlayedYear.values());
+        req.getSession().setAttribute("hoursPlayedKeys", hoursPlayedYear.keySet());
+        req.getSession().setAttribute("hoursPlayedValues", hoursPlayedYear.values());
 
         req.getSession().setAttribute("totalHoursPlayed", totalHours);
 
         req.getSession().setAttribute("gamesPlayedKeys", gamesPlayedYear.keySet());
         req.getSession().setAttribute("gamesPlayedValues", gamesPlayedYear.values());
 
-        req.getSession().setAttribute("totalGamesPlayed", gamesPlayed.size());
+        req.getSession().setAttribute("totalGamesPlayed", totalGames);
 
-        req.getSession().setAttribute("bestScoreName", bestScore.getFirst());
-        req.getSession().setAttribute("bestScoreValue", bestScore.getSecond());
+        req.getSession().setAttribute("bestScoreName", bestScore.getSecond());
+        req.getSession().setAttribute("bestScoreValue", bestScore.getFirst());
 
         RequestDispatcher rd = req.getRequestDispatcher("userStats.jsp");
         rd.forward(req,resp);

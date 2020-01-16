@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="pandorasJarEclipse:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/pandorasJarEclipse_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="pandorasJarEclipse/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="pandorasJarEclipse" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib1" />
+          <element id="library" level="project" name="lib2" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

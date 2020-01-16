@@ -1,0 +1,123 @@
+header .bg-info{
+    background-color: midnightblue !important;
+    border: 1px inset white;
+    height: 150px;
+}
+
+header .navbar-brand figure img{
+    border-radius: 15%;
+}
+
+header .nav-link{
+    font-size: 150%;
+}
+
+header .nav-link:hover{
+    color: orange !important;
+}
+
+header .nav-link{
+    font-size: 150%;
+}
+
+header .nav-link:hover{
+    color: orange !important;
+}
+
+
+header .nav-item{
+    padding-top: 3.2%;
+}
+
+.hidable{
+    position: relative;
+    font-size:55%;
+    left: 0;
+    margin-top: 20%;
+    margin-bottom: 0;
+}
+.search {
+    top: 5%;
+    padding: 5px 0;
+    width: 230px;
+    height: 30px;
+    position: relative;
+    left: 10px;
+    float: right;
+    line-height: 22px;
+}
+.search .btn-primary{
+    background-color: white;
+    opacity: 70%;
+}
+.search .fa-search{
+    color: black;
+}
+.search input {
+    position: absolute;
+    opacity: 0%;
+    width: 0;
+    left: 5%;
+    float: left;
+    margin-right: auto;
+    -webkit-transition: all 0.7s ease-in-out;
+    -moz-transition: all 0.7s ease-in-out;
+    -o-transition: all 0.7s ease-in-out;
+    transition: all 0.7s ease-in-out;
+    height: 100%;
+    line-height: 0;
+    padding: 0 2px 0 2px;
+    border-radius: 6%;
+}
+
+.search:hover input, .search input:focus {
+    left: 12%;
+    width: 70%;
+    opacity: 100%;
+    margin-left: 5px;
+}
+
+header .btn {
+    height: 30px;
+    position: absolute;
+    left: 0;
+    top: 5px;
+    border-radius:50%   ;
+}
+
+.h2-login{
+    color: orange;
+}
+
+.modal-get-offer .modal-content {
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background-color: midnightblue;
+    color:#FFF;
+}
+.modal-content .form-control{
+    margin-bottom: 5%;
+}
+.modal-get-offer .modal-content .modal-header {
+    text-align:center;
+    border: none;
+}
+
+.link-dialog{
+    margin-bottom: 5%;
+}
+
+.link-link{
+    color: orange;
+}
+
+.link-link:hover{
+    color: darkorange;
+}
+
+#btnLogin{
+    border-radius: 5%;
+    color: white;
+    background-color: orange;
+}

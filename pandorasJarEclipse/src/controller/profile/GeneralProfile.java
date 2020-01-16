@@ -10,36 +10,46 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.User;
-import persistence.DBManager;
+import persistence.DAOFactory;
 
 public class GeneralProfile extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//fatto nel login
-		req.getSession().setAttribute("userId", 5);
+		//req.getSession().setAttribute("userId", 1);
 		//
-		int idUser = (int) req.getSession().getAttribute("userId");
+		Integer idUser = null;
 		User principale = null;
-		if(req.getSession().getAttribute("userId") != null)
-			principale = DBManager.getInstance().getUser(idUser);
-		try{
-			User friend = DBManager.getInstance().getUser(Integer.parseInt(req.getParameter("id")));
-			req.setAttribute("user", friend);
-			req.setAttribute("friend", true);
-		}catch(NumberFormatException e)
+		if(req.getSession().getAttribute("userId") != null){
+			idUser = (int) req.getSession().getAttribute("userId");
+			principale = DAOFactory.getInstance().makeUserDAO().getUserFromIdUser(idUser);
+			req.setAttribute("canSee", true);
+		}
+		else if(req.getParameter("id") != null)
+		{
+			req.setAttribute("canSee", true);
+		}
+		else
+		{
+			req.setAttribute("canSee", false);
+		}
+
+		if(req.getParameter("id") == null || (idUser != null && Integer.parseInt(req.getParameter("id")) == idUser))
 		{
 			req.setAttribute("user", principale);
 			req.setAttribute("friend", false);
+		}
+		else
+		{
+			int idFriend = Integer.parseInt(req.getParameter("id"));
+			User friend = DAOFactory.getInstance().makeUserDAO().getUserFromIdUser(idFriend);
+			req.setAttribute("user", friend);
+			req.setAttribute("friend", true);
 		}
 		RequestDispatcher rd = null;
 		rd = req.getRequestDispatcher("profile.jsp");
 		rd.forward(req, resp);
 
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doGet(req,resp);
 	}
 
 }

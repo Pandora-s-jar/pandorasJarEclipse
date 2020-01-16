@@ -44,7 +44,7 @@
                     <label class="d-block" style="font-size: 20px;color: rgb(207,204,204);font-weight: bold;">Data Rilascio : ${game.release}</label>
                     <label class="d-block" style="font-size: 20px;color: rgb(207,204,204);font-weight: bold;">Sviluppatore : <a href="/profile?id=${game.idDeveloper}">${developer}</a></label>
                 </div>
-                <form class="text-center" method="post" action="/help?email=${game.helpEmail}">
+                <form class="text-center" method="post" action="/help?emailTo=${game.helpEmail}">
                     <button class="btn btn-primary border rounded" type="submit" style="background-color: rgb(255,165,0);font-size: 18px;margin-top: 2%;">Richiedi assistenza</button>
                 </form>
             </div>
@@ -63,12 +63,12 @@
                 <div class="border rounded" style="background-color: rgb(26,26,78);padding-left:2%;">
                     <label class="d-block" style="font-size: 20px;color: rgb(255,165,0);"><a href="/profile?id=${review.author}">${review.username}</a></label>
                     <label class="d-block" style="font-size: 20px;color: rgb(207,204,204);">${review.stars}</label>
-                    <p style="font-size: 20px;color: rgb(207,204,204); margin-left: ">${review.comment}</p>
+                    <p style="font-size: 20px;color: rgb(207,204,204);">${review.comment}</p>
                 </div>
             </c:forEach>
         </div>
     </div>
-    <!--<div class="row" style="margin-right: 5%;margin-left: 5%;margin-top: 2%;">
+    <div class="row" style="margin-right: 5%;margin-left: 5%;margin-top: 2%;">
         <table id="ranking" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
@@ -78,14 +78,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="td-color">${rankI.position}</td>
-                    <td class="td-color">${rankI.username}</td>
-                    <td class="td-color">${rankI.score}</td>
-                </tr>
+                <c:set var="index" scope="request" value="${0}"></c:set>
+                <c:forEach items="${ranking}" var="rankI">
+                    <c:set var="index" scope="request" value="${index + 1}"></c:set>
+                    <tr>
+                        <td class="td-color">${index}</td>
+                        <td class="td-color">${rankI.username}</td>
+                        <td class="td-color">${rankI.value}</td>
+                    </tr>
+                </c:forEach>
             </tbody>
         </table>
-    </div>-->
+    </div>
     <jsp:include page="footer.html" />
 
 </body>

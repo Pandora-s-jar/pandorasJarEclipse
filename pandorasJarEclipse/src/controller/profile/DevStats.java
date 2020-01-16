@@ -1,8 +1,7 @@
 package controller.profile;
 
-import utility.Acquisto;
-import model.User;
-import persistence.DBManager;
+import model.SoldGames;
+import persistence.DAOFactory;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.*;
+import java.util.TreeMap;
 
 @WebServlet(value = "/devStats")
 public class DevStats extends HttpServlet
@@ -19,38 +18,24 @@ public class DevStats extends HttpServlet
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
-        //User user = DBManager.getInstance().getUser((int) req.getSession().getAttribute("userId"));
-        User user = DBManager.getInstance().getUser(5);
+        int idUser = 1;
 
-        ArrayList<Acquisto> games = user.getSoldGames();
+        SoldGames tempSG = DAOFactory.getInstance().makeSoldGamesDAO().getSoldGamesFromIdUser(idUser);
+        TreeMap<Integer, Integer> soldGPerYear = tempSG.getSoldGPerYear();
+        TreeMap<Integer, Double> earnedMoneyPerYear = tempSG.getEarnedMoneyPerYear();
         int totalSoldGames = 0;
         double totalMoneyEarned = 0;
-        SortedMap<String, Integer> soldGamePerYear = new TreeMap<String, Integer>();
-        soldGamePerYear.put("2018", 0);
-        soldGamePerYear.put("2019", 0);
-        soldGamePerYear.put("2020", 0);
-        SortedMap<String, Double> moneyEarnedPerYear = new TreeMap<String, Double>();
-        moneyEarnedPerYear.put("2018", (double) 0);
-        moneyEarnedPerYear.put("2019", (double) 0);
-        moneyEarnedPerYear.put("2020", (double) 0);
-        for(String year : soldGamePerYear.keySet())
+        for(Integer year : soldGPerYear.keySet())
         {
-            for(Acquisto g: games)
-            {
-                if(g.getDataAcquisto().getYear().equals(year))
-                {
-                    totalSoldGames++;
-                    totalMoneyEarned += g.getGame().getPrice();
-                    soldGamePerYear.replace(year, soldGamePerYear.get(year) + 1);
-                    moneyEarnedPerYear.replace(year, moneyEarnedPerYear.get(year) + g.getGame().getPrice());
-                }
-            }
+            totalSoldGames++;
+            totalMoneyEarned += earnedMoneyPerYear.get(year);
         }
-        req.getSession().setAttribute("soldGameKeys", soldGamePerYear.keySet());
-        req.getSession().setAttribute("soldGameValues", soldGamePerYear.values());
+        this.log(totalSoldGames + "\n" + totalMoneyEarned);
+        req.getSession().setAttribute("soldGameKeys", soldGPerYear.keySet());
+        req.getSession().setAttribute("soldGameValues", soldGPerYear.values());
 
-        req.getSession().setAttribute("moneyEarnedKeys", moneyEarnedPerYear.keySet());
-        req.getSession().setAttribute("moneyEarnedValues", moneyEarnedPerYear.values());
+        req.getSession().setAttribute("moneyEarnedKeys", earnedMoneyPerYear.keySet());
+        req.getSession().setAttribute("moneyEarnedValues", earnedMoneyPerYear.values());
 
         req.getSession().setAttribute("totalSold", totalSoldGames);
         req.getSession().setAttribute("totalMoney", totalMoneyEarned);

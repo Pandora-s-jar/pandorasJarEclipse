@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.User;
+import persistence.DAOFactory;
 
 @WebServlet(value = "/help")
 public class GeneralHelp extends HttpServlet
@@ -17,27 +18,26 @@ public class GeneralHelp extends HttpServlet
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
-		String to = (String) req.getSession().getAttribute("emailTo");
+		String to = (String) req.getParameter("emailTo");
 		if(to == null)
 		{
 			to = "pandorasjar2019@gmail.com";
 		}
-		req.getSession().setAttribute("userId", 5);
-		int idUser = (int) req.getSession().getAttribute("userId");
 		User loggedUser = null;
 		if(req.getSession().getAttribute("userId") != null)
 		{
-			//loggedUser = DBManager.getInstance().getUser(idUser);
-			String name = "Simone";
+			int idUser = 1;//(int) req.getSession().getAttribute("userId");
+			loggedUser = DAOFactory.getInstance().makeUserDAO().getUserFromIdUser(idUser);
+			String name = loggedUser.getUsername();
 			String email = loggedUser.getEmail();
 			req.setAttribute("name", name);
 			req.setAttribute("email", email);
-			req.setAttribute("emailTo", to);
 		}
+		req.setAttribute("emailTo", to);
 		RequestDispatcher rd;
 		rd = req.getRequestDispatcher("header.jsp");
 		rd.include(req, resp);
-		rd = req.getRequestDispatcher("assistenza.jsp");
+		rd = req.getRequestDispatcher("help.jsp");
 		rd.include(req, resp);
 		rd = req.getRequestDispatcher("footer.html");
 		rd.include(req, resp);

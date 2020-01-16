@@ -70,7 +70,7 @@
                 data: {
                     labels: ${moneyEarnedKeys},
                     datasets: [{
-                        label: 'Games',
+                        label: 'Guadagno totale',
                         backgroundColor: 'rgb(173, 216, 240)',
                         borderColor: 'rgb(255, 165, 0)',
                         data: ${moneyEarnedValues}

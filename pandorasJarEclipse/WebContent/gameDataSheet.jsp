@@ -52,9 +52,56 @@
     </div>
     <div class="row" style="margin-left: 5%;margin-right: 5%;margin-top: 1%;">
         <div class="col-xl-7" style="width: 60%;">
-            <p class="d-inline" style="font-size: 20px;color: rgb(207,204,204);">Questo gioco appartiene alla categoria :&nbsp;</p><a href="/?category=${game.category}" style="font-size: 20px;">${game.category}</a></div>
+            <p class="d-inline" style="font-size: 20px;color: rgb(207,204,204);">Questo gioco appartiene alla categoria :&nbsp;</p><a href="/?category=${game.category}" style="font-size: 20px;">${game.category}</a>
+        </div>
         <div class="col float-left" style="width: 40%;">
-            <div></div>
+            <div class="float-left">
+                <p style="color: rgb(207,204,204); size: 30px; margin-top: 3%; font-weight: bold"> PREZZO: ${game.price}€</p>
+            </div>
+            <!-- START PAYPAL PAYMENTS-->
+            <div class ="float-right" id="paypal-button"></div>
+            <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+            <script>
+                paypal.Button.render({
+                    // Configure environment
+                    env: 'sandbox',
+                    client: {
+                        sandbox: 'AYhJSV3hNi-glHZ2JbxjUXQrRf38UglWWi_HqB83rql0-0yZL_LeR1wr61bHRHsYXLwUArT6yFGadowe',
+                        production: 'demo_production_client_id'
+                    },
+                    // Customize button (optional)
+                    locale: 'it_IT',
+                    style: {
+                        size: 'large',
+                        color: 'gold',
+                        shape: 'pill',
+                    },
+
+                    // Enable Pay Now checkout flow (optional)
+                    commit: true,
+
+                    // Set up a payment
+                    payment: function(data, actions) {
+                        return actions.payment.create({
+                            transactions: [{
+                                amount: {
+                                    total: '${game.price}',
+                                    currency: 'EUR'
+                                }
+                            }]
+                        });
+                    },
+                    // Execute the payment
+                    onAuthorize: function(data, actions) {
+                        return actions.payment.execute().then(function() {
+                            // Show a confirmation message to the buyer
+                            window.alert('Thank you for your purchase!');
+                        });
+                    }
+                }, '#paypal-button');
+
+            </script>
+            <!-- END PAYPAL PAYMENTS-->
         </div>
     </div>
     <div class="row" style="margin-right: 5%;margin-left: 5%;margin-top: 1%;">

@@ -24,6 +24,7 @@ public class ControlCode extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String code = (String) req.getSession().getAttribute("secretCode");
+        this.log(code + " \n" + req.getParameter("code"));
         if(code.equals(req.getParameter("code"))){
             resp.setStatus(200);
         }

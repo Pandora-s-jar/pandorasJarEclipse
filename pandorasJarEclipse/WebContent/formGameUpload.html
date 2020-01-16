@@ -1,39 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/bootstrap-4.4.1-dist/css/bootstrap.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="css/bootstrap-4.4.1-dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/registerStyle.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>gameUpload</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/genericForm.css">
+    <script src="scripts/formGameUpload.js"></script>
 </head>
+
 <body>
-    <div class="register-body">
-        <div class="container registerForm">
-            <div class="register-content">
-                <form method="post" id="regForm" enctype="multipart/form-data"> <!-- Necessario per i multi-file -->
-                    <h2>AGGIUNGI UN GIOCO</h2>
-                    <div class="form-group">
-                        <input type="text" class="form-input" name="title" placeholder="Inserisci il nome del gioco" required/>
-                        <label for="description"> Inserisci una descrizione avvincente del gioco</label>
-                        <textarea id="description" name="description" form="regForm" class="text-area form-input" placeholder="Inserisci qui una descrizione del gioco"></textarea>
-                        <label for="specs">Inserisci le specifiche tecniche del gioco</label>
-                        <textarea id="specs" name="specs" form="regForm" class="text-area form-input" placeholder="Inserisci qui le specifiche tecniche del gioco"></textarea>
-                        <label for="file">Inserisci il file del gioco in formato JAR</label>
-                        <input type="file" accept=".jar" id="file" class="form-input" name="gameFile" required/>
-                        <label for="preview">Inserisci immagini come anteprime del gioco</label>
-                        <input type="file" accept="image/*" id="preview" class="form-input" name="preview"/>
-                        <label for="price">Inserisci il prezzo del gioco</label>
-                        <input id="price" class="form-input" type="number" min="0" step="0.1" required/>
-                        <label for="tags">Inserisci le categorie del gioco <b>separate da virgole</b></label>
-                        <input id="tags" type="text" class="form-input" placeholder="FPS, RPG, ect...">
-                        <input type="checkbox" class="agree-term" required/>
-                        <label class="label-agree-term">I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
-                        <input type="submit" id="btnReg" class="form-submit" value="INSERISCI!">
-                    </div>
-                </form>
+<div class="register-photo" style="background-image: url(Assets/backgroundFormGameUpload.jpg)">
+    <div class="form-container" style="max-width: 700px;">
+        <form method="post">
+            <h2 class="text-center"><strong>Inserisci i dati del gioco</strong></h2>
+            <div class="form-group"><input class="form-control" type="text" name="nome" placeholder="Inserisci il nome del gioco"
+                                           required autofocus></div>
+            <div class="form-group"><textarea class="form-control" name="descrizione"
+                                              placeholder="Inserisci una descrizione dettagliata del gioco"></textarea>
             </div>
-        </div>
+            <div class="form-group"><textarea class="form-control" name="specifiche"
+                                              placeholder="Inserisci le specifiche tecniche del gioco"></textarea></div>
+            <div class="form-group text-center"><label
+                    class="text-monospace text-center text-sm-center text-md-center text-lg-center text-xl-center">Seleziona
+                il file JAR del gioco</label></div>
+            <div class="form-group text-center"><input type="file" multiple="" required=""></div>
+            <div class="form-group text-center"><label class="text-monospace">Seleziona immagini o video da mostrare
+                come anteprime (opzionale)</label></div>
+            <div class="form-group text-center"><input type="file" multiple=""></div>
+            <div class="form-group text-center"><label class="text-monospace">Inserisci link esterni come anteprime (opzionale)</label></div>
+            <div class="form-group text-center">
+                <div class="form-row">
+                    <div class="col"><input class="form-control" type="text" name="link-1"
+                                            placeholder="Inserisci un link esterno. (es. youtube)"></div>
+                    <div class="col-1">
+                        <button id="btn-add-link" class="btn btn-success" type="button" onclick="addRow(event)">+
+                        </button>
+                    </div>
+                    <div class="col-1">
+                        <button id="btn-remove-link" class="btn btn-danger" type="button" onclick="removeRow(event)">-
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group text-center"><label class="text-monospace">Inserisci il prezzo del gioco</label>
+            </div>
+            <div class="form-group text-center"><input class="form-control" name="prezzo" type="number"
+                                                       placeholder="Inserisci il prezzo del gioco" min="0" step="0.1"
+                                                       required=""></div>
+            <div class="form-group text-center"><label class="text-monospace">Seleziona i tag</label></div>
+            <div class="form-group text-center">
+                <div class="form-row">
+                    <div class="col"><select class="form-control">
+                        <option value="Yaskjdha" selected="">Prova</option>
+                    </select></div>
+                    <div class="col-1">
+                        <button id="btn-add-tag" class="btn btn-success" type="button" onclick="addRow(event)">+
+                        </button>
+                    </div>
+                    <div class="col-1">
+                        <button id="btn-remove-tag" class="btn btn-danger" type="button" onclick="removeRow(event)">-
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox">Accetto
+                    i termini e le condizioni d'uso</label></div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block btn-next" type="submit">Inserisci!</button>
+            </div>
+        </form>
     </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

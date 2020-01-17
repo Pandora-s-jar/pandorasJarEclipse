@@ -18,11 +18,23 @@ public class GeneralHelp extends HttpServlet
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
+		getPage(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
+	{
+		getPage(req, resp);
+	}
+
+	private void getPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	{
 		String to = (String) req.getParameter("emailTo");
 		if(to == null)
 		{
 			to = "pandorasjar2019@gmail.com";
 		}
+		System.out.println(to);
 		User loggedUser = null;
 		if(req.getSession().getAttribute("userId") != null)
 		{
@@ -42,11 +54,4 @@ public class GeneralHelp extends HttpServlet
 		rd = req.getRequestDispatcher("footer.html");
 		rd.include(req, resp);
 	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
-	{
-		//TODO: invio email
-	}
-
 }

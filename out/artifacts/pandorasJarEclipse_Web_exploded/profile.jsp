@@ -45,9 +45,9 @@
             <div class="col-3" id="divProfileMenu">
                 <jsp:include page="profileMenu.html"></jsp:include>
             </div>
-            <div class="col" style="height: 900px;">
+            <div class="col" >
                 <div class="row text-center">
-                    <div class="col-xl-5 text-center" style="height: 350px; width: 540px;">
+                    <div class="col-xl-5 text-center">
                         <div id="photoProfile">
                             <c:if test="${empty user.image}">
                                 <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
@@ -64,7 +64,7 @@
                             </form>
                         </c:if>
                     </div>
-                    <div class="col" style="width: 540px;">
+                    <div class="col">
                         <form class="text-center" id="profileDetails" method="post" action="changeProfileDetails?change=1">
                             <div class="jumbotron" id="tableJumbotron">
                                 <div class="table-responsive text-center" id="divTable">

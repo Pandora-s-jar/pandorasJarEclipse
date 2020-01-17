@@ -1,13 +1,14 @@
 package utility;
 
-import model.Data;
 import model.Game;
+
+import java.util.Date;
 
 public class Acquisto
 {
     private Game game;
-    private Data dataAcquisto;
-    public Acquisto(Game game, Data dataAcquisto)
+    private Date dataAcquisto;
+    public Acquisto(Game game, Date dataAcquisto)
     {
         this.game = game;
         this.dataAcquisto = dataAcquisto;
@@ -17,7 +18,7 @@ public class Acquisto
     {
         return game;
     }
-    public Data getDataAcquisto()
+    public Date getDataAcquisto()
     {
         return dataAcquisto;
     }

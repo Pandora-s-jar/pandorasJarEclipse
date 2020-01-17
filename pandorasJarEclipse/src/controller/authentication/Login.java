@@ -1,5 +1,8 @@
 package controller.authentication;
 
+import model.User;
+//import persistence.DBManager;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -24,6 +27,9 @@ public class Login extends HttpServlet {
             req.getSession().setAttribute("userId", userId);
             resp.addCookie(new Cookie("logged", "true"));
             resp.sendRedirect(req.getHeader("referer"));
+            //TODO: da settare l'utente nella session
+            //User user = DBManager.getInstance().getUser("Simone");
+            //req.getSession().setAttribute("user", user);
         }else{
             //TODO: Forse si può fare con ajax che ricevi un errore, poi controllo
         }

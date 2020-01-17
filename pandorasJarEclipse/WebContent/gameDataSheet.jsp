@@ -56,7 +56,7 @@
         </div>
         <div class="col float-left" style="width: 40%;">
             <div class="float-left">
-                <p style="color: rgb(207,204,204); size: 30px; margin-top: 3%; font-weight: bold"> PREZZO: ${game.price}€</p>
+                <p style="color: rgb(207,204,204); size: 40px; padding-top: 5%; font-weight: bold"> PREZZO: ${game.price}€</p>
             </div>
             <!-- START PAYPAL PAYMENTS-->
             <div class ="float-right" id="paypal-button"></div>
@@ -93,9 +93,12 @@
                     },
                     // Execute the payment
                     onAuthorize: function(data, actions) {
-                        return actions.payment.execute().then(function() {
+                        return actions.payment.execute().then(function()
+                        {
                             // Show a confirmation message to the buyer
-                            window.alert('Thank you for your purchase!');
+                            var alert = window.alert('Pagamento avvenuto con successo!');
+                            //RISOLVERE QUESTA COSA!
+                            window.location.href = "/PaymentSuccess";
                         });
                     }
                 }, '#paypal-button');

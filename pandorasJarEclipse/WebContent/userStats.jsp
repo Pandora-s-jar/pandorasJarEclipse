@@ -17,10 +17,7 @@
 
     </head>
     <body>
-        <header>
-            <jsp:include page="header.jsp"></jsp:include>
-        </header>
-        ${json}
+        <jsp:include page="header.jsp"></jsp:include>
         <div id="row">
             <div id="first_column">
                 <jsp:include page="profileMenu.html"></jsp:include>
@@ -98,8 +95,6 @@
         </script>
 
 
-        <footer>
-            <jsp:include page="footer.html"></jsp:include>
-        </footer>
+        <jsp:include page="footer.html"></jsp:include>
     </body>
 </html>

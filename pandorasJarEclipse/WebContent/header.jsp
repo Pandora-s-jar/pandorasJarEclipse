@@ -75,7 +75,7 @@
                     <div class="form-group"><input class="form-control" id="logPassword" type="password" name="password"
                                                    placeholder="Password"></div>
                     <div class="form-group">
-                        <label id="errorLabel" style="display: none"> Email o password errate! </label>
+                        <label id="errorLabel" style="display: none"> Email o password errate! Riprova </label>
                         <button type="button" class="btn btn-primary btn-block" id="loginBtn">Log In</button>
                     </div>
                     <a class="forgot" href="forgotPassword">Hai dimenticato la tua password?</a>

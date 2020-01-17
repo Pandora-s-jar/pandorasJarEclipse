@@ -54,14 +54,14 @@ public class UserDAO {
 
     public void insertUsert(User user){
         Connection connection = DataSource.getInstance().getConnection();
-        String query = "INSERT INTO public.user values(?,?,?,?,?)";
+        String query = "INSERT INTO public.user (iduser,username,email,password,description) values(default,?,?,?,?)";
         try {
             statement = connection.prepareStatement(query);
             statement.setString(1, user.getUsername());
             statement.setString(2, user.getEmail());
-            statement.setString(3, null);
-            statement.setString(4, user.getPassword());
-            statement.setString(5, null);
+            statement.setString(3, user.getPassword());
+            statement.setString(4, user.getDescription());
+            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

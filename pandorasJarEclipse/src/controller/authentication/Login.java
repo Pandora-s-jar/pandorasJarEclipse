@@ -21,19 +21,25 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if(true){ //TODO: Database query
-            //Back to the same page as before
-            int userId = 5;
+        User user = DAOFactory.getInstance().makeUserDAO().getUserByEmail(req.getParameter("email"));
+        if (user == null){
+            resp.setStatus(301);
+            return;
+        }
+        if (user.getId() == 0 || user.getPassword() == null || user.getUsername() == null || user.getEmail() == null)
+        {
+            resp.setStatus(301);
+            return;
+        }
+
+        if(user.getPassword().equals(req.getParameter("password"))){
             req.getSession().setAttribute("logged",true);
-            req.getSession().setAttribute("userId", userId);
+            req.getSession().setAttribute("userId", user.getId());
             resp.addCookie(new Cookie("logged", "true"));
-            resp.sendRedirect(req.getHeader("referer"));
-            //TODO: da settare l'utente nella session
-            //User user = DBManager.getInstance().getUser("Simone");
-            req.getSession().setAttribute("user", DAOFactory.getInstance().makeUserDAO().getUserFromIdUser(1));
-            //req.getSession().setAttribute("user", user);
+            req.getSession().setAttribute("user", user);
+            resp.setStatus(201);
         }else{
-            //TODO: Forse si può fare con ajax che ricevi un errore, poi controllo
+            resp.setStatus(301);
         }
     }
 }

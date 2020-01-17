@@ -1,7 +1,6 @@
 package controller.profile;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,7 +21,7 @@ public class GeneralProfile extends HttpServlet{
 		User principale = null;
 		if(req.getSession().getAttribute("userId") != null){
 			idUser = (int) req.getSession().getAttribute("userId");
-			principale = DAOFactory.getInstance().makeUserDAO().getUserFromIdUser(idUser);
+			principale = DAOFactory.getInstance().makeUserDAO().getUserByIdUser(idUser);
 			req.setAttribute("canSee", true);
 		}
 		else if(req.getParameter("id") != null)
@@ -42,7 +41,7 @@ public class GeneralProfile extends HttpServlet{
 		else
 		{
 			int idFriend = Integer.parseInt(req.getParameter("id"));
-			User friend = DAOFactory.getInstance().makeUserDAO().getUserFromIdUser(idFriend);
+			User friend = DAOFactory.getInstance().makeUserDAO().getUserByIdUser(idFriend);
 			req.setAttribute("user", friend);
 			req.setAttribute("friend", true);
 		}

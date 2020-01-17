@@ -3,6 +3,7 @@ package persistence;
 import model.User;
 import org.apache.commons.io.IOUtils;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
@@ -11,7 +12,86 @@ import java.util.ArrayList;
 public class UserDAO {
     private PreparedStatement statement;
 
-    public User getUserFromIdUser(int id)
+
+
+    private ArrayList<User> getFriends(Connection connection, User user) throws SQLException{
+        ArrayList<User> friends = new ArrayList<User>();
+        String query = "SELECT u.* FROM public.user as u, public.user_friend as uf WHERE uf.iduser1 = ?::integer and u.iduser = uf.iduser2";
+        statement = connection.prepareStatement(query);
+        statement.setString(1,Integer.toString(user.getId()));
+        ResultSet rs = statement.executeQuery();
+        if(rs.isClosed())
+            return null;
+        while(rs.next())
+        {
+            User u = new User();
+            u.setId(rs.getInt("iduser"));
+            u.setUsername(rs.getString("username"));
+            u.setEmail(rs.getString("email"));
+            u.setDescription(rs.getString("description"));
+            u.setPassword(rs.getString("password"));
+            u.setImage(rs.getBytes("image"));
+            friends.add(u);
+        }
+        return friends;
+    }
+
+    private User createUserWithFriends(Connection connection, ResultSet rs) throws SQLException{
+        User user = new User();
+        while(rs.next()) {
+            user.setId(rs.getInt("iduser"));
+            if (user.getId() == 0) {
+                System.out.println("NULLO");
+                return null;
+            }
+            user.setUsername(rs.getString("username"));
+            user.setEmail(rs.getString("email"));
+            user.setDescription(rs.getString("description"));
+            user.setPassword(rs.getString("password"));
+            user.setImage(rs.getBytes("image"));
+        }
+        user.setFriends(this.getFriends(connection,user));
+        return user;
+    }
+
+    public void insertUsert(User user){
+        Connection connection = DataSource.getInstance().getConnection();
+        String query = "INSERT INTO public.user (iduser,username,email,password,description) values(default,?,?,?,?)";
+        try {
+            statement = connection.prepareStatement(query);
+            statement.setString(1, user.getUsername());
+            statement.setString(2, user.getEmail());
+            statement.setString(3, user.getPassword());
+            statement.setString(4, user.getDescription());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            DataSource.getInstance().closeConnection();
+        }
+    }
+
+    public User getUserByEmail(String email){
+        Connection connection = DataSource.getInstance().getConnection();
+        String query = "SELECT * FROM public.user WHERE email = ?";
+        try {
+            statement = connection.prepareStatement(query);
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.isClosed())
+                return null;
+            User user = this.createUserWithFriends(connection, resultSet);
+            return user;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            DataSource.getInstance().closeConnection();
+        }
+        return new User();
+    }
+
+    public User getUserByIdUser(int id)
     {
         Connection connection = DataSource.getInstance().getConnection();
         String query = "SELECT * FROM public.user WHERE idUser = ?::integer";
@@ -21,36 +101,7 @@ public class UserDAO {
             ResultSet result = statement.executeQuery();
            if(result.isClosed())
                 return null;
-            User user = new User();
-            while(result.next()) {
-                user.setId(id);
-                user.setUsername(result.getString("username"));
-                user.setEmail(result.getString("email"));
-                user.setDescription(result.getString("description"));
-                user.setPassword(result.getString("password"));
-                user.setImage(result.getBytes("image"));
-            }
-            ArrayList<User> friends = new ArrayList<User>();
-            query = "SELECT u.* FROM public.user as u, public.user_friend as uf WHERE uf.iduser1 = ?::integer and u.iduser = uf.iduser2";
-            statement = connection.prepareStatement(query);
-            statement.setString(1,Integer.toString(id));
-            result = statement.executeQuery();
-            if(result.isClosed())
-                return null;
-            while(result.next())
-            {
-                User u = new User();
-                u.setId(result.getInt("iduser"));
-                u.setUsername(result.getString("username"));
-                u.setEmail(result.getString("email"));
-                u.setDescription(result.getString("description"));
-                u.setPassword(result.getString("password"));
-                u.setImage(result.getBytes("image"));
-                friends.add(u);
-            }
-            user.setFriends(friends);
-            return user;
-
+            return this.createUserWithFriends(connection,result);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -60,7 +111,7 @@ public class UserDAO {
         return null;
     }
 
-    public User getUserFromUsernameUser(String username)
+    public User getUserByUsernameUser(String username)
     {
         Connection connection = DataSource.getInstance().getConnection();
         String query = "SELECT * FROM public.user WHERE username = ?";
@@ -70,36 +121,7 @@ public class UserDAO {
             ResultSet result = statement.executeQuery();
             if(result.isClosed())
                 return null;
-            User user = new User();
-            while(result.next()) {
-                user.setId(result.getInt("iduser"));
-                user.setUsername(result.getString("username"));
-                user.setEmail(result.getString("email"));
-                user.setDescription(result.getString("description"));
-                user.setPassword(result.getString("password"));
-                user.setImage(result.getBytes("image"));
-            }
-            ArrayList<User> friends = new ArrayList<User>();
-            query = "SELECT u.* FROM public.user as u, public.user_friend as uf WHERE uf.iduser1 = ?::integer and u.iduser = uf.iduser2";
-            statement = connection.prepareStatement(query);
-            statement.setString(1,Integer.toString(user.getId()));
-            result = statement.executeQuery();
-            if(result.isClosed())
-                return null;
-            while(result.next())
-            {
-                User u = new User();
-                u.setId(result.getInt("iduser"));
-                u.setUsername(result.getString("username"));
-                u.setEmail(result.getString("email"));
-                u.setDescription(result.getString("description"));
-                u.setPassword(result.getString("password"));
-                u.setImage(result.getBytes("image"));
-                friends.add(u);
-            }
-            user.setFriends(friends);
-            return user;
-
+            return this.createUserWithFriends(connection,result);
         } catch (SQLException e) {
             e.printStackTrace();
         }

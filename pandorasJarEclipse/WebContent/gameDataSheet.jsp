@@ -23,16 +23,44 @@
         <div class="col-xl-7" style="width: 60%;">
             <div class="carousel slide" data-ride="carousel" id="carousel-1">
                 <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active"><img class="w-100 d-block float-left" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
-                    <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
-                    <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
+                    <c:set var="index" scope="request" value="${0}"></c:set>
+                    <c:forEach items="${game.previewsIMG}" var="img">
+                        <c:if test="${index == 0}">
+                            <div class="carousel-item size-div-preview active">
+                        </c:if>
+                        <c:if test="${index > 0}">
+                            <div class="carousel-item size-div-preview">
+                        </c:if>
+                                <img class="w-100 d-block float-left size-div-preview" src="${img}">
+                            </div>
+
+                        <c:set var="index" scope="request" value="${index + 1}"></c:set>
+                    </c:forEach>
+
+                    <c:forEach items="${game.previewsVID}" var="video">
+                        <c:if test="${index == 0}">
+                            <div class="carousel-item size-div-preview active">
+                        </c:if>
+                        <c:if test="${index > 0}">
+                            <div class="carousel-item size-div-preview">
+                        </c:if>
+                            <iframe src="${video}" class="size-div-preview" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <c:set var="index" scope="request" value="${index + 1}"></c:set>
+                    </c:forEach>
+
                 </div>
                 <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button"
                         data-slide="next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-1" data-slide-to="1"></li>
-                    <li data-target="#carousel-1" data-slide-to="2"></li>
+                    <c:forEach items="${totalSize}" var="i">
+                        <c:if test="${i == 0}">
+                            <li data-target="#carousel-1" data-slide-to="${i}" class="active"></li>
+                        </c:if>
+                        <c:if test="${i > 0}">
+                            <li data-target="#carousel-1" data-slide-to="${i}"></li>
+                        </c:if>
+                    </c:forEach>
                 </ol>
             </div>
         </div>

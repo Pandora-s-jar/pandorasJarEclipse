@@ -21,15 +21,19 @@ public class GameDataSheet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int gameId = Integer.parseInt(req.getParameter("gameId"));
         DAOFactory factory = DAOFactory.getInstance();
-        Game game = factory.makeGameDAO().getGameFromId(gameId);
-        String usernameDeveloper = factory.makeUserDAO().getUserFromIdUser(game.getIdDeveloper()).getUsername();
+        Game game = factory.makeGameDAO().getGameFromIdWithPreviews(gameId);
+        String usernameDeveloper = "ciao";//factory.makeUserDAO().getUserFromIdUser(game.getIdDeveloper()).getUsername();
         ArrayList<Review> reviews = factory.makeReviewDAO().getReviewsFromIdGame(gameId);
         ArrayList<Score> scores = factory.makeScoreDAO().getScoresFromIdGame(gameId);
         sortScores(scores);
         if(scores.size() >= 10)
             scores = (ArrayList<Score>) scores.subList(0,9);
 
+        ArrayList<Integer> totalSize = new ArrayList<Integer>();
+        for(int i = 0; i < game.getPreviewsVID().size()+game.getPreviewsIMG().size();i++)
+            totalSize.add(i);
         req.setAttribute("game", game);
+        req.setAttribute("totalSize", totalSize);
         req.setAttribute("developer", usernameDeveloper);
         req.setAttribute("reviews", reviews);
         req.setAttribute("ranking", scores);

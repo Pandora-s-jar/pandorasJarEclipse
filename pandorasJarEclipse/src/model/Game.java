@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -13,7 +14,48 @@ public class Game {
     private String payment;
     private String description;
     private Date release;
-    public Game() {}
+    private String frontImage;
+    private ArrayList<String> previewsIMG;
+    private ArrayList<String> previewsVID;
+
+    public Game() {
+        previewsIMG = new ArrayList<String>();
+        previewsVID = new ArrayList<String>();
+    }
+
+    public String getFrontImage() {
+        return frontImage;
+    }
+
+    public void setFrontImage(String frontImage) {
+        this.frontImage = frontImage;
+    }
+
+    public void addPreviewIMG(String s)
+    {
+        this.previewsIMG.add(s);
+    }
+
+    public void addPreviewVID(String s)
+    {
+        this.previewsVID.add(s);
+    }
+
+    public ArrayList<String> getPreviewsIMG() {
+        return previewsIMG;
+    }
+
+    public void setPreviewsIMG(ArrayList<String> previewsIMG) {
+        this.previewsIMG = previewsIMG;
+    }
+
+    public ArrayList<String> getPreviewsVID() {
+        return previewsVID;
+    }
+
+    public void setPreviewsVID(ArrayList<String> previewsVID) {
+        this.previewsVID = previewsVID;
+    }
 
     public int getIdDeveloper() {
         return idDeveloper;

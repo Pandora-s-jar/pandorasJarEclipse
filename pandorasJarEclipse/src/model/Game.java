@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -13,7 +14,42 @@ public class Game {
     private String payment;
     private String description;
     private Date release;
+    private ArrayList<Review> reviews;
+
+    public ArrayList<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(ArrayList<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public Game(int id, String name, int idDeveloper, String category, String helpEmail, double price, String payment, String description, Date release, ArrayList<Review> reviews) {
+        this.id = id;
+        this.name = name;
+        this.idDeveloper = idDeveloper;
+        this.category = category;
+        this.helpEmail = helpEmail;
+        this.price = price;
+        this.payment = payment;
+        this.description = description;
+        this.release = release;
+        this.reviews = reviews;
+    }
+
     public Game() {}
+
+    public Game(int id, String name, int idDeveloper, String category, String helpEmail, double price, String payment, String description, Date release) {
+        this.id = id;
+        this.name = name;
+        this.idDeveloper = idDeveloper;
+        this.category = category;
+        this.helpEmail = helpEmail;
+        this.price = price;
+        this.payment = payment;
+        this.description = description;
+        this.release = release;
+    }
 
     public int getIdDeveloper() {
         return idDeveloper;

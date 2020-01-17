@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 
 @WebServlet(value = "/getGameDetails", name = "getGameDetails")
 public class GetGameDetails extends HttpServlet {
@@ -21,11 +22,13 @@ public class GetGameDetails extends HttpServlet {
         User user = (User) req.getSession().getAttribute("user");
         Game game = null;
         for(Game g : user.getLibrary()){
+            this.log(g.getName());
             if(g.getName().equals(name)){
                 game = g;
                 break;
             }
         }
+        this.log(String.valueOf(game.getReviews()));
         Gson gson = new Gson();
         String response = gson.toJson(game);
         PrintWriter printWriter = resp.getWriter();

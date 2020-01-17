@@ -1,5 +1,6 @@
 package persistence;
 
+import model.Game;
 import model.User;
 import org.apache.commons.io.IOUtils;
 
@@ -11,6 +12,21 @@ import java.util.ArrayList;
 
 public class UserDAO {
     private PreparedStatement statement;
+
+    private ArrayList<Game> getGames(Connection connection, User user) throws SQLException{
+        ArrayList<Game> games = new ArrayList<>();
+        String query = "SELECT g.* FROM public.libreria as l, public.game as g WHERE l.idgame = g.idgame AND l.iduser = ?";
+        statement = connection.prepareStatement(query);
+        statement.setInt(1, user.getId());
+        ResultSet rs = statement.executeQuery();
+        while (rs.next()){
+            Game g = new Game(rs.getInt("idgame"), rs.getString("name"), rs.getInt("developer"),
+                    rs.getString("category"), rs.getString("helpemail"), rs.getDouble("price"),
+                    rs.getString("paymentscoord"), rs.getString("description"), rs.getDate("release"), DAOFactory.getInstance().makeReviewDAO().getReviewsFromIdGame(rs.getInt("idgame")));
+            games.add(g);
+        }
+        return games;
+    }
 
     private ArrayList<User> getFriends(Connection connection, User user) throws SQLException{
         ArrayList<User> friends = new ArrayList<User>();
@@ -38,8 +54,8 @@ public class UserDAO {
         User user = new User();
         while(rs.next()) {
             user.setId(rs.getInt("iduser"));
+            System.out.println(user.getId());
             if (user.getId() == 0) {
-                System.out.println("NULLO");
                 return null;
             }
             user.setUsername(rs.getString("username"));
@@ -49,6 +65,7 @@ public class UserDAO {
             user.setImage(rs.getBytes("image"));
         }
         user.setFriends(this.getFriends(connection,user));
+        user.setLibrary(this.getGames(connection, user));
         return user;
     }
 
@@ -89,6 +106,7 @@ public class UserDAO {
     public User getUserByEmail(String email){
         Connection connection = DataSource.getInstance().getConnection();
         String query = "SELECT * FROM public.user WHERE email = ?";
+        System.out.println(email);
         try {
             statement = connection.prepareStatement(query);
             statement.setString(1, email);

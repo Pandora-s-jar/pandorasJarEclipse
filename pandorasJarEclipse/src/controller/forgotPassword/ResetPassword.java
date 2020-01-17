@@ -1,5 +1,8 @@
 package controller.forgotPassword;
 
+import model.User;
+import persistence.DAOFactory;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,7 +25,10 @@ public class ResetPassword extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //TODO: database update
+        String email = (String) req.getSession().getAttribute("email");
+        String newPassword = req.getParameter("password");
+        User user = DAOFactory.getInstance().makeUserDAO().getUserByEmail(email);
+        DAOFactory.getInstance().makeUserDAO().changePassword(user, newPassword);
         resp.sendRedirect("/");
     }
 }

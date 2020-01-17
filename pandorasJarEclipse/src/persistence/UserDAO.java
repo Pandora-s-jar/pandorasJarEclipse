@@ -52,7 +52,7 @@ public class UserDAO {
         return user;
     }
 
-    public void insertUsert(User user){
+    public void insertUser(User user){
         Connection connection = DataSource.getInstance().getConnection();
         String query = "INSERT INTO public.user (iduser,username,email,password,description) values(default,?,?,?,?)";
         try {
@@ -61,6 +61,22 @@ public class UserDAO {
             statement.setString(2, user.getEmail());
             statement.setString(3, user.getPassword());
             statement.setString(4, user.getDescription());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            DataSource.getInstance().closeConnection();
+        }
+    }
+
+    public void changePassword(User user, String newPassword){
+        Connection connection = DataSource.getInstance().getConnection();
+        String query = "UPDATE public.user SET password=? WHERE iduser=?";
+        try {
+            statement = connection.prepareStatement(query);
+            statement.setString(1, newPassword);
+            statement.setInt(2, user.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

@@ -1,5 +1,8 @@
 package controller.forgotPassword;
 
+import model.User;
+import persistence.DAOFactory;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +13,11 @@ import java.io.IOException;
 
 @WebServlet(value = "/forgotPassword", name = "forgotPassword")
 public class ForgotPassword extends HttpServlet {
+
+    private boolean checkEmail(String email){
+        User user = DAOFactory.getInstance().makeUserDAO().getUserByEmail(email);
+        return user.getEmail() == null;
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,9 +31,15 @@ public class ForgotPassword extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().setAttribute("nextPage", "/resetPassword");
-        req.getSession().setAttribute("previousPage", "/forgotPassword");
-        req.getSession().setAttribute("email", req.getParameter("email"));
-        req.getRequestDispatcher("/sendCode").forward(req, resp);
+        String email = req.getParameter("email");
+        if(!checkEmail(email)){
+            req.getSession().setAttribute("nextPage", "/resetPassword");
+            req.getSession().setAttribute("previousPage", "/forgotPassword");
+            req.getSession().setAttribute("email", email);
+            resp.sendRedirect("/sendCode");
+        }
+        else{
+            resp.sendRedirect("/forgotPassword?emailNotExists=true");
+        }
     }
 }

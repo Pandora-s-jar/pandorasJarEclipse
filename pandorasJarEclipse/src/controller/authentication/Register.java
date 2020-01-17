@@ -1,6 +1,8 @@
 package controller.authentication;
 
 import com.google.gson.Gson;
+import model.User;
+import persistence.DAOFactory;
 import utility.CaptchaResponse;
 
 import javax.servlet.RequestDispatcher;
@@ -9,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -44,6 +47,11 @@ public class Register extends HttpServlet {
         return captchaResponse.isSuccess();
     }
 
+    private boolean checkUniqueEmail(HttpServletRequest req){
+        User user = DAOFactory.getInstance().makeUserDAO().getUserByEmail(req.getParameter("email"));
+        return user.getEmail() == null;
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("header.jsp");
@@ -60,9 +68,18 @@ public class Register extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if(checkCaptcha(req, resp)){
-            req.getSession().setAttribute("nextPage", "/register/insertDatabase");
-            req.getSession().setAttribute("previousPage", "/register");
-            req.getRequestDispatcher("/sendCode").forward(req, resp);
+            if(checkUniqueEmail(req)){
+                HttpSession session = req.getSession();
+                session.setAttribute("nextPage", "/register/insertDatabase");
+                session.setAttribute("previousPage", "/register");
+                session.setAttribute("email", req.getParameter("email"));
+                session.setAttribute("username", req.getParameter("username"));
+                session.setAttribute("password", req.getParameter("password"));
+                resp.sendRedirect("/sendCode");
+            }
+            else{
+                resp.sendRedirect("/register?emailAlreadyExists=true"); //SI SCRIVE COSI?
+            }
         }
         else{
             int cont = (int) req.getSession().getAttribute("attempts");
@@ -75,7 +92,6 @@ public class Register extends HttpServlet {
                 resp.sendRedirect("/register?captcha=false");
             }
         }
-        //TODO: check unique email
     }
 
 }

@@ -52,6 +52,24 @@ public class UserDAO {
         return user;
     }
 
+    public void insertUsert(User user){
+        Connection connection = DataSource.getInstance().getConnection();
+        String query = "INSERT INTO public.user values(?,?,?,?,?)";
+        try {
+            statement = connection.prepareStatement(query);
+            statement.setString(1, user.getUsername());
+            statement.setString(2, user.getEmail());
+            statement.setString(3, null);
+            statement.setString(4, user.getPassword());
+            statement.setString(5, null);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            DataSource.getInstance().closeConnection();
+        }
+    }
+
     public User getUserByEmail(String email){
         Connection connection = DataSource.getInstance().getConnection();
         String query = "SELECT * FROM public.user WHERE email = ?";

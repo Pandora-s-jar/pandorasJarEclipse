@@ -36,8 +36,8 @@ public class Login extends HttpServlet {
             req.getSession().setAttribute("logged",true);
             req.getSession().setAttribute("userId", user.getId());
             resp.addCookie(new Cookie("logged", "true"));
-            resp.sendRedirect(req.getHeader("referer"));
             req.getSession().setAttribute("user", user);
+            resp.setStatus(201);
         }else{
             resp.setStatus(301);
         }

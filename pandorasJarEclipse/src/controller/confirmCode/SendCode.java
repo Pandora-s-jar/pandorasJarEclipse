@@ -24,26 +24,21 @@ public class SendCode extends HttpServlet {
         return builder.toString();
     }
 
-    private void sendEmail(HttpSession session, HttpServletResponse resp, String emailTo) throws IOException {
+    private void sendEmail(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String secretCode = this.generateCode();
         this.log(secretCode); //TODO: delete
-        session.setAttribute("secretCode", secretCode);
-        //new Thread(new CodeSender(secretCode, emailTo)).start();
+        req.getSession().setAttribute("secretCode", secretCode);
+        //new Thread(new CodeSender(secretCode, (String) req.getSession().getAttribute("email"))).start();
         resp.sendRedirect("/controlCode");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String email = (String) req.getSession().getAttribute("email");
-        sendEmail(req.getSession(), resp, email);
-        resp.setStatus(201);
+        doPost(req,resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        String email = req.getParameter("email");
-        session.setAttribute("email", email);
-        sendEmail(session, resp, email);
+        sendEmail(req, resp);
     }
 }

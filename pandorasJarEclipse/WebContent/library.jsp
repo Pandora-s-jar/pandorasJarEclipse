@@ -12,7 +12,7 @@
         <div class="col-2">
             <jsp:include page="libraryList.jsp"></jsp:include>
         </div>
-        <div class="col-10">
+        <div id="gameDetails" class="col-10">
             <jsp:include page="libraryGamePage.html"></jsp:include>
         </div>
     </div>

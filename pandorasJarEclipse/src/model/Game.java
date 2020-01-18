@@ -15,6 +15,18 @@ public class Game {
     private Date release;
     public Game() {}
 
+    public Game(int id, String name, int idDeveloper, String category, String helpEmail, double price, String payment, String description, Date release) {
+        this.id = id;
+        this.name = name;
+        this.idDeveloper = idDeveloper;
+        this.category = category;
+        this.helpEmail = helpEmail;
+        this.price = price;
+        this.payment = payment;
+        this.description = description;
+        this.release = release;
+    }
+
     public int getIdDeveloper() {
         return idDeveloper;
     }

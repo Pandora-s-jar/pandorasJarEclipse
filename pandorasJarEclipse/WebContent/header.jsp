@@ -21,7 +21,7 @@
     <nav class="navbar navbar-expand-sm bg-info navbar-dark">
         <ul class="navbar-nav nav-fill w-100">
             <li class="navbar-brand">
-                <a class="nav-link" href="home.html">
+                <a class="nav-link" href="/">
                     <figure>
                         <img alt="Logo" src="Assets/logo.png" width="100%" height="100%">
                     </figure>

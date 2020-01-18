@@ -6,21 +6,39 @@ import java.util.Date;
 
 public class Acquisto
 {
-    private Game game;
-    private Date dataAcquisto;
-    public Acquisto(Game game, Date dataAcquisto)
-    {
-        this.game = game;
-        this.dataAcquisto = dataAcquisto;
+    private int idGame;
+    private int idUser;
+    private double price;
+
+    public Acquisto(int idGame, int idUser, double price) {
+        this.idGame = idGame;
+        this.idUser = idUser;
+        this.price = price;
     }
 
-    public Game getGame()
-    {
-        return game;
+    public int getIdGame() {
+        return idGame;
     }
-    public Date getDataAcquisto()
-    {
-        return dataAcquisto;
+
+    public void setIdGame(int idGame) {
+        this.idGame = idGame;
     }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
 }
 

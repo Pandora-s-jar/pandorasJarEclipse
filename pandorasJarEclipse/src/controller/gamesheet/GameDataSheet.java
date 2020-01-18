@@ -12,8 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 
 @WebServlet(value="/GameDataSheet")
 public class GameDataSheet extends HttpServlet {
@@ -22,9 +27,13 @@ public class GameDataSheet extends HttpServlet {
         int gameId = Integer.parseInt(req.getParameter("gameId"));
         DAOFactory factory = DAOFactory.getInstance();
         Game game = factory.makeGameDAO().getGameFromIdWithPreviews(gameId);
-        String usernameDeveloper = "ciao";//factory.makeUserDAO().getUserFromIdUser(game.getIdDeveloper()).getUsername();
+        String usernameDeveloper = factory.makeUserDAO().getUserFromIdUser(game.getIdDeveloper()).getUsername();
         ArrayList<Review> reviews = factory.makeReviewDAO().getReviewsFromIdGame(gameId);
         ArrayList<Score> scores = factory.makeScoreDAO().getScoresFromIdGame(gameId);
+        if(req.getSession().getAttribute("userId") != null) {
+            //boolean canBuy = factory.makeLibraryDAO().isGamePurchased(gameId, req.getSession().getAttribute("userId"));
+            req.setAttribute("canBuy", true);
+        }
         sortScores(scores);
         if(scores.size() >= 10)
             scores = (ArrayList<Score>) scores.subList(0,9);

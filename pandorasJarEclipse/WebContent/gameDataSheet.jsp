@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="scripts/gameDataSheetScript.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/gameDataSheet.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
@@ -86,53 +87,58 @@
             <div class="float-left">
                 <p style="color: rgb(207,204,204); size: 40px; padding-top: 5%; font-weight: bold"> PREZZO: ${game.price}€</p>
             </div>
-            <!-- START PAYPAL PAYMENTS-->
-            <div class ="float-right" id="paypal-button"></div>
-            <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-            <script>
-                paypal.Button.render({
-                    // Configure environment
-                    env: 'sandbox',
-                    client: {
-                        sandbox: 'AYhJSV3hNi-glHZ2JbxjUXQrRf38UglWWi_HqB83rql0-0yZL_LeR1wr61bHRHsYXLwUArT6yFGadowe',
-                        production: 'demo_production_client_id'
-                    },
-                    // Customize button (optional)
-                    locale: 'it_IT',
-                    style: {
-                        size: 'large',
-                        color: 'gold',
-                        shape: 'pill',
-                    },
+            <c:if test="${canBuy}">
+                <!-- START PAYPAL PAYMENTS-->
+                <div class ="float-right" id="paypal-button"></div>
+                <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+                <script>
+                    paypal.Button.render({
+                        // Configure environment
+                        env: 'sandbox',
+                        client: {
+                            sandbox: 'AYhJSV3hNi-glHZ2JbxjUXQrRf38UglWWi_HqB83rql0-0yZL_LeR1wr61bHRHsYXLwUArT6yFGadowe',
+                            production: 'demo_production_client_id'
+                        },
+                        // Customize button (optional)
+                        locale: 'it_IT',
+                        style: {
+                            size: 'large',
+                            color: 'gold',
+                            shape: 'pill',
+                        },
 
-                    // Enable Pay Now checkout flow (optional)
-                    commit: true,
+                        // Enable Pay Now checkout flow (optional)
+                        commit: true,
 
-                    // Set up a payment
-                    payment: function(data, actions) {
-                        return actions.payment.create({
-                            transactions: [{
-                                amount: {
-                                    total: '${game.price}',
-                                    currency: 'EUR'
-                                }
-                            }]
-                        });
-                    },
-                    // Execute the payment
-                    onAuthorize: function(data, actions) {
-                        return actions.payment.execute().then(function()
-                        {
-                            // Show a confirmation message to the buyer
-                            var alert = window.alert('Pagamento avvenuto con successo!');
-                            //RISOLVERE QUESTA COSA!
-                            window.location.href = "/PaymentSuccess";
-                        });
-                    }
-                }, '#paypal-button');
+                        // Set up a payment
+                        payment: function(data, actions) {
+                            return actions.payment.create({
+                                transactions: [{
+                                    amount: {
+                                        total: '${game.price}',
+                                        currency: 'EUR'
+                                    }
+                                }]
+                            });
+                        },
+                        // Execute the payment
+                        onAuthorize: function(data, actions) {
+                            return actions.payment.execute().then(function()
+                            {
+                                // Show a confirmation message to the buyer
+                                var alert = window.alert('Pagamento avvenuto con successo!');
+                                //RISOLVERE QUESTA COSA!
+                                $.post("/PaymentSuccess",
+                                    {
+                                        data:JSON.stringify({idUser: ${userId}, idGame: ${game.id}, price: ${game.price}})
+                                    });
+                            });
+                        }
+                    }, '#paypal-button');
 
-            </script>
-            <!-- END PAYPAL PAYMENTS-->
+                </script>
+                <!-- END PAYPAL PAYMENTS-->
+            </c:if>
         </div>
     </div>
     <div class="row" style="margin-right: 5%;margin-left: 5%;margin-top: 1%;">

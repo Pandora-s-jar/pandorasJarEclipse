@@ -2,9 +2,11 @@ package persistence;
 
 import model.Game;
 import model.SoldGames;
+import utility.Acquisto;
 import utility.Pair;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -140,4 +142,38 @@ public class PurchaseDAO {
         return null;
     }
 
+    public void insertNewPurchase(Acquisto acquisto) {
+        Connection connection = DataSource.getInstance().getConnection();
+        int nextId = getPurchaseNextId(connection);
+        String query = "INSERT INTO public.purchase values(?,?,?,?)";
+        try {
+            Date date = new Date(100);
+            statement = connection.prepareStatement(query);
+            statement.setInt(1,nextId);
+            statement.setDate(2, new java.sql.Date(System.currentTimeMillis()));
+            statement.setInt(3,acquisto.getIdUser());
+            statement.setInt(4,acquisto.getIdGame());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally{
+            DataSource.getInstance().closeConnection();
+        }
+    }
+
+    private int getPurchaseNextId(Connection conn)
+    {
+        String query = "SELECT nextval('purchase_sequence') AS id";
+        PreparedStatement stmt = null;
+        try {
+            stmt = conn.prepareStatement(query);
+            ResultSet set = stmt.executeQuery();
+            set.next();
+            return set.getInt("id");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

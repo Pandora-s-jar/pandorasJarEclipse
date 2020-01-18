@@ -51,7 +51,7 @@
 
     <h2 style="padding-left: 3%;color: rgb(255,165,0);">Shooter</h2>
     <div class="container-fluid category-games-container-fluid-size">
-        <div id="multi-item-shooter" class="carousel slide carousel-multi-item" data-ride="carousel">
+        <div id="multi-item-shooter" class="carousel slide carousel-multi-item category-games-multi-item-size" data-ride="carousel">
 
             <div class="controls-top bs">
                 <a class="btn-floating" href="#multi-item-shooter" data-slide="prev"><i class="fa fa-chevron-left color-arrow"></i></a>
@@ -96,58 +96,10 @@
         </div>
     </div>
 
-    <!--
-    <h2 style="padding-left: 3%;color: rgb(255,165,0);">Arcade</h2>
-    <div class="container-fluid">
-        <div id="multi-item-arcade" class="carousel slide carousel-multi-item" data-ride="carousel">
-
-            <div class="controls-top bs">
-                <a class="btn-floating" href="#multi-item-arcade" data-slide="prev"><i class="fa fa-chevron-left color-arrow"></i></a>
-                <a class="btn-floating" href="#multi-item-arcade" data-slide="next"><i class="fa fa-chevron-right color-arrow"></i></a>
-            </div>
-
-            <ol class="carousel-indicators">
-                <c:forEach items="${lengthGamesDiv6Arcade}" var="indexGame">
-                    <c:if test="${indexGame == 0}">
-                        <li data-target="#multi-item-arcade" data-slide-to="${indexGame}" class="active"></li>
-                    </c:if>
-                    <c:if test="${indexGame != 0}">
-                        <li data-target="#multi-item-arcade" data-slide-to="${indexGame}"></li>
-                    </c:if>
-                </c:forEach>
-            </ol>
-
-            <c:set var="index" scope="request" value="${0}"></c:set>
-            <c:set var="active" scope="request" value="active"></c:set>
-            <div class="carousel-inner" role="listbox">
-                <c:forEach items="${arcadeGames}" var="game">
-                <c:if test="${index > 5}">
-                    <c:set var="active" scope="request" value=""></c:set>
-                </c:if>
-                <c:if test="${index%6 == 0}">
-                <c:if test="${index > 0}">
-            </div>
-        </div>
-        </c:if>
-        <div class="carousel-item ${active}">
-            <div class="row">
-                </c:if>
-                <div class="col-md-2 clearfix d-none d-md-block image-game-div" >
-                    <a href="/GameDataSheet?gameId=${game.id}"><img class="card-img-top image-game" src="${game.frontImage}"></a>
-                </div>
-                <c:set var="index" scope="request" value="${index + 1}"></c:set>
-
-                </c:forEach>
-            </div>
-        </div>
-    </div>
-
-    </div>
-    </div>
 
     <h2 style="padding-left: 3%;color: rgb(255,165,0);">Arcade</h2>
     <div class="container-fluid">
-        <div id="multi-item-arcade" class="carousel slide carousel-multi-item" data-ride="carousel">
+        <div id="multi-item-arcade" class="carousel slide carousel-multi-item category-games-multi-item-size" data-ride="carousel">
 
             <div class="controls-top bs">
                 <a class="btn-floating" href="#multi-item-arcade" data-slide="prev"><i class="fa fa-chevron-left color-arrow"></i></a>
@@ -190,7 +142,101 @@
         </div>
     </div>
     </div>
-    </div>-->
+    </div>
+
+    <h2 style="padding-left: 3%;color: rgb(255,165,0);">Azione</h2>
+    <div class="container-fluid">
+        <div id="multi-item-azione" class="carousel slide carousel-multi-item category-games-multi-item-size" data-ride="carousel">
+
+            <div class="controls-top bs">
+                <a class="btn-floating" href="#multi-item-arcade" data-slide="prev"><i class="fa fa-chevron-left color-arrow"></i></a>
+                <a class="btn-floating" href="#multi-item-arcade" data-slide="next"><i class="fa fa-chevron-right color-arrow"></i></a>
+            </div>
+
+            <ol class="carousel-indicators">
+                <c:forEach items="${lengthGamesDiv6Azione}" var="indexGame">
+                    <c:if test="${indexGame == 0}">
+                        <li data-target="#multi-item-arcade" data-slide-to="${indexGame}" class="active"></li>
+                    </c:if>
+                    <c:if test="${indexGame != 0}">
+                        <li data-target="#multi-item-arcade" data-slide-to="${indexGame}"></li>
+                    </c:if>
+                </c:forEach>
+            </ol>
+
+            <c:set var="index" scope="request" value="${0}"></c:set>
+            <c:set var="active" scope="request" value="active"></c:set>
+            <div class="carousel-inner" role="listbox">
+                <c:forEach items="${azioneGames}" var="game">
+                <c:if test="${index > 5}">
+                    <c:set var="active" scope="request" value=""></c:set>
+                </c:if>
+                <c:if test="${index%6 == 0}">
+                <c:if test="${index > 0}">
+            </div>
+        </div>
+        </c:if>
+        <div class="carousel-item ${active}">
+            <div class="row">
+                </c:if>
+                <div class="col-md-2 clearfix d-none d-md-block image-game-div" >
+                    <a href="/GameDataSheet?gameId=${game.id}"><img class="card-img-top image-game" src="${game.frontImage}"></a>
+                </div>
+                <c:set var="index" scope="request" value="${index + 1}"></c:set>
+
+                </c:forEach>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <h2 style="padding-left: 3%;color: rgb(255,165,0);">Avventura</h2>
+    <div class="container-fluid">
+        <div id="multi-item-avventura" class="carousel slide carousel-multi-item category-games-multi-item-size" data-ride="carousel">
+
+            <div class="controls-top bs">
+                <a class="btn-floating" href="#multi-item-arcade" data-slide="prev"><i class="fa fa-chevron-left color-arrow"></i></a>
+                <a class="btn-floating" href="#multi-item-arcade" data-slide="next"><i class="fa fa-chevron-right color-arrow"></i></a>
+            </div>
+
+            <ol class="carousel-indicators">
+                <c:forEach items="${lengthGamesDiv6Avventura}" var="indexGame">
+                    <c:if test="${indexGame == 0}">
+                        <li data-target="#multi-item-arcade" data-slide-to="${indexGame}" class="active"></li>
+                    </c:if>
+                    <c:if test="${indexGame != 0}">
+                        <li data-target="#multi-item-arcade" data-slide-to="${indexGame}"></li>
+                    </c:if>
+                </c:forEach>
+            </ol>
+
+            <c:set var="index" scope="request" value="${0}"></c:set>
+            <c:set var="active" scope="request" value="active"></c:set>
+            <div class="carousel-inner" role="listbox">
+                <c:forEach items="${avventuraGames}" var="game">
+                <c:if test="${index > 5}">
+                    <c:set var="active" scope="request" value=""></c:set>
+                </c:if>
+                <c:if test="${index%6 == 0}">
+                <c:if test="${index > 0}">
+            </div>
+        </div>
+        </c:if>
+        <div class="carousel-item ${active}">
+            <div class="row">
+                </c:if>
+                <div class="col-md-2 clearfix d-none d-md-block image-game-div" >
+                    <a href="/GameDataSheet?gameId=${game.id}"><img class="card-img-top image-game" src="${game.frontImage}"></a>
+                </div>
+                <c:set var="index" scope="request" value="${index + 1}"></c:set>
+
+                </c:forEach>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
 
     <jsp:include page="footer.html" />
 </body>

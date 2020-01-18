@@ -22,7 +22,9 @@ public class Homepage extends HttpServlet {
         req.setAttribute("secondGameBestSellers", bestSellers.get(1));
         req.setAttribute("thirdGameBestSellers", bestSellers.get(2));
         setGamesCategory("shooter", req);
-        //setGamesCategory("arcade", req);
+        setGamesCategory("arcade", req);
+        setGamesCategory("azione", req);
+        setGamesCategory("avventura", req);
         RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
         rd.forward(req, resp);
     }

@@ -17,6 +17,10 @@ import java.util.TreeMap;
 public class Homepage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ArrayList<Game> bestSellers = DAOFactory.getInstance().makePurchaseDAO().getBestThreeSoldGames();
+        req.setAttribute("firstGameBestSellers", bestSellers.get(0));
+        req.setAttribute("secondGameBestSellers", bestSellers.get(1));
+        req.setAttribute("thirdGameBestSellers", bestSellers.get(2));
         setGamesCategory("shooter", req);
         //setGamesCategory("arcade", req);
         RequestDispatcher rd = req.getRequestDispatcher("index.jsp");

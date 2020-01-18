@@ -20,7 +20,7 @@ public class DevStats extends HttpServlet
     {
         int idUser = 1;
 
-        SoldGames tempSG = DAOFactory.getInstance().makeSoldGamesDAO().getSoldGamesFromIdUser(idUser);
+        SoldGames tempSG = DAOFactory.getInstance().makePurchaseDAO().getSoldGamesFromIdUser(idUser);
         TreeMap<Integer, Integer> soldGPerYear = tempSG.getSoldGPerYear();
         TreeMap<Integer, Double> earnedMoneyPerYear = tempSG.getEarnedMoneyPerYear();
         int totalSoldGames = 0;

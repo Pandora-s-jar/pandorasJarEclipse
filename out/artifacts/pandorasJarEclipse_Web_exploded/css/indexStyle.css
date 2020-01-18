@@ -1,0 +1,35 @@
+.image-game{
+    width: 100%;
+    height: 100%;
+}
+.color-arrow{
+    color:rgb(255,165,0);
+}
+
+.bestSellers-size-img{
+    width: 20%;
+    height: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.bestSellers-size-item{
+    width: 100%;
+    height: 100%;
+}
+
+.bestSellers-size-slide{
+    height: 434px;
+}
+
+.bestSellers-size-inner{
+    height: 100%;
+}
+
+.category-games-container-fluid-size{
+    height: 350px;
+}
+
+.category-games-inner-size{
+    height: 93%;
+}

@@ -80,7 +80,7 @@
     </div>
     <div class="row" style="margin-left: 5%;margin-right: 5%;margin-top: 1%;">
         <div class="col-xl-7" style="width: 60%;">
-            <p class="d-inline" style="font-size: 20px;color: rgb(207,204,204);">Questo gioco appartiene alla categoria :&nbsp;</p><a href="/?category=${game.category}" style="font-size: 20px;">${game.category}</a>
+            <p class="d-inline" style="font-size: 20px;color: rgb(207,204,204);">Questo gioco appartiene alla categoria :&nbsp;</p><!--<a href="/?category=${game.category}" style="font-size: 20px;">-->${game.category}<!--</a>-->
         </div>
         <div class="col float-left" style="width: 40%;">
             <div class="float-left">

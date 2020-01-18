@@ -20,10 +20,37 @@
 <body style="background-color: #284c67;">
     <jsp:include page="header.jsp" />
     <h1 class="text-center" style="color: rgb(255,165,0);">Giochi best sellers</h1>
-
+    <div class="carousel slide bestSellers-size-slide" data-ride="carousel" id="carousel-1">
+        <div class="carousel-inner bestSellers-size-inner" role="listbox">
+            <div class="carousel-item bestSellers-size-item active">
+                <a href="/GameDataSheet?gameId=${firstGameBestSellers.id}"><img class="d-block bestSellers-size-img" src="${firstGameBestSellers.frontImage}"></a>
+            </div>
+            <div class="carousel-item bestSellers-size-item">
+                <a href="/GameDataSheet?gameId=${secondGameBestSellers.id}"><img class="d-block bestSellers-size-img " src="${secondGameBestSellers.frontImage}"></a>
+            </div>
+            <div class="carousel-item bestSellers-size-item">
+                <a href="/GameDataSheet?gameId=${thirdGameBestSellers.id}"><img class="d-block bestSellers-size-img " src="${thirdGameBestSellers.frontImage}"></a>
+            </div>
+            <div>
+                <a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-1" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-1" data-slide-to="1"></li>
+                <li data-target="#carousel-1" data-slide-to="2"></li>
+            </ol>
+        </div>
+    </div>
 
     <h2 style="padding-left: 3%;color: rgb(255,165,0);">Shooter</h2>
-    <div class="container-fluid">
+    <div class="container-fluid category-games-container-fluid-size">
         <div id="multi-item-shooter" class="carousel slide carousel-multi-item" data-ride="carousel">
 
             <div class="controls-top bs">
@@ -44,7 +71,7 @@
 
             <c:set var="index" scope="request" value="${0}"></c:set>
             <c:set var="active" scope="request" value="active"></c:set>
-            <div class="carousel-inner" role="listbox">
+            <div class="carousel-inner category-games-inner-size" role="listbox">
                 <c:forEach items="${shooterGames}" var="game">
                     <c:if test="${index > 5}">
                         <c:set var="active" scope="request" value=""></c:set>
@@ -60,7 +87,7 @@
                     <div class="col-md-2 clearfix d-none d-md-block image-game-div" >
                         <a href="/GameDataSheet?gameId=${game.id}"><img class="card-img-top image-game" src="${game.frontImage}"></a>
                     </div>
-                    <c:set var="indexShooter" scope="request" value="${indexShooter + 1}"></c:set>
+                    <c:set var="index" scope="request" value="${index + 1}"></c:set>
 
                 </c:forEach>
                 </div> <!-- row -->
@@ -69,6 +96,7 @@
         </div>
     </div>
 
+    <!--
     <h2 style="padding-left: 3%;color: rgb(255,165,0);">Arcade</h2>
     <div class="container-fluid">
         <div id="multi-item-arcade" class="carousel slide carousel-multi-item" data-ride="carousel">
@@ -98,8 +126,8 @@
                 </c:if>
                 <c:if test="${index%6 == 0}">
                 <c:if test="${index > 0}">
-            </div> <!-- row -->
-        </div> <!-- item -->
+            </div>
+        </div>
         </c:if>
         <div class="carousel-item ${active}">
             <div class="row">
@@ -110,9 +138,10 @@
                 <c:set var="index" scope="request" value="${index + 1}"></c:set>
 
                 </c:forEach>
-            </div> <!-- row -->
-        </div> <!-- item -->
+            </div>
+        </div>
     </div>
+
     </div>
     </div>
 
@@ -145,8 +174,8 @@
                 </c:if>
                 <c:if test="${index%6 == 0}">
                 <c:if test="${index > 0}">
-            </div> <!-- row -->
-        </div> <!-- item -->
+            </div>
+        </div>
         </c:if>
         <div class="carousel-item ${active}">
             <div class="row">
@@ -157,11 +186,11 @@
                 <c:set var="index" scope="request" value="${index + 1}"></c:set>
 
                 </c:forEach>
-            </div> <!-- row -->
-        </div> <!-- item -->
+            </div>
+        </div>
     </div>
     </div>
-    </div>
+    </div>-->
 
     <jsp:include page="footer.html" />
 </body>

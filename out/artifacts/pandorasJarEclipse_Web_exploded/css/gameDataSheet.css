@@ -1,0 +1,17 @@
+#ranking {
+    margin-bottom: 0;
+}
+
+.th-color {
+    color: rgb(255,165,0);
+}
+
+.td-color {
+    color: rgb(207,204,204);
+}
+
+.size-div-preview {
+    height: 400px;
+    width: 100%;
+}
+

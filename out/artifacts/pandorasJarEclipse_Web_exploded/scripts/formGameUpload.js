@@ -16,7 +16,13 @@ function addRow(event) {
         reformatName(newRow, true);
     } else if (event.target.id === "btn-add-tag") {
         ++tagSize;
+        let newInputTag = newRow[0].children[0].children[0];
+        let oldInputTag = actualRow[0].children[0].children[0];
+        let actualName = $(oldInputTag).attr("name");
+        let id = (Number(actualName.split("-")[1])+1).toString();
+        $(newInputTag).attr("name","tag-".concat(id));
         newRow.insertAfter(actualRow);
+        reformatName(newRow, true);
     }
 }
 
@@ -27,6 +33,7 @@ function removeRow(event) {
             reformatName(actualRow, false);
             --linkSize;
         } else if (event.target.id === "btn-remove-tag") {
+            reformatName(actualRow, false);
             --tagSize;
         }
         console.log(actualRow[0].children[0].children[0]);
@@ -39,6 +46,8 @@ function reformatName(actualRow, up) {
     if(nextRow != null){
         while(nextRow.nextSibling !== null){
             let inputText = nextRow.children[0].children[0];
+            let name = $(inputText).attr("name").split("-")[0];
+            name.concat("-");
             let id = Number($(inputText).attr("name").split("-")[1]);
             console.log(id);
             if(up){
@@ -47,7 +56,7 @@ function reformatName(actualRow, up) {
             else{
                 --id;
             }
-            $(inputText).attr("name", "link-".concat(String(id)));
+            $(inputText).attr("name", name.concat(String(id)));
             nextRow = nextRow.nextSibling;
         }
     }

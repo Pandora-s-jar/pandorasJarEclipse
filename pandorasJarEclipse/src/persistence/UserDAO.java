@@ -20,9 +20,17 @@ public class UserDAO {
         statement.setInt(1, user.getId());
         ResultSet rs = statement.executeQuery();
         while (rs.next()){
-            Game g = new Game(rs.getInt("idgame"), rs.getString("name"), rs.getInt("developer"),
-                    rs.getString("category"), rs.getString("helpemail"), rs.getDouble("price"),
-                    rs.getString("paymentscoord"), rs.getString("description"), rs.getDate("release"), DAOFactory.getInstance().makeReviewDAO().getReviewsFromIdGame(rs.getInt("idgame")));
+            Game g = new Game();
+            g.setId(rs.getInt("idgame"));
+            g.setName(rs.getString("name"));
+            g.setIdDeveloper(rs.getInt("developer"));
+            g.setCategory(rs.getString("category"));
+            g.setHelpEmail(rs.getString("helpemail"));
+            g.setPrice(rs.getDouble("price"));
+            g.setPayment(rs.getString("paymentscoord"));
+            g.setDescription(rs.getString("description"));
+            g.setRelease(rs.getDate("release"));
+            g.setReviews(DAOFactory.getInstance().makeReviewDAO().getReviewsFromIdGame(rs.getInt("idgame")));
             games.add(g);
         }
         return games;

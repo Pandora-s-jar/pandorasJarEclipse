@@ -17,10 +17,36 @@ public class Game {
     private String frontImage;
     private ArrayList<String> previewsIMG;
     private ArrayList<String> previewsVID;
+    private ArrayList<Review> reviews;
 
     public Game() {
         previewsIMG = new ArrayList<String>();
         previewsVID = new ArrayList<String>();
+        reviews = new ArrayList<Review>();
+    }
+
+    public Game(int id, String name, int idDeveloper, String category, String helpEmail, double price, String payment, String description, Date release, String frontImage, ArrayList<String> previewsIMG, ArrayList<String> previewsVID, ArrayList<Review> reviews) {
+        this.id = id;
+        this.name = name;
+        this.idDeveloper = idDeveloper;
+        this.category = category;
+        this.helpEmail = helpEmail;
+        this.price = price;
+        this.payment = payment;
+        this.description = description;
+        this.release = release;
+        this.frontImage = frontImage;
+        this.previewsIMG = previewsIMG;
+        this.previewsVID = previewsVID;
+        this.reviews = reviews;
+    }
+
+    public ArrayList<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(ArrayList<Review> reviews) {
+        this.reviews = reviews;
     }
 
     public String getFrontImage() {

@@ -27,12 +27,12 @@ public class GameDataSheet extends HttpServlet {
         int gameId = Integer.parseInt(req.getParameter("gameId"));
         DAOFactory factory = DAOFactory.getInstance();
         Game game = factory.makeGameDAO().getGameFromIdWithPreviews(gameId);
-        String usernameDeveloper = factory.makeUserDAO().getUserFromIdUser(game.getIdDeveloper()).getUsername();
+        String usernameDeveloper = factory.makeUserDAO().getUserByIdUser(game.getIdDeveloper()).getUsername();
         ArrayList<Review> reviews = factory.makeReviewDAO().getReviewsFromIdGame(gameId);
         ArrayList<Score> scores = factory.makeScoreDAO().getScoresFromIdGame(gameId);
         if(req.getSession().getAttribute("userId") != null) {
-            //boolean canBuy = factory.makeLibraryDAO().isGamePurchased(gameId, req.getSession().getAttribute("userId"));
-            req.setAttribute("canBuy", true);
+            boolean canBuy = factory.makeGameDAO().isGamePurchased(gameId,(int) req.getSession().getAttribute("userId"));
+            req.setAttribute("canBuy", canBuy);
         }
         sortScores(scores);
         if(scores.size() >= 10)

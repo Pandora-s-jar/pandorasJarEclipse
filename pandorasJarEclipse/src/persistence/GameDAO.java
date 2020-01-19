@@ -2,6 +2,8 @@ package persistence;
 
 
 import model.Game;
+import model.User;
+import utility.Acquisto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -67,7 +69,6 @@ public class GameDAO {
                 createGame(result, game);
             }
             game.setReviews(DAOFactory.getInstance().makeReviewDAO().getReviewsFromIdGame(game.getId()));
-            System.out.println(game.getReviews());
             return game;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -197,7 +198,6 @@ public class GameDAO {
             statement.setInt(6,idDeveloper);
             statement.setString(7,category);
             statement.setDate(8, new java.sql.Date(new Date().getTime()));
-            System.out.println("SDAJLSDHALJDHAJDSASDKADH");
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -238,5 +238,56 @@ public class GameDAO {
         finally {
             DataSource.getInstance().closeConnection();
         }
+    }
+
+    public void insertNewGameIntoLibrary(int game, int user) {
+        Connection connection = DataSource.getInstance().getConnection();
+        int nextId = getLibraryNextId(connection);
+        String query = "INSERT INTO public.libreria values(?,?,?)";
+        try {
+            statement = connection.prepareStatement(query);
+            statement.setInt(1,user);
+            statement.setInt(2, game);
+            statement.setInt(3, nextId);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally{
+            DataSource.getInstance().closeConnection();
+        }
+    }
+
+    private int getLibraryNextId(Connection conn)
+    {
+        String query = "SELECT nextval('libreria_sequence') AS id";
+        PreparedStatement stmt = null;
+        try {
+            stmt = conn.prepareStatement(query);
+            ResultSet set = stmt.executeQuery();
+            set.next();
+            return set.getInt("id");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public boolean isGamePurchased(int gameId, int userId) {
+        Connection connection = DataSource.getInstance().getConnection();
+        String query = "SELECT idgame FROM public.libreria WHERE iduser = ? and idgame = ?;";
+        try {
+            statement = connection.prepareStatement(query);
+            statement.setInt(1, userId);
+            statement.setInt(2, gameId);
+            ResultSet result = statement.executeQuery();
+            return !result.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally{
+            DataSource.getInstance().closeConnection();
+        }
+        return false;
     }
 }

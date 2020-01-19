@@ -73,7 +73,7 @@
                     <label class="d-block" style="font-size: 20px;color: rgb(207,204,204);font-weight: bold;">Data Rilascio : ${game.release}</label>
                     <label class="d-block" style="font-size: 20px;color: rgb(207,204,204);font-weight: bold;">Sviluppatore : <a href="/profile?id=${game.idDeveloper}">${developer}</a></label>
                 </div>
-                <form class="text-center" method="post" action="/help?emailTo=${game.helpEmail}">
+                <form class="text-center" method="POST" action="/help?emailTo=${game.helpEmail}&send=false">
                     <button class="btn btn-primary border rounded" type="submit" style="background-color: rgb(255,165,0);font-size: 18px;margin-top: 2%;">Richiedi assistenza</button>
                 </form>
             </div>

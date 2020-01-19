@@ -128,7 +128,6 @@
                             {
                                 // Show a confirmation message to the buyer
                                 var alert = window.alert('Pagamento avvenuto con successo!');
-                                //RISOLVERE QUESTA COSA!
                                 $.post("/PaymentSuccess",
                                     {
                                         data:JSON.stringify({idUser: ${userId}, idGame: ${game.id}, price: ${game.price}})

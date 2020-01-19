@@ -73,10 +73,27 @@
                             </div>
                         </li>
                     </ul>
-                    <button class="btn btn-light"
-                            style="margin-left: 601px;margin-top: -9px;background-color: rgb(255,124,11);"
-                            type="button">Add Comment
-                    </button>
+                    <div class="form-group">
+                        <form>
+                            <div class="row">
+                                <div class="col-7">
+                                    <textarea class="form-control" id="commentContent" name="content"
+                                    placeholder="Inserisci qui il tuo commento" required></textarea>
+                                </div>
+                                <div class="col-3">
+                                    <label>Inserisci le tue stelle:</label>
+                                </div>
+                                <div class="col-2">
+                                    <input type="number" min="0" max="5" step="1" class="form-control" id="commentStars"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button class="btn btn-light"
+                                        style="margin-left: 601px;margin-top: 10px;background-color: rgb(255,124,11);"
+                                        type="button" id="addComment">Aggiungi commento</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

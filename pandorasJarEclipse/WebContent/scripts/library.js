@@ -1,5 +1,19 @@
 $(document).ready(function () {
     $("#gameDetails").hide();
+    $("#addComment").click(function (event) {
+        $.ajax({
+            type: "POST",
+            url: "/addComment",
+            data:{
+                content: $("#commentContent").val(),
+                stars: $("#commentStars").val(),
+                game: sessionStorage.getItem("gameID")
+            },
+            success: function () {
+                window.location.reload();
+            }
+        })
+    })
 });
 
 function showGame(event) {
@@ -10,6 +24,7 @@ function showGame(event) {
             name: event.target.id //TODO : check on other browser
         },
         success: function (game) {
+            sessionStorage.setItem("gameID", game.id);
             $("#gameDetails").show();
             $("#title").text(game.name);
             $("#description").text(game.description);

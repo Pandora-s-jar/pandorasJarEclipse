@@ -2,11 +2,13 @@ package persistence;
 
 
 import model.Game;
+import model.Review;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class GameDAO {
@@ -64,9 +66,9 @@ public class GameDAO {
                 game.setId(id);
                 createGame(result, game);
             }
-
+            game.setReviews(DAOFactory.getInstance().makeReviewDAO().getReviewsFromIdGame(game.getId()));
+            System.out.println(game.getReviews());
             return game;
-
         } catch (SQLException e) {
             e.printStackTrace();
         }

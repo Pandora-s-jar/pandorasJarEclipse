@@ -22,6 +22,7 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = DAOFactory.getInstance().makeUserDAO().getUserByEmail(req.getParameter("email"));
+        this.log(user.getUsername());
         if (user == null){
             resp.setStatus(301);
             return;

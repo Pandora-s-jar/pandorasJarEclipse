@@ -40,7 +40,7 @@ public class ScoreDAO {
     public ArrayList<Score> getScoresFromIdGame(int id)
     {
         Connection connection = DataSource.getInstance().getConnection();
-        String query = "SELECT * FROM public.score WHERE score.game = ?";
+        String query = "SELECT * FROM public.score WHERE score.game = ? ORDER BY value DESC LIMIT 5";
         try {
             statement = connection.prepareStatement(query);
             statement.setInt(1, id);

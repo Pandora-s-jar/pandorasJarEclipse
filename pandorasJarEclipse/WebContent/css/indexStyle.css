@@ -43,6 +43,18 @@
     margin: 2% 2% 2% 2%;
 }
 
+.category-games-item{
+    height: 100%;
+}
+
+.category-games-row{
+    height: 92%;
+}
+
+.image-game-div{
+    height: 100%;
+}
+
 body{
     background-color: #284c67 !important;
 }

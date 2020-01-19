@@ -82,8 +82,8 @@
                                     </div> <!-- row -->
                                 </div> <!-- item -->
                             </c:if>
-                            <div class="carousel-item ${active}">
-                                <div class="row">
+                            <div class="carousel-item ${active} category-games-item" >
+                                <div class="row category-games-row">
                         </c:if>
                         <div class="col-md-2 clearfix d-none d-md-block image-game-div" >
                             <a href="/GameDataSheet?gameId=${game.id}"><img class="card-img-top image-game" src="${game.frontImage}"></a>
@@ -131,8 +131,8 @@
                 </div> <!-- row -->
             </div> <!-- item -->
             </c:if>
-            <div class="carousel-item ${active}">
-                <div class="row">
+            <div class="carousel-item ${active} category-games-item">
+                <div class="row category-games-row">
                     </c:if>
                     <div class="col-md-2 clearfix d-none d-md-block image-game-div" >
                         <a href="/GameDataSheet?gameId=${game.id}"><img class="card-img-top image-game" src="${game.frontImage}"></a>
@@ -180,8 +180,8 @@
                 </div> <!-- row -->
             </div> <!-- item -->
             </c:if>
-            <div class="carousel-item ${active}">
-                <div class="row">
+            <div class="carousel-item ${active} category-games-item">
+                <div class="row category-games-row">
                     </c:if>
                     <div class="col-md-2 clearfix d-none d-md-block image-game-div" >
                         <a href="/GameDataSheet?gameId=${game.id}"><img class="card-img-top image-game" src="${game.frontImage}"></a>
@@ -229,8 +229,8 @@
                 </div> <!-- row -->
             </div> <!-- item -->
             </c:if>
-            <div class="carousel-item ${active}">
-                <div class="row">
+            <div class="carousel-item ${active} category-games-item">
+                <div class="row category-games-row">
                     </c:if>
                     <div class="col-md-2 clearfix d-none d-md-block image-game-div" >
                         <a href="/GameDataSheet?gameId=${game.id}"><img class="card-img-top image-game" src="${game.frontImage}"></a>

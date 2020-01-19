@@ -144,7 +144,7 @@
                 </c:if>
             </c:if>
             <c:if test="${not logged}">
-                <a href="#Login" class="background-color-orange" type="button" id="btnLogin2">Login</a>
+                <a href="#Login" class="background-color-orange border rounded" type="button" id="btnLogin2">Login</a>
             </c:if>
         </div>
     </div>

@@ -73,7 +73,7 @@
                     <label class="d-block label-game-info">Data Rilascio : ${game.release}</label>
                     <label class="d-block label-game-info">Sviluppatore : <a href="/profile?id=${game.idDeveloper}">${developer}</a></label>
                 </div>
-                <form class="text-center" method="post" action="/help?emailTo=${game.helpEmail}">
+                <form class="text-center" method="post" action="/help?emailTo=${game.helpEmail}&send=false">
                     <button class="btn btn-primary border rounded background-color-orange" type="submit" id="richiediAssistenza">Richiedi assistenza</button>
                 </form>
             </div>
@@ -128,7 +128,6 @@
                             {
                                 // Show a confirmation message to the buyer
                                 var alert = window.alert('Pagamento avvenuto con successo!');
-                                //RISOLVERE QUESTA COSA!
                                 $.post("/PaymentSuccess",
                                     {
                                         data:JSON.stringify({idUser: ${userId}, idGame: ${game.id}, price: ${game.price}})

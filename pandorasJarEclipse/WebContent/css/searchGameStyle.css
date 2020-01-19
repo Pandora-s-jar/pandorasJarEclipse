@@ -1,0 +1,13 @@
+#h1GiochiRicercati{
+    color: rgb(255,165,0);
+    padding-top: 1%;
+    padding-left: 1%;
+    margin-bottom: 2%;
+}
+
+.row-games{
+    height: 350px;
+    padding-top: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+}

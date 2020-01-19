@@ -27,7 +27,7 @@ pageEncoding="ISO-8859-1"%>
         <section class="td-form">
             <div class="row td-form-wrapper">
                 <div class="col td-glass">
-                    <form class="td-form-wrapper" method="POST">
+                    <form class="td-form-wrapper" method="POST" action="/help?send=true">
                         <div class="form-group">
                             <div class="col-md-12"><label class="text-dark" for="name" style="font-weight: bold;">Nome</label>
                                 <div class="d-flex td-input-container">
@@ -54,10 +54,10 @@ pageEncoding="ISO-8859-1"%>
                                             <span class="input-group-text fa fa-envelope"></span>
                                         </div>
                                         <c:if test="${not logged}">
-                                            <input id="email" class="form-control" type="text" placeholder="something@example.com" required>
+                                            <input name="email" id="email" class="form-control" type="text" placeholder="something@example.com" required>
                                         </c:if>
                                         <c:if test="${logged}">
-                                            <input id="email" class="form-control" type="text" value=${email} readonly>
+                                            <input name="email" id="email" class="form-control" type="text" value=${email} readonly>
                                         </c:if>
                                         <div class="input-group-append"></div>
                                     </div>
@@ -72,7 +72,7 @@ pageEncoding="ISO-8859-1"%>
                                         <div class="input-group-prepend">
                                             <span class="input-group-text fa fa-info-circle"></span>
                                         </div>
-                                            <input id="subject" class="form-control" type="text" placeholder="Oggetto della richiesta" required>
+                                            <input name="subject" id="subject" class="form-control" type="text" placeholder="Oggetto della richiesta" required>
                                         <div class="input-group-append"></div>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@ pageEncoding="ISO-8859-1"%>
             <label class="text-dark" for="message" style="font-weight: bold;">Messaggio</label>
             <div class="d-flex td-input-container">
                 <i class="icon ion-android-create align-self-center"></i>
-                <textarea class="form-control" placeholder="Corpo della richiesta" id="message" rows="6" cols="50"></textarea>
+                <textarea name="message" class="form-control" placeholder="Corpo della richiesta" id="message" rows="6" cols="50"></textarea>
             </div>
         </div>
     </div>

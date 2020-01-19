@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class SearchGame extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String gameName = req.getParameter("game");
+        String gameName = req.getParameter("ricerca");
         if(gameName != null)
         {
             ArrayList<Game> games = DAOFactory.getInstance().makeGameDAO().getGamesFromNameLike(gameName);
@@ -24,5 +24,10 @@ public class SearchGame extends HttpServlet {
             RequestDispatcher rd = req.getRequestDispatcher("searchGame.jsp");
             rd.forward(req, resp);
         }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
     }
 }

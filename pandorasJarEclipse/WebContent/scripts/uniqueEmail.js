@@ -3,7 +3,7 @@ $(document).ready(function () {
     let url = new URL(urlString);
     let c = url.searchParams.get("emailAlreadyExists");
     if(c === "true"){
-        alert("EMAIL GIA' ESISTENTE");
-        //TODO : Hai dimenticato la password?
+        alert("EMAIL GIA' ESISTENTE. PROVA AD EFFETTUARE IL LOGIN O INSERISCI UN'EMAIL DIVERSA");
+        //TODO : magari un modal?
     }
 });

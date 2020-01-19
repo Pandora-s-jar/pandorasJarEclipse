@@ -29,7 +29,9 @@ public class Upload extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
-        req.getSession().setAttribute("email", email);
+        String paymentCoords = req.getParameter("paymentEmail");
+        req.getSession().setAttribute("helpEmail", email);
+        req.getSession().setAttribute("paymentCoords", paymentCoords);
         req.getSession().setAttribute("nextPage", "/formGameUpload");
         req.getSession().setAttribute("previousPage", "/upload");
         req.getRequestDispatcher("/sendCode").forward(req, resp);

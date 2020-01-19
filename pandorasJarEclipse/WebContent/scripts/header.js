@@ -23,3 +23,13 @@ $(document).ready(()=>{
         })
     })
 });
+
+$(document).ready(function () {
+    let urlString = window.location;
+    let url = new URL(urlString);
+    let c = url.searchParams.get("registered");
+    if(c === "true"){
+        alert("REGISTRAZIONE EFFETTUATA");
+    }
+    //TODO : testami
+});

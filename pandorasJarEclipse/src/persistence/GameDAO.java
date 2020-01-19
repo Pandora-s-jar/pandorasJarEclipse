@@ -99,4 +99,37 @@ public class GameDAO {
         }
     }
 
+    public void insertPreview(int id, String imageName, boolean front){
+        Connection connection = DataSource.getInstance().getConnection();
+        String query = "INSERT INTO public.previewimg(idpreview, link, game, front) VALUES(default,?,?,?)";
+        try {
+            statement = connection.prepareStatement(query);
+            statement.setString(1,imageName);
+            statement.setInt(2, id);
+            statement.setBoolean(3, front);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            DataSource.getInstance().closeConnection();
+        }
+    }
+
+    public void insertVideoLink(int id, String link){
+        Connection connection = DataSource.getInstance().getConnection();
+        String query = "INSERT INTO public.previewvid(idpreview, link, game) VALUES(default,?,?)";
+        try {
+            statement = connection.prepareStatement(query);
+            statement.setString(1, link);
+            statement.setInt(2, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            DataSource.getInstance().closeConnection();
+        }
+    }
+
 }

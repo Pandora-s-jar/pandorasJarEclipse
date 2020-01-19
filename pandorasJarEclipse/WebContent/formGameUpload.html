@@ -15,7 +15,8 @@
     <div class="form-container" style="max-width: 700px;">
         <form method="post" enctype="multipart/form-data">
             <h2 class="text-center"><strong>Inserisci i dati del gioco</strong></h2>
-            <div class="form-group"><input class="form-control" type="text" name="name" placeholder="Inserisci il nome del gioco"
+            <div class="form-group"><input class="form-control" type="text" name="name"
+                                           placeholder="Inserisci il nome del gioco"
                                            required autofocus></div>
             <div class="form-group"><textarea class="form-control" name="description"
                                               placeholder="Inserisci una descrizione dettagliata del gioco"></textarea>
@@ -26,10 +27,14 @@
                     class="text-monospace text-center text-sm-center text-md-center text-lg-center text-xl-center">Seleziona
                 il file JAR del gioco</label></div>
             <div class="form-group text-center"><input type="file" name="gameFile" required=""></div>
+            <div class="form-group text-center"><label class="text-monospace">Seleziona l'immagine copertina del
+                gioco</label></div>
+            <div class="form-group text-center"><input type="file" name="previewImage" required></div>
             <div class="form-group text-center"><label class="text-monospace">Seleziona immagini o video da mostrare
                 come anteprime (opzionale)</label></div>
             <div class="form-group text-center"><input type="file" name="previewFiles" multiple></div>
-            <div class="form-group text-center"><label class="text-monospace">Inserisci link esterni come anteprime (opzionale)</label></div>
+            <div class="form-group text-center"><label class="text-monospace">Inserisci link esterni come anteprime
+                (opzionale)</label></div>
             <div class="form-group text-center">
                 <div class="form-row">
                     <div class="col"><input class="form-control" type="text" name="link-1"
@@ -53,8 +58,11 @@
             <div class="form-group text-center">
                 <div class="form-row">
                     <div class="col">
-                        <select class="form-control" name="tag-1">
-                            <option value="Yaskjdha" selected="">Prova</option>
+                        <select class="form-control" name="tag" required>
+                            <option value="azione">Azione</option>
+                            <option value="avventura">Avventura</option>
+                            <option value="arcade">Arcade</option>
+                            <option value="shooter">Shooter</option>
                         </select>
                     </div>
                     <div class="col-1">

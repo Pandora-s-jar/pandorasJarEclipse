@@ -46,6 +46,10 @@ public class FormGameUpload extends HttpServlet {
         storeFile(item, gameTitle);
     }
 
+    private void storeGamePreview(FileItem item, String gameTitle) throws Exception {
+        storeFile(item, gameTitle);
+    }
+
     private void storeGamePreviewImg(FileItem item, String gameTitle) throws Exception {
         storeFile(item, gameTitle + File.separator + "images");
     }
@@ -67,6 +71,7 @@ public class FormGameUpload extends HttpServlet {
         String specs="";
         double price=0;
         String tag="";
+        FileItem previewImage = null;
         ArrayList<FileItem> images = new ArrayList<>();
         ArrayList<FileItem> videos = new ArrayList<>();
         ArrayList<String> externalLinks = new ArrayList<>();
@@ -87,6 +92,9 @@ public class FormGameUpload extends HttpServlet {
                     } else if (contentType.contains("video")) {
                         videos.add(i);
                     }
+                } else if (i.getFieldName().equals("previewImage")) {
+                    previewImage = i;
+                    this.log("previewImage");
                 } else if (i.getFieldName().equals("name")) {
                     name = i.getString();
                 } else if (i.getFieldName().equals("description")) {
@@ -98,7 +106,7 @@ public class FormGameUpload extends HttpServlet {
                 } else if (i.getFieldName().contains("link")) {
                     externalLinks.add(i.getString());
                 } else if (i.getFieldName().contains("tag")) {
-                    tag = i.getName();
+                    tag = i.getString();
                 }
             }
         } catch (Exception e) {
@@ -106,17 +114,24 @@ public class FormGameUpload extends HttpServlet {
         }
         Game g = DAOFactory.getInstance().makeGameDAO().getGameByName(name);
         if (g.getId() == 0) {
-            this.storeGameFile(jarFile, name);
-            for (FileItem img : images) {
-                this.storeGamePreviewImg(img, name);
-            }
-            for (FileItem video : videos) {
-                this.storeGamePreviewVideo(video, name);
-            }
             DAOFactory.getInstance().makeGameDAO().insertGame(0, name, (Integer) req.getSession().getAttribute("userId"),
                     tag, (String)req.getSession().getAttribute("helpEmail"), price,
                     (String)req.getSession().getAttribute("paymentCoords"),description+specs);
             g = DAOFactory.getInstance().makeGameDAO().getGameByName(name);
+            this.storeGamePreview(previewImage, name);
+            DAOFactory.getInstance().makeGameDAO().insertPreview(g.getId(), previewImage.getName(), true);
+            this.storeGameFile(jarFile, name);
+            for (FileItem img : images) {
+                this.storeGamePreviewImg(img, name);
+                DAOFactory.getInstance().makeGameDAO().insertPreview(g.getId(), img.getName(), false);
+            }
+            for (FileItem video : videos) {
+                this.storeGamePreviewVideo(video, name);
+                DAOFactory.getInstance().makeGameDAO().insertPreview(g.getId(), video.getName(), false);
+            }
+            for (String s : externalLinks){
+                DAOFactory.getInstance().makeGameDAO().insertVideoLink(g.getId(), s);
+            }
         }
         return g;
     }

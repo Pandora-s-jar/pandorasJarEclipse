@@ -4,5 +4,7 @@ $(document).ready(()=>{
         $("#addGameLink").attr("data-toggle", "modal");
         $("#libraryLink").attr("href", "#Login");
         $("#libraryLink").attr("data-toggle", "modal");
+        $("#profileLink").attr("href", "#Login");
+        $("#profileLink").attr("data-toggle", "modal");
     }
 });

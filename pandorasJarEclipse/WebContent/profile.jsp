@@ -21,24 +21,6 @@
 </head>
 
 <body id="profile">
-	<c:if test="${not canSee}">
-		<div class="modal" id="myModal">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4 class="modal-title">Error</h4>
-						<button type="button" class="close modalCloseBtn" data-dismiss="modal">&times;</button>
-					</div>
-					<div class="modal-body">
-						You're not logged
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger modalCloseBtn" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</c:if>
     <c:if test="${canSee}">
         <jsp:include page="header.jsp" />
         <div class="row" id="firstRow">

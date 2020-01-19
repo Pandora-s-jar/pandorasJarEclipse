@@ -20,7 +20,7 @@
 
 <body style="background-color: #284c67;">
     <jsp:include page="header.jsp" />
-    <div class="row" style="margin-left: 5%;margin-right: 5%;margin-top: 5%;">
+    <div class="row" id="firstRow">
         <div class="col-xl-7" style="width: 60%;">
             <div class="carousel slide" data-ride="carousel" id="carousel-1">
                 <div class="carousel-inner" role="listbox">
@@ -66,28 +66,29 @@
             </div>
         </div>
         <div class="col float-left" style="width: 40%;">
-            <h1 class="text-center" style="color: rgb(255,165,0);">${game.name}</h1>
+            <h1 class="text-center color-orange" >${game.name}</h1>
             <div>
                 <textarea readonly class="border rounded" style="font-size: 20px; width: 100%; background-color: #e9ecef !important; resize: none;" rows="5">${game.description}</textarea>
                 <div>
-                    <label class="d-block" style="font-size: 20px;color: rgb(207,204,204);font-weight: bold;">Data Rilascio : ${game.release}</label>
-                    <label class="d-block" style="font-size: 20px;color: rgb(207,204,204);font-weight: bold;">Sviluppatore : <a href="/profile?id=${game.idDeveloper}">${developer}</a></label>
+                    <label class="d-block label-game-info">Data Rilascio : ${game.release}</label>
+                    <label class="d-block label-game-info">Sviluppatore : <a href="/profile?id=${game.idDeveloper}">${developer}</a></label>
                 </div>
-                <form class="text-center" method="post" action="/help?emailTo=${game.helpEmail}">
-                    <button class="btn btn-primary border rounded" type="submit" style="background-color: rgb(255,165,0);font-size: 18px;margin-top: 2%;">Richiedi assistenza</button>
+                <form class="text-center" method="post" action="/help?emailTo=${game.helpEmail}&send=false">
+                    <button class="btn btn-primary border rounded background-color-orange" type="submit" id="richiediAssistenza">Richiedi assistenza</button>
                 </form>
             </div>
         </div>
     </div>
-    <div class="row" style="margin-left: 5%;margin-right: 5%;margin-top: 1%;">
+    <div class="row" id="secondRow">
         <div class="col-xl-7" style="width: 60%;">
-            <p class="d-inline" style="font-size: 20px;color: rgb(207,204,204);">Questo gioco appartiene alla categoria :&nbsp;</p><!--<a href="/?category=${game.category}" style="font-size: 20px;">-->${game.category}<!--</a>-->
+            <p class="d-inline" id="pCategory">Questo gioco appartiene alla categoria :&nbsp;</p><!--<a href="/?category=${game.category}" style="font-size: 20px;">-->${game.category}<!--</a>-->
         </div>
         <div class="col float-left" style="width: 40%;">
             <div class="float-left">
-                <p style="color: rgb(207,204,204); size: 40px; padding-top: 5%; font-weight: bold"> PREZZO: ${game.price}€</p>
+                <p id="prezzo"> PREZZO: ${game.price}€</p>
             </div>
-            <c:if test="${canBuy}">
+            <c:if test="${logged}">
+                <c:if test="${canBuy}">
                 <!-- START PAYPAL PAYMENTS-->
                 <div class ="float-right" id="paypal-button"></div>
                 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
@@ -139,21 +140,28 @@
                 </script>
                 <!-- END PAYPAL PAYMENTS-->
             </c:if>
+                <c:if test="${not canBuy}">
+                    <h5 class="color-orange" id="giàAcquistato">Hai già acquistato questo gioco!</h5>
+                </c:if>
+            </c:if>
+            <c:if test="${not logged}">
+                <a href="#Login" class="background-color-orange" type="button" id="btnLogin2">Login</a>
+            </c:if>
         </div>
     </div>
-    <div class="row" style="margin-right: 5%;margin-left: 5%;margin-top: 1%;">
+    <div class="row" id="thirdRow">
         <div class="col">
             <c:forEach items="${reviews}" var="review">
-                <div class="border rounded" style="background-color: rgb(26,26,78);padding-left:2%;">
-                    <label class="d-block" style="font-size: 20px;color: rgb(255,165,0);"><a href="/profile?id=${review.author}">${review.username}</a></label>
-                    <label class="d-block" style="font-size: 20px;color: rgb(207,204,204);">${review.stars}</label>
-                    <p style="font-size: 20px;color: rgb(207,204,204);">${review.comment}</p>
+                <div class="border rounded" id="divReviews">
+                    <label class="d-block color-orange" style="font-size: 20px;"><a href="/profile?id=${review.author}">${review.username}</a></label>
+                    <label class="d-block color-orange" style="font-size: 20px;">${review.stars}</label>
+                    <p class="p-review">${review.comment}</p>
                 </div>
             </c:forEach>
         </div>
     </div>
-    <div class="row" style="margin-right: 5%;margin-left: 5%;margin-top: 2%;">
-        <table id="ranking" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <div class="row" id="fourthRow">
+        <table id="ranking" class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th class="th-color">#</th>

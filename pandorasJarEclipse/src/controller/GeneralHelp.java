@@ -24,7 +24,12 @@ public class GeneralHelp extends HttpServlet
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
-		getPage(req, resp);
+		if(req.getParameter("sendEmail").equals("false"))
+			getPage(req, resp);
+		else
+		{
+			//invia email
+		}
 	}
 
 	private void getPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException

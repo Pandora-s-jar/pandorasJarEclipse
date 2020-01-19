@@ -41,8 +41,10 @@
             </li>
             <li class="nav-item">
                 <div class="search">
-                    <input type="text" class="form-control input-sm" maxlength="64" placeholder="Ricerca"/>
-                    <button type="submit" class="btn btn-primary btn-sm fa fa-search"></button>
+                    <form action="/Search" method="get">
+                        <input type="text" name="ricerca" class="form-control input-sm" maxlength="64" placeholder="Ricerca"/>
+                        <button type="submit" class="btn btn-primary btn-sm fa fa-search"></button>
+                    </form>
                 </div>
             </li>
             <% if (request.getSession().getAttribute("logged") == null || !(boolean) request.getSession().getAttribute("logged")) {%>

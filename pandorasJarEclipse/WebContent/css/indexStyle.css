@@ -37,3 +37,13 @@
 .category-games-multi-item-size{
     height: 100%;
 }
+body{
+    background-color: #284c67 !important;
+}
+h1{
+    color: rgb(255,165,0);
+}
+h2{
+    padding-left: 3%;
+    color: rgb(255,165,0);
+}

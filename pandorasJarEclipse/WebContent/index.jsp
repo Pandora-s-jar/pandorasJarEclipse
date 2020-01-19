@@ -17,9 +17,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 </head>
 
-<body style="background-color: #284c67;">
+<body>
     <jsp:include page="header.jsp" />
-    <h1 class="text-center" style="color: rgb(255,165,0);">Giochi best sellers</h1>
+    <h1 class="text-center">Giochi best sellers</h1>
     <div class="carousel slide bestSellers-size-slide" data-ride="carousel" id="carousel-1">
         <div class="carousel-inner bestSellers-size-inner" role="listbox">
             <div class="carousel-item bestSellers-size-item active">
@@ -49,7 +49,7 @@
         </div>
     </div>
 
-    <h2 style="padding-left: 3%;color: rgb(255,165,0);">Shooter</h2>
+    <h2>Shooter</h2>
     <div class="container-fluid category-games-container-fluid-size">
         <div id="multi-item-shooter" class="carousel slide carousel-multi-item category-games-multi-item-size" data-ride="carousel">
 
@@ -97,7 +97,7 @@
     </div>
 
 
-    <h2 style="padding-left: 3%;color: rgb(255,165,0);">Arcade</h2>
+    <h2>Arcade</h2>
     <div class="container-fluid">
         <div id="multi-item-arcade" class="carousel slide carousel-multi-item category-games-multi-item-size" data-ride="carousel">
 
@@ -144,7 +144,7 @@
     </div>
     </div>
 
-    <h2 style="padding-left: 3%;color: rgb(255,165,0);">Azione</h2>
+    <h2>Azione</h2>
     <div class="container-fluid">
         <div id="multi-item-azione" class="carousel slide carousel-multi-item category-games-multi-item-size" data-ride="carousel">
 
@@ -191,7 +191,7 @@
     </div>
     </div>
 
-    <h2 style="padding-left: 3%;color: rgb(255,165,0);">Avventura</h2>
+    <h2>Avventura</h2>
     <div class="container-fluid">
         <div id="multi-item-avventura" class="carousel slide carousel-multi-item category-games-multi-item-size" data-ride="carousel">
 

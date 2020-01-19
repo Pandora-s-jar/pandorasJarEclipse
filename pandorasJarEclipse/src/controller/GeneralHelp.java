@@ -39,7 +39,7 @@ public class GeneralHelp extends HttpServlet
 		if(req.getSession().getAttribute("userId") != null)
 		{
 			int idUser = 1;//(int) req.getSession().getAttribute("userId");
-			loggedUser = DAOFactory.getInstance().makeUserDAO().getUserFromIdUser(idUser);
+			loggedUser = DAOFactory.getInstance().makeUserDAO().getUserByIdUser(idUser);
 			String name = loggedUser.getUsername();
 			String email = loggedUser.getEmail();
 			req.setAttribute("name", name);

@@ -2,6 +2,7 @@ package model;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class User {
 	static private int contId = 0;
@@ -92,7 +93,18 @@ public class User {
 		this.friends.add(u);
 		return true;
 	}
-	
-	
 
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", username='" + username + '\'' +
+				", password='" + password + '\'' +
+				", description='" + description + '\'' +
+				", friends=" + friends +
+				", library=" + library +
+				", image=" + Arrays.toString(image) +
+				", email='" + email + '\'' +
+				'}';
+	}
 }

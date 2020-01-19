@@ -13,6 +13,26 @@ import java.util.ArrayList;
 public class ReviewDAO {
     private PreparedStatement statement;
 
+    public void addCommentForGame(int id, int stars, String comment, int author, String username){
+        Connection connection = DataSource.getInstance().getConnection();
+        String query = "INSERT INTO public.review(idreview, stars, comment, author, game, username) VALUES (default,?,?,?,?,?)";
+        try {
+            statement = connection.prepareStatement(query);
+            statement.setInt(1, stars);
+            statement.setString(2, comment);
+            statement.setInt(3, author);
+            statement.setInt(4, id);
+            statement.setString(5, username);
+            statement.executeUpdate();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally{
+            DataSource.getInstance().closeConnection();
+        }
+    }
+
     public ArrayList<Review> getReviewsFromIdGame(int id)
     {
         Connection connection = DataSource.getInstance().getConnection();

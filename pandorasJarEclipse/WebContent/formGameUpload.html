@@ -13,23 +13,28 @@
 <body>
 <div class="register-photo" style="background-image: url(Assets/backgroundFormGameUpload.jpg)">
     <div class="form-container" style="max-width: 700px;">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <h2 class="text-center"><strong>Inserisci i dati del gioco</strong></h2>
-            <div class="form-group"><input class="form-control" type="text" name="nome" placeholder="Inserisci il nome del gioco"
+            <div class="form-group"><input class="form-control" type="text" name="name"
+                                           placeholder="Inserisci il nome del gioco"
                                            required autofocus></div>
-            <div class="form-group"><textarea class="form-control" name="descrizione"
+            <div class="form-group"><textarea class="form-control" name="description"
                                               placeholder="Inserisci una descrizione dettagliata del gioco"></textarea>
             </div>
-            <div class="form-group"><textarea class="form-control" name="specifiche"
+            <div class="form-group"><textarea class="form-control" name="specs"
                                               placeholder="Inserisci le specifiche tecniche del gioco"></textarea></div>
             <div class="form-group text-center"><label
                     class="text-monospace text-center text-sm-center text-md-center text-lg-center text-xl-center">Seleziona
                 il file JAR del gioco</label></div>
-            <div class="form-group text-center"><input type="file" multiple="" required=""></div>
+            <div class="form-group text-center"><input type="file" name="gameFile" required=""></div>
+            <div class="form-group text-center"><label class="text-monospace">Seleziona l'immagine copertina del
+                gioco</label></div>
+            <div class="form-group text-center"><input type="file" name="previewImage" required></div>
             <div class="form-group text-center"><label class="text-monospace">Seleziona immagini o video da mostrare
                 come anteprime (opzionale)</label></div>
-            <div class="form-group text-center"><input type="file" multiple=""></div>
-            <div class="form-group text-center"><label class="text-monospace">Inserisci link esterni come anteprime (opzionale)</label></div>
+            <div class="form-group text-center"><input type="file" name="previewFiles" multiple></div>
+            <div class="form-group text-center"><label class="text-monospace">Inserisci link esterni come anteprime
+                (opzionale)</label></div>
             <div class="form-group text-center">
                 <div class="form-row">
                     <div class="col"><input class="form-control" type="text" name="link-1"
@@ -46,15 +51,20 @@
             </div>
             <div class="form-group text-center"><label class="text-monospace">Inserisci il prezzo del gioco</label>
             </div>
-            <div class="form-group text-center"><input class="form-control" name="prezzo" type="number"
+            <div class="form-group text-center"><input class="form-control" name="price" type="number"
                                                        placeholder="Inserisci il prezzo del gioco" min="0" step="0.1"
                                                        required=""></div>
             <div class="form-group text-center"><label class="text-monospace">Seleziona i tag</label></div>
             <div class="form-group text-center">
                 <div class="form-row">
-                    <div class="col"><select class="form-control">
-                        <option value="Yaskjdha" selected="">Prova</option>
-                    </select></div>
+                    <div class="col">
+                        <select class="form-control" name="tag" required>
+                            <option value="azione">Azione</option>
+                            <option value="avventura">Avventura</option>
+                            <option value="arcade">Arcade</option>
+                            <option value="shooter">Shooter</option>
+                        </select>
+                    </div>
                     <div class="col-1">
                         <button id="btn-add-tag" class="btn btn-success" type="button" onclick="addRow(event)">+
                         </button>

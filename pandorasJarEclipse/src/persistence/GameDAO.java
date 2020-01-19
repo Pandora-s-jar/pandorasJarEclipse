@@ -154,4 +154,60 @@ public class GameDAO {
         }
         return null;
     }
+
+    public void insertGame(int id, String name, int idDeveloper, String category, String helpEmail, double price, String payment, String description){
+        Connection connection = DataSource.getInstance().getConnection();
+        String query = "INSERT INTO public.game(idgame, name, price, description, helpemail, paymentscoord, developer, category, release) values(default,?,?,?,?,?,?,?,?)";
+        try {
+            statement = connection.prepareStatement(query);
+            statement.setString(1,name);
+            statement.setDouble(2,price);
+            statement.setString(3,description);
+            statement.setString(4,helpEmail);
+            statement.setString(5,payment);
+            statement.setInt(6,idDeveloper);
+            statement.setString(7,category);
+            statement.setDate(8, new java.sql.Date(new Date().getTime()));
+            System.out.println("SDAJLSDHALJDHAJDSASDKADH");
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            DataSource.getInstance().closeConnection();
+        }
+    }
+
+    public void insertPreview(int id, String imageName, boolean front){
+        Connection connection = DataSource.getInstance().getConnection();
+        String query = "INSERT INTO public.previewimg(idpreview, link, game, front) VALUES(default,?,?,?)";
+        try {
+            statement = connection.prepareStatement(query);
+            statement.setString(1,imageName);
+            statement.setInt(2, id);
+            statement.setBoolean(3, front);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            DataSource.getInstance().closeConnection();
+        }
+    }
+
+    public void insertVideoLink(int id, String link){
+        Connection connection = DataSource.getInstance().getConnection();
+        String query = "INSERT INTO public.previewvid(idpreview, link, game) VALUES(default,?,?)";
+        try {
+            statement = connection.prepareStatement(query);
+            statement.setString(1, link);
+            statement.setInt(2, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            DataSource.getInstance().closeConnection();
+        }
+    }
 }

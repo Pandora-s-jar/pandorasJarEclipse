@@ -13,6 +13,9 @@ $(document).ready(function () {
                 window.location.reload();
             }
         })
+    });
+    $("#download").click(function (event) {
+        window.location.replace("/downloadGame?id="+sessionStorage.getItem("gameID"));
     })
 });
 
@@ -29,10 +32,27 @@ function showGame(event) {
             $("#title").text(game.name);
             $("#description").text(game.description);
             $("#specs").text(game.description);
-            insertComments(game);
+            insertRank(game);
+            //insertComments(game);
         },
         error: function (error) {
             alert("Hai messo mani dove non dovevi, verrai punito severamente per questo");
+        }
+    })
+}
+
+
+function insertRank(game) {
+    $.ajax({
+        type: "GET",
+        url: "/getRank",
+        data: {
+            id: game.id
+        },
+        success: function (data) {
+            data.map(function (score) {
+                $("#ranks").append("<li>".concat(score.value).concat(" <- ").concat(score.username).concat("</li>"));
+            })
         }
     })
 }
@@ -79,6 +99,6 @@ function setUser(id, username, src) {
         },
         error: function () {
             alert("QUALCOSA NON VA NELLA SEZIONE COMMENTI");
-        }
+        },
     })
 }

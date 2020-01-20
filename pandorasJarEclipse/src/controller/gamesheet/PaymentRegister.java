@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import model.Game;
 import model.Review;
 import model.Score;
+import model.User;
 import persistence.DAOFactory;
 import utility.Acquisto;
 

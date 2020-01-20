@@ -13,9 +13,11 @@
     <aside>
         <ul class="nav flex-column text-left shadow-none">
             <h5>Libreria di ${user.getUsername()}</h5>
-            <c:forEach items="${user.getLibrary()}" var="game">
-                <li class="nav-item shadow"><a class="nav-link active" id="${game.getName()}" onclick="showGame(event)">${game.getName()}</a></li>
-            </c:forEach>
+            <c:if test="${user.getLibrary().size() != 0}">
+                <c:forEach items="${user.getLibrary()}" var="game">
+                    <li class="nav-item shadow"><a class="nav-link active" id="${game.getName()}" onclick="showGame(event)">${game.getName()}</a></li>
+                </c:forEach>
+            </c:if>
         </ul>
     </aside>
 

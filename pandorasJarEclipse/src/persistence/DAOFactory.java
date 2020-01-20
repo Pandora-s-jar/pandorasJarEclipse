@@ -47,6 +47,4 @@ public class DAOFactory {
     {
         return new ScoreDAO();
     }
-
-
 }

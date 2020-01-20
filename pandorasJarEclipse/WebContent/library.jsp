@@ -1,3 +1,4 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,12 +10,17 @@
 </head>
 <body>
     <div class="row">
-        <div class="col-2">
-            <jsp:include page="libraryList.jsp"></jsp:include>
-        </div>
-        <div id="gameDetails" class="col-10">
-            <jsp:include page="libraryGamePage.html"></jsp:include>
-        </div>
+        <c:if test="${user.getLibrary().size() == 0}">
+            <h1>La tua libreria è vuota: compra qualcosa <a href="/">qui!</a></h1>
+        </c:if>
+        <c:if test="${user.getLibrary().size() != 0}">
+            <div class="col-2">
+                <jsp:include page="libraryList.jsp"></jsp:include>
+            </div>
+            <div id="gameDetails" class="col-10">
+                <jsp:include page="libraryGamePage.html"></jsp:include>
+            </div>
+        </c:if>
     </div>
 </body>
 </html>

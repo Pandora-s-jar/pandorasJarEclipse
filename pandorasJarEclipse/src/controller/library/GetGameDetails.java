@@ -22,7 +22,6 @@ public class GetGameDetails extends HttpServlet {
         User user = (User) req.getSession().getAttribute("user");
         Game game = null;
         for(Game g : user.getLibrary()){
-            this.log(g.getName());
             if(g.getName().equals(name)){
                 game = g;
                 break;

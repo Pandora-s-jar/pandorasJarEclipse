@@ -13,6 +13,17 @@ import java.util.ArrayList;
 public class UserDAO {
     private PreparedStatement statement;
 
+    public ArrayList<Game> refreshLibrary(User u){
+        try {
+            return this.getGames(DataSource.getInstance().getConnection(), u);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DataSource.getInstance().closeConnection();
+        }
+        return null;
+    }
+
     private ArrayList<Game> getGames(Connection connection, User user) throws SQLException{
         ArrayList<Game> games = new ArrayList<>();
         String query = "SELECT g.* FROM public.libreria as l, public.game as g WHERE l.idgame = g.idgame AND l.iduser = ?";
